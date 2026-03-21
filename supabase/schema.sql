@@ -32,7 +32,7 @@ delete from public.item_variants;
 delete from public.items;
 
 -- 3. ALL ITEMS
-insert into public.items (id, category_id, name, price, description, ingredients, allergens, tags, is_signature, is_recommended, is_available, volume, image) values
+insert into public.items (id, category_id, name, price, description, ingredients, allergens, tags, is_signature, is_recommended, is_available, volume, image_url) values
   -- ========== PICCHIO SPECIALS & APERITIFS ==========
   ('i-spec-1', 'c11', 'PICCHIO STAR', 399, 'Absolut Vanilya bazlı, Passion Fruit ile taçlandırılmış imza kokteyl', 'Absolut Vanilya · Passoa · Passion Fruit · Lime Suyu · Vegan Foamer', array['Sülfitler'], array['Tatlı','Ferah'], true, true, true, null, '/cocktail-star.png'),
   ('i-spec-2', 'c11', 'GRINCH', 399, 'London Dry Gin ve Kuzu Kulağı ile hazırlanan özgün kokteyl', 'London Dry Gin · Kuzu Kulağı · Lime Suyu · Vegan Foamer', array['Sülfitler'], array['Ekşi','Ferah'], true, true, true, null, '/cocktail-grinch.png'),
