@@ -124,7 +124,7 @@ export default function MenuPage() {
     <main className="min-h-screen bg-[#070101] text-gray-200 pb-20 selection:bg-bordeaux-800">
       
       <div className="fixed inset-0 pointer-events-none" style={{
-        background: "radial-gradient(circle at 50% 0%, rgba(26,5,5,1) 0%, rgba(0,0,0,1) 100%)"
+        background: "linear-gradient(180deg, rgba(58,12,15,1) 0%, rgba(35,6,8,1) 15%, rgba(18,3,3,1) 40%, rgba(0,0,0,1) 100%)"
       }} />
 
       <div className="relative z-10 max-w-2xl mx-auto pt-6 px-4">
