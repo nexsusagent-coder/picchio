@@ -3,6 +3,11 @@
 -- Run this in Supabase SQL Editor
 -- ============================================================
 
+-- Ensure new columns exist on the items table
+ALTER TABLE public.items ADD COLUMN IF NOT EXISTS description TEXT;
+ALTER TABLE public.items ADD COLUMN IF NOT EXISTS is_available BOOLEAN DEFAULT true;
+ALTER TABLE public.items ADD COLUMN IF NOT EXISTS image TEXT;
+
 -- 1. CATEGORIES (All 15)
 insert into public.categories (id, name, "order", is_active) values
   ('c11', 'PICCHIO SPECIALS & APERITIFS', 1, true),

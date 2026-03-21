@@ -39,7 +39,7 @@ export async function getRecommended(): Promise<MenuItem[]> {
 
 export async function updateItem(id: string, updates: Partial<{
   name: string; price: number | null; is_available: boolean;
-  is_recommended: boolean; ingredients: string; image_url: string;
+  is_recommended: boolean; ingredients: string; image: string;
 }>) {
   const { error } = await supabase.from("items").update(updates).eq("id", id);
   if (error) throw error;
@@ -64,7 +64,7 @@ export async function insertItem(item: Omit<MenuItem, "variants"> & { variants?:
     is_special: item.isSpecial,
     is_signature: item.isSignature,
     is_recommended: item.isRecommended,
-    image_url: item.image,
+    image: item.image,
   }).select().single();
   if (error) throw error;
   
@@ -139,6 +139,6 @@ function mapItem(row: Record<string, unknown>): MenuItem {
     isSpecial: row.is_special as boolean | undefined,
     isSignature: row.is_signature as boolean | undefined,
     isRecommended: row.is_recommended as boolean | undefined,
-    image: (row.image_url as string | undefined) || undefined,
+    image: (row.image as string | undefined) || undefined,
   };
 }
