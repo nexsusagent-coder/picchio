@@ -117,7 +117,7 @@ export default function AdminPage() {
     setUploadingImage(id);
     try {
       const url = await api.uploadProductImage(file, id);
-      await api.updateItem(id, { image_url: url });
+      await api.updateItem(id, { image: url });
       setItems(prev => prev.map(item => item.id === id ? { ...item, image: url } : item));
     } catch (err) {
       console.error("Image upload error:", err);
