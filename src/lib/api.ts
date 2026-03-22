@@ -39,7 +39,7 @@ export async function getRecommended(): Promise<MenuItem[]> {
 
 export async function updateItem(id: string, updates: Partial<{
   name: string; price: number | null; is_available: boolean;
-  is_recommended: boolean; ingredients: string; image_url: string;
+  is_recommended: boolean; ingredients: string; image_url: string | null;
 }>) {
   const { error } = await supabase.from("items").update(updates).eq("id", id);
   if (error) throw error;

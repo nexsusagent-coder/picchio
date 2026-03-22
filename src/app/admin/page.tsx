@@ -133,6 +133,18 @@ export default function AdminPage() {
     setNewImagePreview(URL.createObjectURL(file));
   };
 
+  const removeImage = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!confirm("Bu ürünün görselini kaldırmak istediğinize emin misiniz?")) return;
+    try {
+      await api.updateItem(id, { image_url: null });
+      setItems(prev => prev.map(item => item.id === id ? { ...item, image: undefined } : item));
+    } catch (err) {
+      console.error("Görsel silinemedi:", err);
+      alert("Görsel silinemedi.");
+    }
+  };
+
   const addItem = async () => {
     if (!newName.trim()) return;
     setLoading(true);
@@ -360,13 +372,22 @@ export default function AdminPage() {
                             </div>
                           ) : null}
                           {item.image ? (
-                            <Image src={item.image} alt={item.name} fill className="object-cover" sizes="48px" />
+                            <>
+                              <Image src={item.image} alt={item.name} fill className="object-cover" sizes="48px" />
+                              <button
+                                onClick={(e) => removeImage(item.id, e)}
+                                className="absolute top-1 right-1 bg-red-600/90 text-white rounded-md p-0.5 z-20 hover:bg-red-500 scale-90"
+                                title="Görseli Kaldır"
+                              >
+                                <X size={12} />
+                              </button>
+                            </>
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
                               <ImagePlus size={16} className="text-neutral-500" />
                             </div>
                           )}
-                          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                          <div className="absolute top-0 left-0 bottom-0 right-5 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <ImagePlus size={14} className="text-white" />
                           </div>
                         </div>

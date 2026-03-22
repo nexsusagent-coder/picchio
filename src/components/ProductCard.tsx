@@ -1,9 +1,13 @@
+"use client";
 import { MenuItem } from "@/lib/types";
 import { AlertTriangle, ImagePlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useState } from "react";
 
 export function ProductCard({ item }: { item: MenuItem }) {
+  const [showAllergens, setShowAllergens] = useState(false);
+  
   // Filter out exact duplicate variants that might have arisen from SQL data
   const uniqueVariants = item.variants?.filter((v, i, a) => 
     a.findIndex(t => (t.label === v.label && t.price === v.price)) === i
@@ -18,15 +22,15 @@ export function ProductCard({ item }: { item: MenuItem }) {
     >
       {/* Image Section */}
       {item.image && (
-        <div className="relative w-full aspect-[4/3] bg-black/50 border-b border-white/[0.05]">
+        <div className="relative w-full aspect-[21/9] sm:aspect-[3/1] bg-[#070101] border-b border-white/[0.05]">
           <Image 
             src={item.image} 
             alt={item.name} 
             fill 
-            className="object-cover"
+            className="object-cover opacity-80"
             sizes="(max-width: 640px) 50vw, 250px"
           />
-          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-black/90 to-transparent" />
         </div>
       )}
 
@@ -62,9 +66,13 @@ export function ProductCard({ item }: { item: MenuItem }) {
           </span>
         ))}
         {item.allergens && item.allergens.length > 0 && (
-          <span className="text-amber-600/50 ml-auto flex items-center gap-0.5 text-[9px]">
-            <AlertTriangle size={9} /> Alerjen
-          </span>
+          <button 
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowAllergens(!showAllergens); }}
+            className="text-amber-500/70 hover:text-amber-400 ml-auto flex items-center gap-1 text-[9px] bg-amber-500/10 px-1.5 py-0.5 rounded transition-colors active:scale-95"
+          >
+            <AlertTriangle size={9} /> 
+            {showAllergens ? item.allergens.join(", ") : "Alerjen"}
+          </button>
         )}
       </div>
 
