@@ -109,11 +109,23 @@ export async function deleteAnnouncement(id: string) {
 
 // ---- IMAGE UPLOAD ----
 export async function uploadProductImage(file: File, itemId: string): Promise<string> {
-  const ext = file.name.split(".").pop();
-  const path = `products/${itemId}.${ext}`;
+  let ext = file.name.split(".").pop()?.toLowerCase();
+  if (!ext || ext === file.name.toLowerCase()) {
+    ext = file.type.split("/").pop() || "jpeg";
+  }
+  
+  // Add timestamp to the filename to avoid CDN caching and update UI instantly
+  const timestamp = new Date().getTime();
+  const path = `products/${itemId}-${timestamp}.${ext}`;
+  
   const { error: uploadError } = await supabase.storage
     .from("product-images")
-    .upload(path, file, { upsert: true });
+    .upload(path, file, { 
+      upsert: false,
+      contentType: file.type || "image/jpeg",
+      cacheControl: "3600"
+    });
+    
   if (uploadError) throw uploadError;
 
   const { data } = supabase.storage.from("product-images").getPublicUrl(path);
