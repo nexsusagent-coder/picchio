@@ -1,6 +1,7 @@
 import { MenuItem } from "@/lib/types";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, ImagePlus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function ProductCard({ item }: { item: MenuItem }) {
   // Filter out exact duplicate variants that might have arisen from SQL data
@@ -11,12 +12,28 @@ export function ProductCard({ item }: { item: MenuItem }) {
   return (
     <div
       className={cn(
-        "flex flex-col text-left w-full p-3.5 sm:p-4 relative rounded-xl border border-white/[0.06] bg-white/[0.02]",
+        "flex flex-col text-left w-full relative rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden transition-all",
         !item.isAvailable && "opacity-40 grayscale"
       )}
     >
-      {/* Header: Name + Price */}
-      <div className="flex justify-between items-start w-full gap-2 mb-1.5">
+      {/* Image Section */}
+      {item.image && (
+        <div className="relative w-full aspect-[4/3] bg-black/50 border-b border-white/[0.05]">
+          <Image 
+            src={item.image} 
+            alt={item.name} 
+            fill 
+            className="object-cover"
+            sizes="(max-width: 640px) 50vw, 250px"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/80 to-transparent" />
+        </div>
+      )}
+
+      {/* Content Section */}
+      <div className="flex flex-col flex-1 p-3.5 sm:p-4">
+        {/* Header: Name + Price */}
+        <div className="flex justify-between items-start w-full gap-2 mb-1.5">
         <h3 className="text-[13px] sm:text-sm font-serif font-bold text-[#e8dcc8] leading-tight tracking-wide uppercase">
           {item.name}
         </h3>
@@ -64,10 +81,11 @@ export function ProductCard({ item }: { item: MenuItem }) {
 
       {/* Unavailable overlay */}
       {!item.isAvailable && (
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-xl backdrop-blur-[1px]">
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center -m-0.5 rounded-xl backdrop-blur-[1px]">
           <span className="bg-red-900/80 text-white text-[9px] font-bold px-2.5 py-1 uppercase tracking-widest rounded border border-red-500/20">Tükendi</span>
         </div>
       )}
+      </div>
     </div>
   );
 }
