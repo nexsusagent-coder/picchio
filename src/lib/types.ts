@@ -41,3 +41,11 @@ export interface MenuData {
   items: MenuItem[];
   announcements: AnnouncementBanner[];
 }
+
+export interface SiteSettings {
+  address: string;
+  phone: string;
+  instagram_url: string;
+  whatsapp_url: string;
+  maps_url: string;
+}

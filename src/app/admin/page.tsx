@@ -2,20 +2,21 @@
 
 import { useState, useRef, useEffect } from "react";
 import * as api from "@/lib/api";
-import { MenuItem, Category, AnnouncementBanner } from "@/lib/types";
+import { MenuItem, Category, AnnouncementBanner, SiteSettings } from "@/lib/types";
 import { 
   CheckCircle2, XCircle, Plus, Trash2, Edit3, Save, Megaphone, 
-  ToggleLeft, ToggleRight, Star, Package, AlertTriangle, ImagePlus, X, Loader2
+  ToggleLeft, ToggleRight, Star, Package, AlertTriangle, ImagePlus, X, Loader2, Settings
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-type AdminTab = "products" | "announcements" | "featured";
+type AdminTab = "products" | "announcements" | "featured" | "settings";
 
 export default function AdminPage() {
   const [items, setItems] = useState<MenuItem[]>([]);
   const [announcements, setAnnouncements] = useState<AnnouncementBanner[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings | null>(null);
   const [activeTab, setActiveTab] = useState<AdminTab>("products");
   const [loading, setLoading] = useState(true);
 
@@ -43,6 +44,9 @@ export default function AdminPage() {
   const [newAnnText, setNewAnnText] = useState("");
   const [newAnnType, setNewAnnType] = useState<"info" | "warning" | "promo">("promo");
 
+  // Settings state
+  const [savingSettings, setSavingSettings] = useState(false);
+
   useEffect(() => {
     refreshData();
   }, []);
@@ -50,14 +54,16 @@ export default function AdminPage() {
   const refreshData = async () => {
     setLoading(true);
     try {
-      const [cats, its, anns] = await Promise.all([
+      const [cats, its, anns, sets] = await Promise.all([
         api.getCategories(),
         api.getItems(),
-        api.getAnnouncements()
+        api.getAnnouncements(),
+        api.getSiteSettings()
       ]);
       setCategories(cats);
       setItems(its);
       setAnnouncements(anns);
+      setSiteSettings(sets);
       if (cats.length > 0 && !newCategory) setNewCategory(cats[0].id);
     } catch (err) {
       console.error("Refresh error:", err);
@@ -214,6 +220,7 @@ export default function AdminPage() {
     { id: "products", label: "Ürünler", icon: <Package size={16} /> },
     { id: "announcements", label: "Duyurular", icon: <Megaphone size={16} /> },
     { id: "featured", label: "Öne Çıkanlar", icon: <Star size={16} /> },
+    { id: "settings", label: "Site Ayarları", icon: <Settings size={16} /> },
   ];
 
   if (loading && items.length === 0) {
@@ -550,6 +557,76 @@ export default function AdminPage() {
               );
             })}
           </div>
+        </div>
+      )}
+      {/* ========== SETTINGS TAB ========== */}
+      {activeTab === "settings" && (
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-semibold mb-1">Site Ayarları</h2>
+          <p className="text-neutral-400 text-sm mb-6">Müşteri menüsünün alt kısmında yer alan iletişim ve sosyal medya bilgilerini yönetin.</p>
+
+          {!siteSettings ? (
+            <div className="bg-neutral-800 rounded-xl border border-neutral-700 p-5 text-center text-neutral-500 text-sm">Ayar verisi yüklenemedi. Lütfen önce SQL tablosunu oluşturun.</div>
+          ) : (
+            <div className="bg-neutral-800 rounded-xl border border-neutral-700 p-5 space-y-4">
+              <div>
+                <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5 font-medium">Fiziksel Adres</label>
+                <input type="text" value={siteSettings.address} onChange={e => setSiteSettings({ ...siteSettings, address: e.target.value })}
+                  className="w-full bg-neutral-900 border border-neutral-600 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#4a0e0e]"
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5 font-medium">Telefon</label>
+                  <input type="text" value={siteSettings.phone} onChange={e => setSiteSettings({ ...siteSettings, phone: e.target.value })}
+                    className="w-full bg-neutral-900 border border-neutral-600 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#4a0e0e]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5 font-medium">WhatsApp Linki</label>
+                  <input type="text" value={siteSettings.whatsapp_url} onChange={e => setSiteSettings({ ...siteSettings, whatsapp_url: e.target.value })}
+                    className="w-full bg-neutral-900 border border-neutral-600 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#4a0e0e]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5 font-medium">Instagram Linki</label>
+                  <input type="text" value={siteSettings.instagram_url} onChange={e => setSiteSettings({ ...siteSettings, instagram_url: e.target.value })}
+                    className="w-full bg-neutral-900 border border-neutral-600 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#4a0e0e]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5 font-medium">Google Maps Linki</label>
+                  <input type="text" value={siteSettings.maps_url} onChange={e => setSiteSettings({ ...siteSettings, maps_url: e.target.value })}
+                    className="w-full bg-neutral-900 border border-neutral-600 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#4a0e0e]"
+                  />
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-neutral-700 flex justify-end">
+                <button onClick={async () => {
+                  setSavingSettings(true);
+                  try {
+                    await api.updateSiteSettings(siteSettings);
+                    alert("Ayarlar başarıyla kaydedildi!");
+                  } catch (err) {
+                    console.error(err);
+                    alert("Kaydedilirken hata oluştu.");
+                  } finally {
+                    setSavingSettings(false);
+                  }
+                }} disabled={savingSettings}
+                  className="flex items-center gap-2 bg-[#4a0e0e] hover:bg-[#660f0f] text-white px-6 py-2.5 rounded-xl text-sm font-medium transition disabled:opacity-50"
+                >
+                  {savingSettings ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />} 
+                  Kaydet
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

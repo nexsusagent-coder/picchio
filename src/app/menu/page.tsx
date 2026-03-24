@@ -2,8 +2,9 @@
 
 import { useState, useMemo, useEffect } from "react";
 import * as api from "@/lib/api";
-import { MenuItem, Category, AnnouncementBanner } from "@/lib/types";
+import { MenuItem, Category, AnnouncementBanner, SiteSettings } from "@/lib/types";
 import { ProductCard } from "@/components/ProductCard";
+import { Footer } from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, SlidersHorizontal, ChevronRight, Check, Megaphone, X, Sparkles, AlertTriangle } from "lucide-react";
@@ -44,20 +45,24 @@ export default function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [allItems, setAllItems] = useState<MenuItem[]>([]);
   const [announcements, setAnnouncements] = useState<AnnouncementBanner[]>([]);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [dismissedBanners, setDismissedBanners] = useState<string[]>([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [cats, items, anns] = await Promise.all([
+        const [cats, items, anns, sets] = await Promise.all([
           api.getCategories(),
           api.getItems(),
-          api.getAnnouncements()
+          api.getAnnouncements(),
+          api.getSiteSettings()
         ]);
         setCategories(cats);
         setAllItems(items);
         setAnnouncements(anns);
+        setSiteSettings(sets);
       } catch (err) {
         console.error("Data load error:", err);
       } finally {
@@ -152,7 +157,7 @@ export default function MenuPage() {
               <Image src="/logo.png" alt="Picchio" fill className="object-contain" sizes="36px" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-serif text-gold-400 font-bold text-base sm:text-lg tracking-widest leading-none">Picchio Cocktail</h1>
+              <h1 className="font-sans text-gold-400 font-bold text-base sm:text-lg tracking-widest leading-none">Picchio Cocktail</h1>
               <p className="text-[9px] text-gray-500 tracking-[0.15em] uppercase mt-0.5">Premium Bar Menüsü</p>
             </div>
           </div>
@@ -180,7 +185,7 @@ export default function MenuPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90" />
           </div>
           <div className="relative z-10 text-center px-6">
-             <h2 className="text-3xl sm:text-4xl font-serif text-white font-bold mb-3 leading-tight tracking-wide drop-shadow-lg">
+             <h2 className="text-3xl sm:text-4xl font-sans text-white font-bold mb-3 leading-tight tracking-wide drop-shadow-lg">
                The Art of the <br/><span className="text-gold-400 italic">Pour</span>
              </h2>
              <div className="w-12 h-[1px] bg-gold-500/60 mx-auto my-4" />
@@ -255,7 +260,7 @@ export default function MenuPage() {
                       </div>
                     )}
                     <div className="p-3 bg-gradient-to-b from-[#0d0202] to-[#070101]">
-                      <h3 className="text-white font-serif font-semibold text-sm">{item.name}</h3>
+                      <h3 className="text-white font-sans font-semibold text-sm">{item.name}</h3>
                       {item.description && (
                         <p className="text-gray-400 text-[10px] mt-1 leading-relaxed line-clamp-2">{item.description}</p>
                       )}
@@ -286,30 +291,97 @@ export default function MenuPage() {
             </div>
           ) : (
             <>
-              {filteredCategories.map(cat => (
-                 <section key={cat.id} id={`category-${cat.id}`}>
-                   <div className="mb-6 flex flex-col pt-4">
-                     <h2 className="text-2xl font-serif text-gold-400 font-bold tracking-wide">{cat.name}</h2>
-                     <div className="w-16 h-[1px] bg-gold-600/40 mt-3 mb-1" />
-                   </div>
-                   
-                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                      {cat.items.map(item => (
-                        <ProductCard key={item.id} item={item} />
-                      ))}
-                   </div>
-                 </section>
-              ))}
-              
-              {filteredCategories.length === 0 && (
-                <div className="py-16 flex flex-col items-center justify-center">
-                   <p className="text-gray-500 text-sm">Aradığınız kriterlere uygun ürün bulunamadı.</p>
-                   <button 
-                     onClick={() => {setSearchQuery(""); setActiveFilters(["all"]); setAllergenExclusions([]);}}
-                     className="mt-4 text-bordeaux-400 text-sm font-medium hover:underline"
-                   >
-                     Filtreleri Temizle
-                   </button>
+              {isFiltering ? (
+                <>
+                  {filteredCategories.map(cat => (
+                     <section key={cat.id} id={`category-${cat.id}`}>
+                       <div className="mb-6 flex flex-col pt-4">
+                         <h2 className="text-2xl font-sans text-gold-400 font-bold tracking-wide">{cat.name}</h2>
+                         <div className="w-16 h-[1px] bg-gold-600/40 mt-3 mb-1" />
+                       </div>
+                       
+                       <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                          {cat.items.map(item => (
+                            <ProductCard key={item.id} item={item} />
+                          ))}
+                       </div>
+                     </section>
+                  ))}
+                  
+                  {filteredCategories.length === 0 && (
+                    <div className="py-16 flex flex-col items-center justify-center">
+                       <p className="text-gray-500 text-sm">Aradığınız kriterlere uygun ürün bulunamadı.</p>
+                       <button 
+                         onClick={() => {setSearchQuery(""); setActiveFilters(["all"]); setAllergenExclusions([]);}}
+                         className="mt-4 text-bordeaux-400 text-sm font-medium hover:underline"
+                       >
+                         Filtreleri Temizle
+                       </button>
+                    </div>
+                  )}
+                </>
+              ) : selectedCategoryId ? (
+                <div className="animate-in slide-in-from-right-8 duration-300">
+                  <button onClick={() => setSelectedCategoryId(null)} className="flex items-center gap-2 text-gold-500 hover:text-white mb-6 bg-white/5 px-4 py-2 rounded-xl transition-colors text-sm font-medium">
+                    <ChevronRight size={18} className="rotate-180" /> Geri Dön
+                  </button>
+                  {filteredCategories.filter(c => c.id === selectedCategoryId).map(cat => (
+                     <section key={cat.id}>
+                       <div className="mb-6 flex flex-col">
+                         <h2 className="text-3xl font-sans text-white font-bold tracking-tight">{cat.name}</h2>
+                         <div className="w-12 h-[2px] bg-gold-500 mt-4 mb-2" />
+                       </div>
+                       <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                          {cat.items.map(item => <ProductCard key={item.id} item={item} />)}
+                       </div>
+                     </section>
+                  ))}
+                </div>
+              ) : (
+                <div className="animate-in fade-in duration-500">
+                  {/* PICCHIO SPECIALS (c11) always explicit on home */}
+                  {filteredCategories.find(c => c.id === "c11") && (
+                    <section className="mb-10">
+                      <div className="mb-6 flex flex-col pt-4">
+                         <h2 className="text-2xl font-sans text-gold-400 font-bold tracking-wide">Picchio Specials & Aperitifs</h2>
+                         <div className="w-16 h-[1px] bg-gold-600/40 mt-3 mb-1" />
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                        {filteredCategories.find(c => c.id === "c11")?.items.map(item => (
+                          <ProductCard key={item.id} item={item} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+                  
+                  {/* NEW GRID OF CATEGORIES */}
+                  <div className="mb-6 flex flex-col pt-4">
+                      <h2 className="text-2xl font-sans text-white font-bold tracking-wide">Menü İçeriği</h2>
+                      <div className="w-16 h-[1px] bg-white/20 mt-3 mb-4" />
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {filteredCategories.filter(c => c.id !== "c11" && c.items.length > 0).map(cat => (
+                      <button 
+                        key={cat.id} 
+                        onClick={() => { setSelectedCategoryId(cat.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="flex flex-col items-center justify-center aspect-[4/3] bg-gradient-to-br from-[#1a0404] to-[#0a0505] border border-white/[0.05] rounded-2xl hover:border-gold-500/30 transition-all hover:shadow-[0_0_20px_rgba(201,168,76,0.1)] group relative overflow-hidden active:scale-95"
+                      >
+                         <div className="absolute inset-0 bg-gold-400/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                         <span className="text-3xl mb-3 drop-shadow-md group-hover:scale-110 transition-transform duration-300">
+                           {cat.name.toLowerCase().includes("bira") ? "🍺" : 
+                            cat.name.toLowerCase().includes("şarap") ? "🍷" : 
+                            cat.name.toLowerCase().includes("klasik") ? "🍸" : 
+                            cat.name.toLowerCase().includes("viski") ? "🥃" :
+                            cat.name.toLowerCase().includes("özel") ? "✨" :
+                            cat.name.toLowerCase().includes("sıcak") ? "☕" :
+                            cat.name.toLowerCase().includes("yemek") || cat.name.toLowerCase().includes("çerez") ? "🍔" :
+                            cat.name.toLowerCase().includes("rom") ? "🥃" : "🍾"}
+                         </span>
+                         <h3 className="text-[13px] font-sans text-gray-200 font-semibold tracking-wide px-2 text-center group-hover:text-gold-400 transition-colors">{cat.name}</h3>
+                         <div className="mt-2 text-[10px] text-gray-500">{cat.items.length} Çeşit</div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </>
@@ -319,7 +391,7 @@ export default function MenuPage() {
         {/* KDV Notice & Quote Footer */}
         <div className="mt-20 mb-8 text-center px-4">
            <p className="text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-4 font-semibold">SOMMELIER RECOMMENDATION</p>
-           <h3 className="text-2xl font-serif text-gray-300 italic leading-snug mx-auto max-w-[300px] mb-8">
+           <h3 className="text-2xl font-sans text-gray-300 italic leading-snug mx-auto max-w-[300px] mb-8">
              "Cocktails are a conversation between memory and the palate."
            </h3>
            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-gold-500 hover:bg-gold-400 text-black px-8 py-3.5 rounded-sm text-[10px] uppercase font-bold tracking-[0.2em] transition-colors mb-16">
@@ -341,7 +413,7 @@ export default function MenuPage() {
           <div className="relative bg-[#0d0202] rounded-t-3xl border-t border-white/10 p-6 pb-8 shadow-2xl animate-in slide-in-from-bottom-full duration-300 max-h-[85vh] overflow-y-auto">
             <div className="w-12 h-1.5 bg-white/10 rounded-full mx-auto mb-6" />
             
-            <h3 className="text-xl font-serif text-white font-semibold mb-6">Filtrele</h3>
+            <h3 className="text-xl font-sans text-white font-semibold mb-6">Filtrele</h3>
             
             <div className="space-y-6">
               {/* Alkol / Tip */}
@@ -414,6 +486,7 @@ export default function MenuPage() {
           </div>
         </div>
       )}
+      <Footer settings={siteSettings} />
     </main>
   );
 }

@@ -24,7 +24,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="min-h-screen bg-neutral-900" suppressHydrationWarning>
       <nav className="bg-black/80 border-b border-bordeaux-800 px-6 py-3 flex items-center justify-between sticky top-0 z-40">
-        <h1 className="font-serif text-gold-400 text-lg tracking-wider">PICCHIO ADMIN PANEL</h1>
+        <h1 className="font-sans text-gold-400 text-lg tracking-wider">PICCHIO ADMIN PANEL</h1>
         <div className="flex items-center gap-4">
           {userEmail && <span className="text-gray-500 text-xs hidden sm:block">{userEmail}</span>}
           <button

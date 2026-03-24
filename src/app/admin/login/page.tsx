@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
         </div>
 
         <div className="bg-white/5 border border-white/10 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
-          <h1 className="text-white font-serif text-2xl font-semibold text-center mb-1">Admin Girişi</h1>
+          <h1 className="text-white font-sans text-2xl font-semibold text-center mb-1">Admin Girişi</h1>
           <p className="text-gray-500 text-sm text-center mb-7">Picchio Cocktail Yönetim Paneli</p>
 
           <form onSubmit={handleLogin} className="space-y-4">

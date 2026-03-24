@@ -154,3 +154,29 @@ function mapItem(row: Record<string, unknown>): MenuItem {
     image: (row.image_url as string | undefined) || undefined,
   };
 }
+
+// ---- SITE SETTINGS ----
+export async function getSiteSettings() {
+  try {
+    const { data, error } = await supabase
+      .from("site_settings")
+      .select("*")
+      .eq("id", 1)
+      .single();
+    if (error && error.code !== 'PGRST116') {
+      console.warn("getSiteSettings error:", error);
+      return null;
+    }
+    return data;
+  } catch (err) {
+    console.warn("getSiteSettings fatal error:", err);
+    return null;
+  }
+}
+
+export async function updateSiteSettings(settings: any) {
+  const { error } = await supabase
+    .from("site_settings")
+    .upsert({ id: 1, ...settings });
+  if (error) throw error;
+}
