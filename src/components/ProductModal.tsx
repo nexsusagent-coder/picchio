@@ -148,13 +148,13 @@ export function ProductModal({ item, onClose }: { item: MenuItem; onClose: () =>
            )}
 
            {/* Allergen Warning Banner */}
-           {item.allergens && item.allergens.length > 0 && (
-             <div className="mt-8 mb-4 flex items-start gap-3 bg-amber-950/20 border border-amber-900/30 rounded-xl p-4">
-               <ShieldAlert className="text-amber-500 shrink-0 mt-0.5" size={18} />
+           {item.allergens && (
+             <div className="mt-8 mb-4 flex items-start gap-4 bg-[#2a1700] border border-[#5c3300] rounded-xl p-5 shadow-2xl">
+               <ShieldAlert className="text-yellow-500 shrink-0 mt-0.5" size={24} strokeWidth={1.5} />
                <div>
-                 <p className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">Alerjen Uyarısı</p>
-                 <p className="text-sm text-amber-200/70">
-                   Bu ürün <span className="font-semibold text-amber-300">{item.allergens.join(", ")}</span> içermektedir. Hassasiyetiniz varsa lütfen ekibimizle iletişime geçin.
+                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-500 mb-2">ALERJEN UYARISI</p>
+                 <p className="text-[13px] text-gray-300 leading-relaxed">
+                   Bu ürün <span className="font-bold text-white">{item.allergens}</span> içermektedir. Hassasiyetiniz varsa lütfen ekibimizle iletişime geçin.
                  </p>
                </div>
              </div>
