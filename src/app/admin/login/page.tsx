@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import Image from "next/image";
 import { Lock, Mail, Eye, EyeOff, Loader2 } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -38,7 +37,7 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <div className="relative w-24 h-24">
-            <Image src="/logo.png" alt="Picchio Cocktail" fill className="object-contain" sizes="96px" />
+            <img src="/logo.png" alt="Picchio Cocktail" className="absolute inset-0 w-full h-full object-contain" />
           </div>
         </div>
 

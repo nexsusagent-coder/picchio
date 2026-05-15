@@ -1,5 +1,5 @@
 import { supabase } from "./supabase";
-import { MenuItem, Category, AnnouncementBanner } from "./types";
+import { MenuItem, Category, AnnouncementBanner, Campaign } from "./types";
 
 // ---- CATEGORIES ----
 export async function getCategories(): Promise<Category[]> {
@@ -17,11 +17,32 @@ export async function getCategories(): Promise<Category[]> {
   }));
 }
 
+export async function updateCategory(id: string, updates: Partial<{ name: string; order: number; is_active: boolean }>) {
+  const { error } = await supabase.from("categories").update(updates).eq("id", id);
+  if (error) throw error;
+}
+
+export async function insertCategory(category: Category) {
+  const { error } = await supabase.from("categories").insert({
+    id: category.id,
+    name: category.name,
+    order: category.order,
+    is_active: category.isActive,
+  });
+  if (error) throw error;
+}
+
+export async function deleteCategory(id: string) {
+  const { error } = await supabase.from("categories").delete().eq("id", id);
+  if (error) throw error;
+}
+
 // ---- ITEMS ----
 export async function getItems(): Promise<MenuItem[]> {
   const { data: items, error } = await supabase
     .from("items")
     .select("*, item_variants(label, price)")
+    .order("sort_order", { ascending: true })
     .order("name");
   if (error) throw error;
   return (items || []).map(mapItem);
@@ -38,8 +59,12 @@ export async function getRecommended(): Promise<MenuItem[]> {
 }
 
 export async function updateItem(id: string, updates: Partial<{
-  name: string; price: number | null; is_available: boolean;
-  is_recommended: boolean; ingredients: string; image_url: string | null;
+  name?: string; price?: number | null; is_available?: boolean;
+  is_recommended?: boolean; ingredients?: string; image_url?: string | null;
+  price_secondary?: number | null; price_label?: string | null; price_secondary_label?: string | null;
+  allergens?: string | null; is_favorite?: boolean; taste_intensity?: string | null; service_style?: string | null;
+  calories?: number | null; is_vegan?: boolean; is_vegetarian?: boolean; allergen_details?: string | null;
+  category_id?: string;
 }>) {
   const { error } = await supabase.from("items").update(updates).eq("id", id);
   if (error) throw error;
@@ -65,6 +90,16 @@ export async function insertItem(item: Omit<MenuItem, "variants"> & { variants?:
     is_signature: item.isSignature,
     is_recommended: item.isRecommended,
     image_url: item.image,
+    price_secondary: item.priceSecondary,
+    price_label: item.priceLabel,
+    price_secondary_label: item.priceSecondaryLabel,
+    is_favorite: item.isFavorite,
+    taste_intensity: item.tasteIntensity,
+    service_style: item.serviceStyle,
+    calories: item.calories,
+    is_vegan: item.isVegan,
+    is_vegetarian: item.isVegetarian,
+    allergen_details: item.allergenDetails,
   }).select().single();
   if (error) throw error;
   
@@ -123,12 +158,58 @@ export async function uploadProductImage(file: File, itemId: string): Promise<st
     .upload(path, file, { 
       upsert: false,
       contentType: file.type || "image/jpeg",
-      cacheControl: "3600"
+      cacheControl: "31536000"
     });
     
   if (uploadError) throw uploadError;
 
   const { data } = supabase.storage.from("product-images").getPublicUrl(path);
+  return data.publicUrl;
+}
+
+export async function uploadCampaignImage(file: File, campaignId: string): Promise<string> {
+  let ext = file.name.split(".").pop()?.toLowerCase();
+  if (!ext || ext === file.name.toLowerCase()) {
+    ext = file.type.split("/").pop() || "jpeg";
+  }
+  
+  const timestamp = new Date().getTime();
+  const path = `campaigns/${campaignId}-${timestamp}.${ext}`;
+  
+  const { error: uploadError } = await supabase.storage
+    .from("campaign-images")
+    .upload(path, file, { 
+      upsert: false,
+      contentType: file.type || "image/jpeg",
+      cacheControl: "31536000"
+    });
+    
+  if (uploadError) throw uploadError;
+
+  const { data } = supabase.storage.from("campaign-images").getPublicUrl(path);
+  return data.publicUrl;
+}
+
+export async function uploadSiteAsset(file: File, type: "hero_logo"): Promise<string> {
+  let ext = file.name.split(".").pop()?.toLowerCase();
+  if (!ext || ext === file.name.toLowerCase()) {
+    ext = file.type.split("/").pop() || "png";
+  }
+  
+  const timestamp = new Date().getTime();
+  const path = `${type}-${timestamp}.${ext}`;
+  
+  const { error: uploadError } = await supabase.storage
+    .from("site-assets")
+    .upload(path, file, { 
+      upsert: true,
+      contentType: file.type || "image/png",
+      cacheControl: "3600"
+    });
+    
+  if (uploadError) throw uploadError;
+
+  const { data } = supabase.storage.from("site-assets").getPublicUrl(path);
   return data.publicUrl;
 }
 
@@ -140,10 +221,13 @@ function mapItem(row: Record<string, unknown>): MenuItem {
     categoryId: row.category_id as string,
     name: row.name as string,
     price: row.price as number | undefined,
+    priceSecondary: row.price_secondary as number | undefined,
+    priceLabel: row.price_label as string | undefined,
+    priceSecondaryLabel: row.price_secondary_label as string | undefined,
     variants: variants && variants.length > 0 ? variants : undefined,
     description: row.description as string | undefined,
     ingredients: row.ingredients as string | undefined,
-    allergens: row.allergens as string[] | undefined,
+    allergens: row.allergens as string | null | undefined,
     volume: row.volume as string | undefined,
     abv: row.abv as number | undefined,
     tags: row.tags as string[] | undefined,
@@ -151,8 +235,73 @@ function mapItem(row: Record<string, unknown>): MenuItem {
     isSpecial: row.is_special as boolean | undefined,
     isSignature: row.is_signature as boolean | undefined,
     isRecommended: row.is_recommended as boolean | undefined,
+    isFavorite: row.is_favorite as boolean | undefined,
+    tasteIntensity: row.taste_intensity as string | undefined,
+    serviceStyle: row.service_style as string | undefined,
+    calories: row.calories as number | undefined,
+    isVegan: row.is_vegan as boolean | undefined,
+    isVegetarian: row.is_vegetarian as boolean | undefined,
+    allergenDetails: row.allergen_details as string | null | undefined,
     image: (row.image_url as string | undefined) || undefined,
+    sortOrder: (row.sort_order as number | undefined) ?? 0,
   };
+}
+
+// ---- CAMPAIGNS ----
+export async function getCampaigns(): Promise<Campaign[]> {
+  const { data, error } = await supabase
+    .from("campaigns")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return (data || []).map(row => {
+    // Robust fallback: Check new array column first, then old string column
+    let derivedImageUrls: string[] = [];
+    if (Array.isArray(row.image_urls)) {
+      derivedImageUrls = row.image_urls;
+    } else if (typeof row.image_url === 'string' && row.image_url) {
+      derivedImageUrls = [row.image_url];
+    }
+
+    return {
+      id: row.id,
+      title: row.title,
+      description: row.description,
+      type: row.type,
+      imageUrls: derivedImageUrls,
+      price: row.price,
+      isActive: row.is_active,
+      endDate: row.end_date,
+    };
+  });
+}
+
+export async function updateCampaign(id: string, updates: Partial<{
+  title: string; description: string | null; type: string;
+  image_urls: string[] | null; price: number | null;
+  is_active: boolean; end_date: string | null;
+}>) {
+  const { error } = await supabase.from("campaigns").update(updates).eq("id", id);
+  if (error) throw error;
+}
+
+export async function insertCampaign(c: Omit<Campaign, "id"> & { id?: string }) {
+  const { error } = await supabase.from("campaigns").insert({
+    id: c.id || `camp-${Date.now()}`,
+    title: c.title,
+    description: c.description,
+    type: c.type,
+    image_urls: c.imageUrls || [],
+    price: c.price,
+    is_active: c.isActive,
+    end_date: c.endDate,
+  });
+  if (error) throw error;
+}
+
+export async function deleteCampaign(id: string) {
+  const { error } = await supabase.from("campaigns").delete().eq("id", id);
+  if (error) throw error;
 }
 
 // ---- SITE SETTINGS ----
@@ -165,13 +314,39 @@ export async function getSiteSettings() {
       .single();
     if (error && error.code !== 'PGRST116') {
       console.warn("getSiteSettings error:", error);
-      return null;
+      return getFallbackSettings();
     }
-    return data;
+    return data || getFallbackSettings();
   } catch (err) {
     console.warn("getSiteSettings fatal error:", err);
-    return null;
+    return getFallbackSettings();
   }
+}
+
+function getFallbackSettings() {
+  return {
+    address: "Alsancak, Kültür Mahallesi 1388 Sokak, İzmir",
+    phone: "+90 555 123 45 67",
+    instagram_url: "https://instagram.com/picchiococktail",
+    whatsapp_url: "https://wa.me/905551234567",
+    maps_url: "https://maps.google.com/?q=Picchio+Cocktail+Alsancak",
+    working_hours: "Hafta İçi: 18:00 - 02:00 | Hafta Sonu: 18:00 - 04:00",
+    menu_title: "Picchio Cocktail Bar Menüsü",
+    is_header_visible: true,
+    hero_logo_url: "/logo.png",
+    // Design Defaults (Red Inferno)
+    primary_color: "#4E0000",
+    secondary_color: "#1a0404",
+    accent_gold: "#D4AF37",
+    bg_gradient_start: "#4E0000",
+    bg_gradient_end: "#000000",
+    button_color: "#4a0e0e",
+    font_family: "Inter",
+    border_radius: 12,
+    glass_blur: 12,
+    noise_opacity: 0.05,
+    footer_text: "Picchio Cocktail Bar"
+  };
 }
 
 export async function updateSiteSettings(settings: any) {
@@ -179,4 +354,87 @@ export async function updateSiteSettings(settings: any) {
     .from("site_settings")
     .upsert({ id: 1, ...settings });
   if (error) throw error;
+}
+
+// ---- SORT ORDER (BATCH) ----
+export async function updateSortOrders(updates: { id: string; sort_order: number }[]) {
+  // Supabase doesn't support batch update natively, so we do individual updates
+  // wrapped in a single Promise.all for performance
+  const promises = updates.map(u =>
+    supabase.from("items").update({ sort_order: u.sort_order }).eq("id", u.id)
+  );
+  const results = await Promise.all(promises);
+  const firstError = results.find(r => r.error);
+  if (firstError?.error) throw firstError.error;
+}
+
+// ---- ANALYTICS ----
+export async function trackEvent(
+  eventType: 'click' | 'view',
+  metadata: { productId?: string, categoryId?: string }
+) {
+  // Silent tracking - we don't want to block UI or show errors to user
+  try {
+    const { error } = await supabase.from("analytics").insert({
+      event_type: eventType,
+      product_id: metadata.productId,
+      category_id: metadata.categoryId
+    });
+    if (error) console.warn("Analytics error:", error);
+  } catch (err) {
+    console.warn("Analytics fatal error:", err);
+  }
+}
+
+export async function getAnalyticsSummary() {
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const { data: events, error } = await supabase
+    .from("analytics")
+    .select("*")
+    .gt("created_at", sevenDaysAgo.toISOString())
+    .order("created_at", { ascending: true });
+
+  if (error) throw error;
+
+  // Process Daily Stats for LineChart
+  const dailyMap = new Map<string, { date: string, views: number, clicks: number }>();
+  
+  // Initialize last 7 days with 0s
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const dateStr = d.toISOString().split('T')[0];
+    dailyMap.set(dateStr, { date: dateStr, views: 0, clicks: 0 });
+  }
+
+  const productCounts = new Map<string, number>();
+  const categoryCounts = new Map<string, number>();
+
+  events?.forEach(event => {
+    const dateStr = event.created_at.split('T')[0];
+    const stats = dailyMap.get(dateStr);
+    if (stats) {
+      if (event.event_type === 'view') stats.views++;
+      else if (event.event_type === 'click') stats.clicks++;
+    }
+
+    if (event.event_type === 'view') {
+      if (event.product_id) productCounts.set(event.product_id, (productCounts.get(event.product_id) || 0) + 1);
+      if (event.category_id) categoryCounts.set(event.category_id, (categoryCounts.get(event.category_id) || 0) + 1);
+    }
+  });
+
+  return {
+    dailyStats: Array.from(dailyMap.values()),
+    topProductIds: Array.from(productCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([id, count]) => ({ id, count })),
+    topCategoryIds: Array.from(categoryCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([id, count]) => ({ id, count })),
+  };
 }

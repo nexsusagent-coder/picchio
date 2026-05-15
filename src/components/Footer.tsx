@@ -1,60 +1,66 @@
 import { SiteSettings } from "@/lib/types";
-import { Instagram, MapPin, Phone, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { Instagram, MapPin, MessageCircle } from "lucide-react";
+import { formatBrandText } from "@/lib/utils";
 
 export function Footer({ settings }: { settings: SiteSettings | null }) {
   if (!settings) return null;
 
   return (
-    <footer className="w-full bg-[#0a0505] border-t border-white/[0.05] mt-auto py-12 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-8">
+    <footer className="w-full bg-[#000000] pt-20 pb-20 relative z-50">
+      <div className="max-w-md mx-auto px-6 flex flex-col items-center">
         
-        {/* Logo / Brand Name */}
-        <div className="flex flex-col items-center">
-          <h2 className="text-xl md:text-2xl font-bold tracking-[0.2em] text-[#c9a84c] uppercase">PICCHIO</h2>
-          <div className="w-8 h-[1px] bg-[#c9a84c]/50 mt-3 mb-1" />
-          <p className="text-[10px] tracking-[0.3em] text-[#8a8070] uppercase">Cocktail Bar</p>
-        </div>
-
-        {/* Contact Info */}
-        <div className="flex flex-col space-y-3 text-sm text-[#9a917e]">
-          {settings.address && (
-            <p className="flex items-center justify-center gap-2">
-              <MapPin size={14} className="text-[#c9a84c]" />
-              <span className="max-w-[280px] leading-snug">{settings.address}</span>
-            </p>
-          )}
-          {settings.phone && (
-            <p className="flex items-center justify-center gap-2">
-              <Phone size={14} className="text-[#c9a84c]" />
-              {settings.phone}
-            </p>
-          )}
-        </div>
-
-        {/* Social Links */}
-        <div className="flex items-center justify-center gap-6 pt-2">
+        {/* 1. Tidy Social Action Row */}
+        <div className="flex items-center justify-center gap-12 mb-16 underline-offset-8">
           {settings.instagram_url && (
-            <Link href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/[0.03] border border-white/[0.05] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-black transition-all duration-300">
-              <Instagram size={18} />
-            </Link>
+            <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:scale-110 transition-transform">
+              <Instagram size={20} strokeWidth={1.5} />
+            </a>
           )}
           {settings.whatsapp_url && (
-            <Link href={settings.whatsapp_url} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/[0.03] border border-white/[0.05] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-black transition-all duration-300">
-              <MessageCircle size={18} />
-            </Link>
+            <a href={settings.whatsapp_url} target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:scale-110 transition-transform">
+              <MessageCircle size={20} strokeWidth={1.5} />
+            </a>
           )}
           {settings.maps_url && (
-            <Link href={settings.maps_url} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/[0.03] border border-white/[0.05] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-black transition-all duration-300">
-              <MapPin size={18} />
-            </Link>
+            <a href={settings.maps_url} target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:scale-110 transition-transform">
+              <MapPin size={20} strokeWidth={1.5} />
+            </a>
           )}
         </div>
 
-        {/* Legal */}
-        <div className="pt-6 flex flex-col items-center space-y-2 text-[#6b6358] text-[10px] uppercase tracking-wider">
-          <p>Lütfen sorumlu tüketiniz. 18+</p>
-          <p>&copy; {new Date().getFullYear()} Picchio Cocktail Bar. Tüm Hakları Saklıdır.</p>
+        {/* 2. Organized Information Stack (Derli Toplu) */}
+        <div className="flex flex-col items-center gap-10 text-center mb-16 w-full">
+          
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[9px] text-[#D4AF37]/50 tracking-[0.4em] font-semibold uppercase">Adres</span>
+            <p className="text-[12px] text-white/70 font-light leading-relaxed">{settings.address}</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[9px] text-[#D4AF37]/50 tracking-[0.4em] font-semibold uppercase">İletişim</span>
+            <p className="text-[12px] text-white/70 font-light tracking-[0.1em]">{settings.phone}</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-4">
+            <span className="text-[9px] text-[#D4AF37]/50 tracking-[0.4em] font-semibold uppercase">Çalışma Saatleri</span>
+            <div className="px-5 py-2 rounded-full border border-white/5 bg-white/[0.02] flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse" />
+              <p className="text-[11px] text-white/50 font-medium tracking-wide italic">
+                {settings.working_hours || "Her Gün: 18:00 - 02:00"}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* 3. Refined Legal Warning (Premium) */}
+        <div className="w-full flex flex-col items-center pt-10 border-t border-white/5">
+          <p className="text-[17px] sm:text-[19px] text-white/90 font-black tracking-[0.3em] uppercase mb-5 text-center drop-shadow-2xl">
+            {formatBrandText("+18 yaş için uygundur")}
+          </p>
+          <p className="text-[10px] text-white/30 tracking-[0.6em] font-black uppercase text-center">
+            {formatBrandText(settings.footer_text || "© 2026 Picchio Cocktail Bar")}
+          </p>
         </div>
       </div>
     </footer>

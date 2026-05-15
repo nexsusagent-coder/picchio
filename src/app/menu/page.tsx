@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import * as api from "@/lib/api";
-import { MenuItem, Category, AnnouncementBanner, SiteSettings } from "@/lib/types";
+import { MenuItem, Category, AnnouncementBanner, SiteSettings, Campaign } from "@/lib/types";
 import { ProductCard } from "@/components/ProductCard";
-import Image from "next/image";
+
 import Link from "next/link";
 import { Search, SlidersHorizontal, ChevronRight, Check, Megaphone, X, AlertTriangle, Sparkles, Martini, Beer, GlassWater, Leaf, Citrus, Flame, Wine, CupSoda, Coffee, UtensilsCrossed } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatBrandText } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { CampaignCarousel } from "@/components/CampaignCarousel";
+import { Footer } from "@/components/Footer";
+import { initialData } from "@/data/db";
 
 // Helper for premium icons
 const getCategoryIcon = (name: string) => {
@@ -68,25 +71,30 @@ export default function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [allItems, setAllItems] = useState<MenuItem[]>([]);
   const [announcements, setAnnouncements] = useState<AnnouncementBanner[]>([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [siteSettings, setSiteSettings] = useState<SiteSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [dismissedBanners, setDismissedBanners] = useState<string[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [currentAnnIndex, setCurrentAnnIndex] = useState(0);
+  const [recommendedIndex, setRecommendedIndex] = useState(0);
+  const recommendedScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [cats, items, anns, sets] = await Promise.all([
+        const [cats, items, anns, sets, camps] = await Promise.all([
           api.getCategories(),
           api.getItems(),
           api.getAnnouncements(),
-          api.getSiteSettings()
+          api.getSiteSettings(),
+          api.getCampaigns(),
         ]);
         setCategories(cats);
         setAllItems(items);
         setAnnouncements(anns);
         setSiteSettings(sets);
+        setCampaigns(camps);
       } catch (err) {
         console.error("Data load error:", err);
       } finally {
@@ -109,6 +117,44 @@ export default function MenuPage() {
     
     return () => clearInterval(interval);
   }, [activeAnnouncements.length]);
+
+  // Recommended items auto-scroll effect
+  useEffect(() => {
+    if (recommendedItems.length <= 1) return;
+    
+    const id = setInterval(() => {
+      setRecommendedIndex(prev => {
+        const next = (prev + 1) % recommendedItems.length;
+        if (recommendedScrollRef.current) {
+          const container = recommendedScrollRef.current;
+          const card = container.children[next] as HTMLElement | undefined;
+          if (card) {
+            const scrollLeft = card.offsetLeft - (container.clientWidth - card.clientWidth) / 2;
+            container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+          }
+        }
+        return next;
+      });
+    }, 4500);
+    
+    return () => clearInterval(id);
+  }, [recommendedItems.length]);
+
+  // Body Scroll Lock for Modals/Categories
+  useEffect(() => {
+    const isLocked = !!selectedCategoryId || isFilterModalOpen;
+    if (isLocked) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [selectedCategoryId, isFilterModalOpen]);
 
   const currentAnnouncement = activeAnnouncements[currentAnnIndex];
   const toggleFilter = (tagId: string) => {
@@ -162,13 +208,13 @@ export default function MenuPage() {
   const activeFilterCount = (activeFilters.includes("all") ? 0 : activeFilters.length) + allergenExclusions.length;
   
   return (
-    <div className="flex flex-col w-full max-w-md mx-auto relative px-4 sm:px-0">
+    <div className="flex flex-col w-full max-w-md mx-auto relative px-4 sm:px-0 pb-32">
 
       <div className="relative z-10 w-full mx-auto pt-2">
 
         {/* Announcement Carousel (Single Container) */}
         {activeAnnouncements.length > 0 && (
-          <div className="relative h-[52px] mb-4 overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-md shadow-lg">
+          <div className="relative h-[52px] mb-4 overflow-hidden rounded-2xl border border-white/10 bg-black/20 backdrop-blur-md shadow-lg">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentAnnouncement?.id || 'empty'}
@@ -178,9 +224,9 @@ export default function MenuPage() {
                 transition={{ duration: 0.4 }}
                 className={cn(
                   "absolute inset-0 flex items-center gap-3 px-4",
-                  currentAnnouncement?.type === "promo" ? "text-amber-200" :
+                  currentAnnouncement?.type === "promo" ? "text-amber-100" :
                   currentAnnouncement?.type === "warning" ? "text-amber-300" :
-                  "text-gray-300"
+                  "text-gray-200"
                 )}
               >
                 <div className="shrink-0 flex items-center justify-center">
@@ -218,48 +264,58 @@ export default function MenuPage() {
           </div>
         )}
         
-        {/* Top Mini Nav */}
-        <div className="flex items-center justify-between mb-4 md:mb-8 pt-2">
-          <div className="flex items-center gap-3">
-            <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0">
-              <Image src="/logo.png" alt="Picchio" fill className="object-contain" sizes="40px" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <h1 className="font-sans text-[#D4AF37] font-bold text-sm md:text-base tracking-widest leading-none uppercase">Picchio Cocktail</h1>
-              <p className="text-[7px] md:text-[8px] text-white/30 tracking-[0.25em] uppercase mt-1">Premium Bar Menüsü</p>
-            </div>
-          </div>
-          <Link href="/admin/login" className="p-1">
-             <div className="w-7 h-7 rounded-full border border-gold-400/50 flex flex-col items-center justify-center gap-0.5 overflow-hidden transition-colors hover:border-gold-400">
-                {/* Profile icon skeleton */}
-                <div className="w-2 h-2 rounded-full bg-gold-400/80" />
-                <div className="w-4 h-2 rounded-t-full bg-gold-400/80 translate-y-0.5" />
-             </div>
-          </Link>
-        </div>
+        {/* Top Mini Nav removed as requested - Admin remains accessible via direct URL */}
 
-        {/* Hero Section */}
-        <header className="flex flex-col items-center justify-center h-[170px] sm:h-[280px] md:h-[350px] w-full overflow-hidden relative rounded-xl mt-2 mb-4 shadow-2xl">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/hero-bg.png" 
-              alt="" 
-              fill 
-              className="object-cover blur-[2px] scale-105"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
-          </div>
-          <div className="relative z-10 text-center px-[6vw]">
-             <h2 className="text-[7vw] sm:text-3xl md:text-5xl lg:text-6xl font-sans text-white font-bold mb-2 leading-tight tracking-tight drop-shadow-lg">
-               The Art of the <br/><span className="text-[#D4AF37] italic">Pour</span>
-             </h2>
-             <div className="w-[10vw] h-[1px] bg-[#D4AF37]/60 mx-auto my-[3vw]" />
-             <p className="text-[3vw] sm:text-xs md:text-sm text-gray-300 max-w-[200px] sm:max-w-md mx-auto leading-relaxed font-medium drop-shadow-md">
-               Unutulmuş klasikleri ve yenilikçi imza tarifleri, huzurlu bir lüks atmosferinde keşfedin.
-             </p>
+        {/* Hero Section - Refined Minimalist Design (No Boundaries) */}
+        <header className={cn(
+          "flex flex-col items-center justify-center w-full overflow-hidden relative mb-6 transition-all duration-700",
+          "h-[300px] sm:h-[450px] md:h-[550px]",
+          "bg-transparent"
+        )}>
+          <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
+             {/* Large Floating & Shimmering Logo */}
+               <motion.div 
+                 initial={{ opacity: 0, scale: 0.8 }}
+                 animate={{ 
+                   opacity: 1, 
+                   scale: 1,
+                   y: [0, -15, 0],
+                   rotate: [0, 0.5, -0.5, 0]
+                 }}
+                 transition={{ 
+                   opacity: { duration: 1 },
+                   scale: { duration: 1 },
+                   y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                   rotate: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+                 }}
+                 className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 flex items-center justify-center p-4"
+               >
+                  <img 
+                     src={siteSettings?.hero_logo_url || "/logo.png"} 
+                     alt="Picchio Logo" 
+                     style={{ 
+                       filter: "drop-shadow(0 0 15px rgba(212, 175, 55, 0.5))",
+                       mixBlendMode: "screen"
+                     }}
+                     className="absolute inset-0 w-full h-full object-contain" 
+                   />
+               </motion.div>
+
+             {/* Strike Premium Menu Title */}
+             <motion.div
+               initial={{ opacity: 0, y: 30 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8, delay: 0.4 }}
+               className="mt-6 md:mt-10 text-center"
+             >
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans font-black tracking-[0.3em] uppercase text-gold-glow leading-tight px-4 drop-shadow-2xl">
+                  {formatBrandText(siteSettings?.menu_title || "PREMIUM COCKTAIL BAR MENÜSÜ")}
+                </h2>
+                
+                <div className="mt-6 flex items-center justify-center">
+                  <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
+                </div>
+             </motion.div>
           </div>
         </header>
 
@@ -269,17 +325,17 @@ export default function MenuPage() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
             <input 
               type="text" 
-              placeholder="Kokteyl, malzeme veya içerik ara..." 
+              placeholder={formatBrandText("Kokteyl, malzeme veya içerik ara...")} 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full h-12 md:h-14 text-sm md:text-base rounded-xl bg-white/[0.05] border border-white/10 px-4 pl-11 text-gray-200 placeholder:text-gray-500 focus:outline-none transition-colors shadow-inner"
+              className="w-full h-12 md:h-14 text-base md:text-lg rounded-xl bg-black/20 border border-white/10 px-4 pl-11 text-gray-200 placeholder:text-gray-500 focus:outline-none transition-colors shadow-inner font-bold backdrop-blur-sm"
             />
           </div>
           <button 
             onClick={() => setIsFilterModalOpen(true)}
             className={cn(
-              "h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-xl flex items-center justify-center transition border relative",
-              activeFilterCount > 0 ? "bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]" : "bg-white/[0.05] border-white/10 text-gray-400 hover:text-white"
+              "h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-xl flex items-center justify-center transition border relative backdrop-blur-sm",
+              activeFilterCount > 0 ? "bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]" : "bg-black/20 border-white/10 text-gray-400 hover:text-white"
             )}
           >
             <SlidersHorizontal size={20} />
@@ -289,55 +345,60 @@ export default function MenuPage() {
           </button>
         </div>
 
+        {/* ========== KAMPANYALAR CAROUSEL ========== */}
+        {!isFiltering && <CampaignCarousel campaigns={campaigns} />}
+
         {/* ========== PREMIUM GÜNÜN ÖNERİLERİ ========== */}
         {!isFiltering && recommendedItems.length > 0 && (
           <section className="mb-6 md:mb-10">
-            <div className="flex items-center gap-3 mb-4 md:mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg flex items-center justify-center shadow-lg">
-                <Sparkles size={16} className="text-white" />
+            <div className="flex items-center gap-3 mb-5 md:mb-8">
+              <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-700 rounded-xl flex items-center justify-center shadow-xl">
+                <Sparkles size={20} className="text-white" />
               </div>
               <div>
-                <h2 className="text-[13px] font-semibold text-white">Günün Önerileri</h2>
-                <p className="text-[10px] text-gray-500">Barmenlerimizin bugünkü seçimleri</p>
+                <h2 className="text-[15px] font-black text-white uppercase tracking-widest">{formatBrandText("Günün Önerileri")}</h2>
+                <p className="text-[11px] text-gray-400 font-bold uppercase tracking-tighter">{formatBrandText("Barmenlerimizin bugünkü seçimleri")}</p>
               </div>
-              <div className="h-[1px] flex-1 bg-gradient-to-r from-amber-500/30 to-transparent" />
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-amber-500/40 to-transparent" />
             </div>
             
-            <div className="flex gap-3 overflow-x-auto pb-3 no-scrollbar snap-x snap-mandatory -mx-1 px-1 w-full">
+            <div 
+              ref={recommendedScrollRef}
+              className="flex gap-5 overflow-x-auto py-4 no-scrollbar snap-x snap-mandatory px-2 w-full"
+            >
               {recommendedItems.map(item => (
-                <div key={item.id} className="snap-start shrink-0 w-40 sm:w-64">
-                  <div className="rounded-2xl overflow-hidden border border-amber-500/20 group shadow-lg shadow-amber-900/20 hover:shadow-amber-900/40 transition-shadow">
+                <div key={item.id} className="snap-center shrink-0 w-52 sm:w-72">
+                  <div className="rounded-[2rem] overflow-hidden group hover:shadow-amber-900/40 transition-shadow glass-card" style={{ animation: 'gold-glow-pulse-soft 3s infinite ease-in-out' }}>
                     {item.image && (
                       <div className="aspect-[4/3] relative overflow-hidden">
-                        <Image 
-                          src={item.image} 
-                          alt={item.name} 
-                          fill 
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          sizes="230px"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        <div className="absolute top-2 left-2">
-                          <span className="bg-amber-500 text-[9px] text-black font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Önerilen</span>
+                        <img 
+                           src={item.image} 
+                           alt={formatBrandText(item.name)} 
+                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                           loading="lazy"
+                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0202] via-transparent to-transparent opacity-80" />
+                        <div className="absolute top-2.5 left-2.5">
+                          <span className="bg-amber-500 text-[9px] text-black font-black px-2.5 py-1 rounded-full uppercase tracking-widest shadow-lg">{formatBrandText("Önerilen")}</span>
                         </div>
                         {item.price && (
-                          <span className="absolute bottom-2 right-2 bg-black/70 text-amber-400 text-sm font-bold px-2.5 py-1 rounded-xl backdrop-blur-sm border border-amber-500/20">
+                          <span className="absolute bottom-2.5 right-2.5 bg-black/40 text-amber-400 text-sm font-black px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10 shadow-xl">
                             ₺{item.price}
                           </span>
                         )}
                       </div>
                     )}
-                    <div className="p-3 bg-gradient-to-b from-[#0d0202] to-[#070101]">
-                      <h3 className="text-white font-sans font-semibold text-sm">{item.name}</h3>
+                    <div className="p-4 bg-gradient-to-b from-[#0d0202] to-transparent">
+                      <h3 className="text-white font-sans font-black text-base uppercase tracking-wide group-hover:text-amber-500 transition-colors">{formatBrandText(item.name)}</h3>
                       {item.description && (
-                        <p className="text-gray-400 text-[10px] mt-1 leading-relaxed line-clamp-2">{item.description}</p>
+                        <p className="text-gray-400 text-[12px] mt-2 leading-relaxed font-semibold line-clamp-2">{formatBrandText(item.description)}</p>
                       )}
                       {item.ingredients && (
-                        <p className="text-gray-500 text-[9px] mt-1.5 italic line-clamp-1">{item.ingredients}</p>
+                        <p className="text-gray-500 text-[10px] mt-2 italic font-bold line-clamp-1">{formatBrandText(item.ingredients)}</p>
                       )}
-                      <div className="flex gap-1 mt-2 flex-wrap">
-                        {item.tags?.map(tag => (
-                          <span key={tag} className="text-[7px] bg-amber-500/10 text-amber-300 px-1.5 py-0.5 rounded-full uppercase tracking-wider border border-amber-500/10">{tag}</span>
+                      <div className="flex gap-1.5 mt-3.5 flex-wrap">
+                        {item.tags?.slice(0, 2).map(tag => (
+                          <span key={tag} className="text-[9px] bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded-full uppercase tracking-wider border border-amber-500/10 font-black">{formatBrandText(tag)}</span>
                         ))}
                       </div>
                     </div>
@@ -345,123 +406,138 @@ export default function MenuPage() {
                 </div>
               ))}
             </div>
+
+            {/* Recommended Indicators */}
+            {recommendedItems.length > 1 && (
+              <div className="flex justify-center gap-2 mt-2">
+                {recommendedItems.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={cn(
+                      "rounded-full transition-all duration-300",
+                      idx === recommendedIndex ? "w-4 h-1 bg-amber-500" : "w-1 h-1 bg-white/10"
+                    )}
+                  />
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+        
+        {/* ========== PICCHIO SPECIAL''S & APERITIFS SECTION ========== */}
+        {!isFiltering && categories.some(c => c.id === 'c11') && (
+          <section className="mb-10 px-1">
+            <div className="flex flex-col items-center mb-8">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-sans text-gold-400 font-black tracking-[0.3em] uppercase text-center drop-shadow-lg">
+                {formatBrandText("PICCHIO SPECIALS & APERITIFS")}
+              </h2>
+              <div className="w-20 h-[1px] bg-gold-600/40 mt-4" />
+            </div>
+            
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {allItems
+                .filter(i => i.categoryId === 'c11' && i.isAvailable)
+                .map(item => (
+                  <ProductCard key={item.id} item={item} />
+                ))}
+            </div>
           </section>
         )}
 
         {/* Removed Sticky Nav as requested */}
 
-        {/* Product Lists Sequentially */}
+        {/* Category Grid Section (Quick Navigation) */}
+        {!isFiltering && (
+          <div className="mb-10 px-2 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center border border-white/10">
+                <SlidersHorizontal size={14} className="text-gray-400" />
+              </div>
+              <h2 className="text-[13px] font-semibold text-white tracking-widest uppercase">Kategoriler</h2>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            <div className="grid grid-cols-3 gap-4 p-1">
+              {categories.filter(c => c.isActive && c.id !== 'c1' && c.id !== 'c11').map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setSelectedCategoryId(cat.id);
+                    api.trackEvent('view', { categoryId: cat.id });
+                    // Standard mobile haptic-like scale transition handled by active:scale-95
+                  }}
+                  className="group flex flex-col items-center justify-center p-3 rounded-3xl glass-card transition-all duration-300 active:scale-95"
+                  style={{ animation: 'gold-glow-pulse 3s infinite ease-in-out' }}
+                >
+                  <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-3 shadow-2xl group-hover:shadow-[#D4AF37]/20 group-hover:bg-[#D4AF37]/20 transition-all duration-500" style={{ animation: 'gold-glow-icon-pulse 4s infinite ease-in-out' }}>
+                    {getCategoryIcon(cat.name)}
+                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-black text-[#b5ad9a] group-hover:text-[#D4AF37] tracking-[0.2em] uppercase text-center leading-tight">
+                    {formatBrandText(cat.name)}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Sequential Menu Items (Only shown if filtering) */}
         <div className="space-y-10">
           {loading ? (
-            <div className="py-20 flex flex-col items-center justify-center">
-              <div className="w-10 h-10 border-4 border-[#4a0e0e] border-t-gold-500 rounded-full animate-spin mb-4" />
-              <p className="text-gray-500 text-sm italic">Menü yükleniyor...</p>
+            <div className="py-24 flex flex-col items-center justify-center">
+              <div className="w-12 h-12 border-4 border-bordeaux-700 border-t-[#D4AF37] rounded-full animate-spin mb-6 shadow-2xl shadow-[#D4AF37]/20" />
+              <p className="text-[#8a8070] text-base font-black italic tracking-widest">{formatBrandText("Menü yükleniyor...")}</p>
             </div>
-          ) : (
+          ) : isFiltering ? (
             <>
-              {isFiltering ? (
-                <>
-                  {filteredCategories.map(cat => (
-                     <section key={cat.id} id={`category-${cat.id}`}>
-                       <div className="mb-6 flex flex-col pt-4">
-                         <h2 className="text-2xl font-sans text-gold-400 font-bold tracking-wide">{cat.name}</h2>
-                         <div className="w-16 h-[1px] bg-gold-600/40 mt-3 mb-1" />
-                       </div>
-                       
-                       <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                          {cat.items.map(item => (
-                            <ProductCard key={item.id} item={item} />
-                          ))}
-                       </div>
-                     </section>
-                  ))}
-                  
-                  {filteredCategories.length === 0 && (
-                    <div className="py-16 flex flex-col items-center justify-center">
-                       <p className="text-gray-500 text-sm">Aradığınız kriterlere uygun ürün bulunamadı.</p>
-                       <button 
-                         onClick={() => {setSearchQuery(""); setActiveFilters(["all"]); setAllergenExclusions([]);}}
-                         className="mt-4 text-bordeaux-400 text-sm font-medium hover:underline"
-                       >
-                         Filtreleri Temizle
-                       </button>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className="animate-in fade-in duration-500">
-                  {/* PICCHIO SPECIALS & APERITIFS (c11) always explicit on home */}
-                  {filteredCategories.find(c => c.id === "c11") && (
-                    <section className="mb-8 pt-2">
-                       <div className="flex items-center gap-3 mb-6">
-                         <div className="w-8 h-8 bg-gradient-to-br from-[#4a0e0e] to-black rounded-lg flex items-center justify-center shadow-lg border border-white/5">
-                           <Martini size={16} className="text-[#D4AF37]" />
-                         </div>
-                         <div>
-                           <h2 className="text-[13px] font-semibold text-white">Specials & Aperitifs</h2>
-                           <p className="text-[10px] text-gray-500">Picchio imza reçeteleri ve aperitifler</p>
-                         </div>
-                         <div className="h-[1px] flex-1 bg-gradient-to-r from-[#D4AF37]/30 to-transparent" />
-                       </div>
-                       <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                        {filteredCategories.find(c => c.id === "c11")?.items.map(item => (
-                          <ProductCard key={item.id} item={item} />
-                        ))}
-                      </div>
-                    </section>
-                  )}
-                  
-                  {/* NEW GRID OF CATEGORIES */}
-                  <div className="mb-4 md:mb-6 flex flex-col pt-2 items-center">
-                      <h2 className="text-xl md:text-2xl font-light text-white tracking-wide">Menü İçeriği</h2>
-                      <div className="w-8 h-[1px] bg-white/20 mt-2 mb-2" />
+              {filteredCategories.map(cat => (
+                <section key={cat.id} id={`category-${cat.id}`}>
+                  <div className="mb-8 flex flex-col pt-6">
+                    <h2 className="text-3xl font-sans text-gold-400 font-black tracking-widest uppercase drop-shadow-xl">{formatBrandText(cat.name)}</h2>
+                    <div className="w-24 h-[1.5px] bg-gradient-to-r from-gold-600/60 to-transparent mt-4 mb-2 shadow-lg" />
                   </div>
-                  <div className="grid grid-cols-3 gap-2 w-full px-2 mx-auto mt-4">
-                    {filteredCategories.filter(c => c.id !== "c11" && c.items.length > 0).map(cat => (
-                      <button
-                        key={cat.id}
-                        onClick={() => setSelectedCategoryId(cat.id)}
-                        className="group aspect-square flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all active:scale-95 shadow-xl"
-                      >
-                         <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center mb-1 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] group-hover:animate-pulse transition-shadow duration-300">
-                           {getCategoryIcon(cat.name)}
-                         </div>
-                         <span className="text-[8px] font-light text-white/50 tracking-[0.1em] uppercase text-center leading-tight px-0.5 line-clamp-2">{cat.name}</span>
-                      </button>
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    {cat.items.map(item => (
+                      <ProductCard key={item.id} item={item} />
                     ))}
                   </div>
+                </section>
+              ))}
+              {filteredCategories.length === 0 && (
+                <div className="py-20 flex flex-col items-center justify-center">
+                  <p className="text-gray-400 text-base font-black tracking-wide">{formatBrandText("Aradığınız kriterlere uygun ürün bulunamadı.")}</p>
+                  <button 
+                    onClick={() => {setSearchQuery(""); setActiveFilters(["all"]); setAllergenExclusions([]);}}
+                    className="mt-6 text-[#D4AF37] text-sm font-black border-b border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all pb-0.5 uppercase tracking-widest"
+                  >
+                    {formatBrandText("Filtreleri Temizle")}
+                  </button>
                 </div>
               )}
             </>
-          )}
+          ) : null}
         </div>
 
-        {/* KDV Notice & Quote Footer */}
-        <div className="mt-6 md:mt-10 mb-2 text-center px-4">
-           <p className="text-[9px] uppercase tracking-[0.2em] text-gray-400 mb-3 font-semibold">SOMMELIER RECOMMENDATION</p>
-           <h3 className="text-xl md:text-2xl font-sans text-gray-300 italic leading-snug mx-auto max-w-[300px] mb-6">
-             "Cocktails are a conversation between memory and the palate."
-           </h3>
-           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-[#c9a84c] hover:bg-[#b5953b] text-black px-8 py-3 rounded-sm text-[10px] uppercase font-bold tracking-[0.2em] transition-colors mb-4">
-             VIEW MENU COLLECTION
-           </button>
-           
-           <div className="h-[1px] w-1/2 mx-auto bg-gradient-to-r from-transparent via-white/5 to-transparent mb-6" />
-           <p className="text-center text-[10px] text-gray-600 leading-relaxed max-w-[280px] mx-auto pb-4">
-            Fiyatlarımız KDV dahildir. Tüm içeceklerimiz taze malzemelerle hazırlanmaktadır. 
-            Alerjen bilgisi için personelimize danışınız.
+        {/* KDV Notice Footer */}
+        <div className="mt-12 mb-6 text-center px-4">
+           <div className="h-[1px] w-1/2 mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+           <p className="text-center text-[12px] text-gray-500 leading-relaxed max-w-[300px] mx-auto pb-6 uppercase tracking-[0.25em] font-black">
+            {formatBrandText("Fiyatlarımıza KDV dahildir.")} <br/>
+            {formatBrandText("Alerjen bilgisi için personelimize danışınız.")}
           </p>
         </div>
+
+        {/* Integrated Footer - Main Menu */}
+        <Footer settings={siteSettings} />
       </div>
 
       {/* Filter Bottom Sheet Modal */}
       {isFilterModalOpen && (
         <div className="fixed inset-0 z-50 flex flex-col justify-end">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsFilterModalOpen(false)} />
-          <div className="relative bg-[#0d0202] rounded-t-3xl border-t border-white/10 p-6 pb-8 shadow-2xl animate-in slide-in-from-bottom-full duration-300 max-h-[85vh] overflow-y-auto">
-            <div className="w-12 h-1.5 bg-white/10 rounded-full mx-auto mb-6" />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-xl" onClick={() => setIsFilterModalOpen(false)} />
+          <div className="relative bg-black/60 backdrop-blur-3xl rounded-t-3xl border-t border-white/10 p-6 pb-8 shadow-2xl animate-in slide-in-from-bottom-full duration-300 max-h-[85vh] overflow-y-auto">
+            <div className="w-14 h-1.5 bg-white/10 rounded-full mx-auto mb-8" />
             
-            <h3 className="text-xl font-sans text-white font-semibold mb-6">Filtrele</h3>
+            <h3 className="text-2xl font-sans text-white font-black mb-8 uppercase tracking-widest">{formatBrandText("Filtrele")}</h3>
             
             <div className="space-y-6">
               {/* Alkol / Tip */}
@@ -471,7 +547,7 @@ export default function MenuPage() {
                   {TASTE_FILTERS.map(f => (
                     <button key={f.id} onClick={() => toggleFilter(f.id)}
                       className={cn("flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors border",
-                        activeFilters.includes(f.id) ? "bg-[#4a0e0e] text-white border-transparent" : "bg-transparent text-gray-400 border-white/10 active:bg-white/5"
+                        activeFilters.includes(f.id) ? "bg-bordeaux-700 text-white border-transparent" : "bg-transparent text-gray-400 border-white/10 active:bg-white/5"
                       )}>
                       <span>{f.icon}</span> {f.label}
                       {activeFilters.includes(f.id) && <Check size={14} className="ml-1 opacity-70" />}
@@ -487,7 +563,7 @@ export default function MenuPage() {
                   {TASTE_PROFILES.map(f => (
                     <button key={f.id} onClick={() => toggleFilter(f.id)}
                       className={cn("flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors border",
-                        activeFilters.includes(f.id) ? "bg-[#4a0e0e] text-white border-transparent" : "bg-transparent text-gray-400 border-white/10 active:bg-white/5"
+                        activeFilters.includes(f.id) ? "bg-bordeaux-700 text-white border-transparent" : "bg-transparent text-gray-400 border-white/10 active:bg-white/5"
                       )}>
                       <span>{f.icon}</span> {f.label}
                       {activeFilters.includes(f.id) && <Check size={14} className="ml-1 opacity-70" />}
@@ -518,7 +594,7 @@ export default function MenuPage() {
             
             <button 
               onClick={() => setIsFilterModalOpen(false)}
-              className="w-full mt-8 bg-[#4a0e0e] hover:bg-[#660f0f] text-white font-semibold rounded-2xl py-4 transition-colors text-sm"
+              className="w-full mt-8 bg-bordeaux-700 hover:bg-bordeaux-600 text-white font-semibold rounded-2xl py-4 transition-colors text-sm"
             >
               Sonuçları Göster {activeFilterCount > 0 && `(${activeFilterCount} filtre)`}
             </button>
@@ -537,10 +613,10 @@ export default function MenuPage() {
 
       {/* Category Overlay Modal (NATIVE UX) */}
       {selectedCategoryId && (
-        <div className="fixed inset-0 z-50 bg-[#0a0a0a]/70 backdrop-blur-xl overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black overflow-y-auto">
           <div className="min-h-full flex flex-col p-4 sm:p-6 max-w-screen-md mx-auto">
             {/* Header */}
-            <div className="sticky top-0 z-10 bg-[#0a0a0a]/90 backdrop-blur-md py-4 flex items-center mb-6">
+            <div className="sticky top-0 z-10 bg-transparent py-4 flex items-center mb-6">
               <button 
                 onClick={() => setSelectedCategoryId(null)} 
                 className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-light bg-white/5 py-2 px-4 rounded-xl active:scale-95"
@@ -550,15 +626,23 @@ export default function MenuPage() {
             </div>
 
             {filteredCategories.filter(c => c.id === selectedCategoryId).map(cat => (
-               <section key={cat.id} className="pb-20">
-                 <div className="mb-6 flex flex-col">
-                   <h2 className="text-3xl font-light text-[#D4AF37] tracking-tight">{cat.name}</h2>
-                   <div className="w-12 h-[1px] bg-white/20 mt-4 mb-2" />
-                 </div>
-                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    {cat.items.map(item => <ProductCard key={item.id} item={item} />)}
-                 </div>
-               </section>
+                <section key={cat.id} className="pb-24">
+                  <div className="mb-8 flex flex-col">
+                    <h2 className="text-4xl font-black text-[#D4AF37] tracking-widest uppercase drop-shadow-2xl">{formatBrandText(cat.name)}</h2>
+                    <div className="w-20 h-[2px] bg-gradient-to-r from-[#D4AF37]/60 to-transparent mt-5 mb-3 shadow-lg" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                     {cat.items.map(item => <ProductCard key={item.id} item={item} />)}
+                  </div>
+
+                  {/* KDV Notice and Integrated Footer for Category View - True Integration */}
+                  <div className="mt-16 mb-6 text-center px-4">
+                    <p className="text-center text-[12px] text-gray-500 leading-relaxed max-w-[300px] mx-auto pb-6 uppercase tracking-[0.25em] font-black">
+                      {formatBrandText("Fiyatlarımıza KDV dahildir.")}
+                    </p>
+                  </div>
+                  <Footer settings={siteSettings} />
+                </section>
             ))}
           </div>
         </div>
