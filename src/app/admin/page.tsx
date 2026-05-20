@@ -53,8 +53,8 @@ export default function AdminPage() {
   const [newCampType, setNewCampType] = useState<Campaign["type"]>("discount");
   const [newCampPrice, setNewCampPrice] = useState("");
   const [newCampEndDate, setNewCampEndDate] = useState("");
-  const [newCampImageFiles, setNewCampImageFiles] = useState<(File | null)[]>([null, null, null]);
-  const [newCampImagePreviews, setNewCampImagePreviews] = useState<(string | null)[]>([null, null, null]);
+  const [newCampImageFiles, setNewCampImageFiles] = useState<(File | null)[]>([null, null, null, null, null]);
+  const [newCampImagePreviews, setNewCampImagePreviews] = useState<(string | null)[]>([null, null, null, null, null]);
   const [editingCampaign, setEditingCampaign] = useState<Campaign | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
   const [siteSettings, setSiteSettings] = useState<SiteSettings | null>(null);
@@ -415,12 +415,12 @@ export default function AdminPage() {
     setNewCampPrice(camp.price?.toString() || "");
     setNewCampEndDate(camp.endDate || "");
     
-    const previews = [null, null, null] as (string | null)[];
+    const previews = [null, null, null, null, null] as (string | null)[];
     if (camp.imageUrls) {
-      camp.imageUrls.forEach((url, i) => { if (i < 3) previews[i] = url; });
+      camp.imageUrls.forEach((url, i) => { if (i < 5) previews[i] = url; });
     }
     setNewCampImagePreviews(previews);
-    setNewCampImageFiles([null, null, null]);
+    setNewCampImageFiles([null, null, null, null, null]);
     setActiveTab("campaigns");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -442,7 +442,7 @@ export default function AdminPage() {
       const campId = editingCampaign ? editingCampaign.id : `camp-${Date.now()}`;
       const finalImageUrls: string[] = [];
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         const file = newCampImageFiles[i];
         const preview = newCampImagePreviews[i];
         
@@ -493,8 +493,8 @@ export default function AdminPage() {
       setNewCampPrice("");
       setNewCampType("discount");
       setNewCampEndDate("");
-      setNewCampImageFiles([null, null, null]);
-      setNewCampImagePreviews([null, null, null]);
+      setNewCampImageFiles([null, null, null, null, null]);
+      setNewCampImagePreviews([null, null, null, null, null]);
       showNotification(editingCampaign ? "Kampanya güncellendi." : "Yeni kampanya eklendi.");
     } catch (err: any) {
       console.error(err);
@@ -1095,9 +1095,9 @@ export default function AdminPage() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="sm:col-span-2">
-                <label className="text-xs text-neutral-400 mb-3 block">Kampanya Görselleri / GIF (Maks. 3)</label>
-                <div className="grid grid-cols-3 gap-3">
-                  {[0, 1, 2].map(idx => (
+                <label className="text-xs text-neutral-400 mb-3 block">Kampanya Görselleri / GIF (Maks. 5)</label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {[0, 1, 2, 3, 4].map(idx => (
                     <div key={idx} className="flex flex-col gap-2">
                       {newCampImagePreviews[idx] ? (
                         <div className="relative aspect-[2/1] rounded-xl overflow-hidden border border-neutral-600 bg-neutral-900 group">
@@ -1178,8 +1178,8 @@ export default function AdminPage() {
                 <button onClick={() => {
                   setEditingCampaign(null); setNewCampTitle(""); setNewCampDesc("");
                   setNewCampPrice(""); setNewCampEndDate(""); 
-                  setNewCampImagePreviews([null, null, null]); 
-                  setNewCampImageFiles([null, null, null]);
+                  setNewCampImagePreviews([null, null, null, null, null]);
+                  setNewCampImageFiles([null, null, null, null, null]);
                 }}
                   className="flex-1 border border-neutral-600 text-neutral-300 px-5 py-2.5 rounded-xl text-sm font-medium transition hover:bg-neutral-700"
                 >
