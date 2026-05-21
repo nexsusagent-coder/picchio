@@ -61,7 +61,10 @@ export interface Campaign {
   imageUrls?: string[] | null;
   price?: number | null;
   isActive: boolean;
+  startDate?: string | null;
   endDate?: string | null;
+  viewCount?: number;
+  clickCount?: number;
 }
 
 export interface SiteSettings {
@@ -86,6 +89,17 @@ export interface SiteSettings {
   glass_blur?: number;
   noise_opacity?: number;
   footer_text?: string;
+}
+
+export interface ActivityLogEntry {
+  id: number;
+  userEmail: string | null;
+  action: string;
+  entityType: string;
+  entityId: string | null;
+  entityName: string | null;
+  details: Record<string, unknown>;
+  createdAt: string;
 }
 
 export interface AnalyticsEvent {

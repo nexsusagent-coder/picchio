@@ -1,27 +1,75 @@
 "use client";
 
 import { Campaign } from "@/lib/types";
-import { Tag, Gift, Zap } from "lucide-react";
+import { Tag, Gift, Zap, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { cn, formatBrandText } from "@/lib/utils";
+import { trackCampaignEvent } from "@/lib/api";
 
+function useCountdown(endDate: string) {
+  const calcRemaining = useCallback(() => {
+    const diff = new Date(endDate).getTime() - Date.now();
+    if (diff <= 0) return null;
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      mins: Math.floor((diff / (1000 * 60)) % 60),
+      secs: Math.floor((diff / 1000) % 60),
+      totalMs: diff,
+    };
+  }, [endDate]);
 
-function getFomoBadge(endDate: string | null | undefined): { text: string; urgent: boolean } | null {
-  if (!endDate) return null;
-  const now = new Date();
-  const end = new Date(endDate);
-  const diffMs = end.getTime() - now.getTime();
-  if (diffMs <= 0) return null;
-  const diffHours = diffMs / (1000 * 60 * 60);
-  if (diffHours <= 2) {
-    const mins = Math.ceil(diffMs / (1000 * 60));
-    return { text: formatBrandText(`Sıon ${mins} Dakıika!`), urgent: true };
+  const [remaining, setRemaining] = useState(calcRemaining);
+
+  useEffect(() => {
+    setRemaining(calcRemaining());
+    const id = setInterval(() => {
+      const r = calcRemaining();
+      setRemaining(r);
+      if (!r) clearInterval(id);
+    }, 1000);
+    return () => clearInterval(id);
+  }, [calcRemaining]);
+
+  return remaining;
+}
+
+function CountdownBadge({ endDate }: { endDate: string }) {
+  const remaining = useCountdown(endDate);
+
+  if (!remaining) {
+    return (
+      <span className="absolute top-3 right-3 z-20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-red-600 text-white border border-red-400/40 animate-pulse">
+        Sona Erdi
+      </span>
+    );
   }
-  if (end.toDateString() === now.toDateString()) {
-    return { text: formatBrandText("Sadece Bugüne Özel"), urgent: false };
+
+  const isUrgent = remaining.totalMs < 1000 * 60 * 60; // < 1 hour
+  const isWarning = remaining.totalMs < 1000 * 60 * 60 * 6; // < 6 hours
+
+  if (remaining.days > 0) {
+    return (
+      <span className={cn(
+        "absolute top-3 right-3 z-20 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg flex items-center gap-1.5",
+        isWarning ? "bg-amber-500/90 text-black" : "bg-white/10 text-white border border-white/20"
+      )}>
+        <Clock size={11} className={isWarning ? "text-black" : "text-amber-400"} />
+        {remaining.days}g {remaining.hours}s {remaining.mins}d
+      </span>
+    );
   }
-  return { text: formatBrandText("Kıısııtlıı Süre"), urgent: false };
+
+  return (
+    <span className={cn(
+      "absolute top-3 right-3 z-20 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg flex items-center gap-1.5",
+      isUrgent ? "bg-red-600 text-white animate-pulse" : isWarning ? "bg-amber-500/90 text-black" : "bg-white/10 text-white border border-white/20"
+    )}>
+      <Clock size={11} className={isUrgent ? "text-white" : isWarning ? "text-black" : "text-amber-400"} />
+      {remaining.hours > 0 && `${remaining.hours}s `}{remaining.mins}d {remaining.secs}sn
+    </span>
+  );
 }
 
 /** Internal image cycler for a single campaign card */
@@ -56,10 +104,29 @@ function CampaignImageCycler({ images, alt, sizes }: { images: string[]; alt: st
   );
 }
 
+function isCampaignVisible(c: Campaign): boolean {
+  if (c.isActive === false) return false;
+  const now = new Date();
+  if (c.startDate) {
+    const start = new Date(c.startDate);
+    if (!isNaN(start.getTime()) && start > now) return false;
+  }
+  if (c.endDate) {
+    const end = new Date(c.endDate);
+    if (!isNaN(end.getTime()) && end < now) return false;
+  }
+  return true;
+}
+
 export function CampaignCarousel({ campaigns }: { campaigns: Campaign[] }) {
-  const active = (campaigns || []).filter(c => c && c.isActive);
+  const active = (campaigns || []).filter(c => c && isCampaignVisible(c));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Track views for all active campaigns
+  useEffect(() => {
+    active.forEach(c => { trackCampaignEvent(c.id, "view"); });
+  }, [active.map(c => c.id).join(",")]);
 
   useEffect(() => {
     if (active.length <= 1) return;
@@ -104,7 +171,6 @@ export function CampaignCarousel({ campaigns }: { campaigns: Campaign[] }) {
         )}
       >
         {active.map(campaign => {
-          const fomo = campaign.endDate ? getFomoBadge(campaign.endDate) : null;
           const validImages = Array.isArray(campaign.imageUrls) 
             ? campaign.imageUrls.filter((url): url is string => typeof url === 'string' && url.length > 0)
             : [];
@@ -141,16 +207,7 @@ export function CampaignCarousel({ campaigns }: { campaigns: Campaign[] }) {
                   "p-4 sm:p-5 flex flex-col justify-center relative z-10 flex-1",
                   isSingle ? "items-center text-center" : "items-start text-left"
                 )}>
-                  {fomo && (
-                    <span className={cn(
-                      "absolute top-3 right-3 z-20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest animate-pulse shadow-lg",
-                      fomo.urgent
-                        ? "bg-red-600 text-white border border-red-400/40"
-                        : "bg-amber-500 text-black border border-amber-300/40"
-                    )}>
-                      {fomo.text}
-                    </span>
-                  )}
+                  {campaign.endDate && <CountdownBadge endDate={campaign.endDate} />}
 
                   <div className="flex items-center gap-2 mb-2">
                     {campaign.type === "bundle" ? (

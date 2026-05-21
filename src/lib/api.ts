@@ -1,20 +1,26 @@
 import { supabase } from "./supabase";
 import { MenuItem, Category, AnnouncementBanner, Campaign } from "./types";
+import { initialData } from "../data/db";
 
 // ---- CATEGORIES ----
 export async function getCategories(): Promise<Category[]> {
-  const { data, error } = await supabase
-    .from("categories")
-    .select("*")
-    .eq("is_active", true)
-    .order("order");
-  if (error) throw error;
-  return (data || []).map(row => ({
-    id: row.id,
-    name: row.name,
-    order: row.order,
-    isActive: row.is_active,
-  }));
+  try {
+    const { data, error } = await supabase
+      .from("categories")
+      .select("*")
+      .eq("is_active", true)
+      .order("order");
+    if (error) throw error;
+    return (data || []).map(row => ({
+      id: row.id,
+      name: row.name,
+      order: row.order,
+      isActive: row.is_active,
+    }));
+  } catch (err) {
+    console.warn("getCategories failed, using local fallback data:", err);
+    return initialData.categories.filter(c => c.isActive).sort((a, b) => a.order - b.order);
+  }
 }
 
 export async function updateCategory(id: string, updates: Partial<{ name: string; order: number; is_active: boolean }>) {
@@ -39,23 +45,33 @@ export async function deleteCategory(id: string) {
 
 // ---- ITEMS ----
 export async function getItems(): Promise<MenuItem[]> {
-  const { data: items, error } = await supabase
-    .from("items")
-    .select("*, item_variants(label, price)")
-    .order("sort_order", { ascending: true })
-    .order("name");
-  if (error) throw error;
-  return (items || []).map(mapItem);
+  try {
+    const { data: items, error } = await supabase
+      .from("items")
+      .select("*, item_variants(label, price)")
+      .order("sort_order", { ascending: true })
+      .order("name");
+    if (error) throw error;
+    return (items || []).map(mapItem);
+  } catch (err) {
+    console.warn("getItems failed, using local fallback data:", err);
+    return initialData.items;
+  }
 }
 
 export async function getRecommended(): Promise<MenuItem[]> {
-  const { data, error } = await supabase
-    .from("items")
-    .select("*, item_variants(label, price)")
-    .eq("is_recommended", true)
-    .eq("is_available", true);
-  if (error) throw error;
-  return (data || []).map(mapItem);
+  try {
+    const { data, error } = await supabase
+      .from("items")
+      .select("*, item_variants(label, price)")
+      .eq("is_recommended", true)
+      .eq("is_available", true);
+    if (error) throw error;
+    return (data || []).map(mapItem);
+  } catch (err) {
+    console.warn("getRecommended failed, using local fallback data:", err);
+    return initialData.items.filter(i => i.isRecommended && i.isAvailable);
+  }
 }
 
 export async function updateItem(id: string, updates: Partial<{
@@ -112,17 +128,22 @@ export async function insertItem(item: Omit<MenuItem, "variants"> & { variants?:
 
 // ---- ANNOUNCEMENTS ----
 export async function getAnnouncements(): Promise<AnnouncementBanner[]> {
-  const { data, error } = await supabase
-    .from("announcements")
-    .select("*")
-    .order("created_at");
-  if (error) throw error;
-  return (data || []).map(row => ({
-    id: row.id,
-    text: row.text,
-    isActive: row.is_active,
-    type: row.type,
-  }));
+  try {
+    const { data, error } = await supabase
+      .from("announcements")
+      .select("*")
+      .order("created_at");
+    if (error) throw error;
+    return (data || []).map(row => ({
+      id: row.id,
+      text: row.text,
+      isActive: row.is_active,
+      type: row.type,
+    }));
+  } catch (err) {
+    console.warn("getAnnouncements failed, using local fallback data:", err);
+    return initialData.announcements;
+  }
 }
 
 export async function updateAnnouncement(id: string, updates: Partial<{ is_active: boolean; text: string }>) {
@@ -249,37 +270,52 @@ function mapItem(row: Record<string, unknown>): MenuItem {
 
 // ---- CAMPAIGNS ----
 export async function getCampaigns(): Promise<Campaign[]> {
-  const { data, error } = await supabase
-    .from("campaigns")
-    .select("*")
-    .order("created_at", { ascending: false });
-  if (error) throw error;
-  return (data || []).map(row => {
-    // Robust fallback: Check new array column first, then old string column
-    let derivedImageUrls: string[] = [];
-    if (Array.isArray(row.image_urls)) {
-      derivedImageUrls = row.image_urls;
-    } else if (typeof row.image_url === 'string' && row.image_url) {
-      derivedImageUrls = [row.image_url];
-    }
+  try {
+    const { data, error } = await supabase
+      .from("campaigns")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    const campaigns: Campaign[] = [];
+    for (const row of (data || [])) {
+      try {
+        let derivedImageUrls: string[] = [];
+        if (Array.isArray(row.image_urls)) {
+          derivedImageUrls = row.image_urls;
+        } else if (typeof row.image_url === 'string' && row.image_url) {
+          derivedImageUrls = [row.image_url];
+        }
 
-    return {
-      id: row.id,
-      title: row.title,
-      description: row.description,
-      type: row.type,
-      imageUrls: derivedImageUrls,
-      price: row.price,
-      isActive: row.is_active,
-      endDate: row.end_date,
-    };
-  });
+        campaigns.push({
+          id: row.id,
+          title: row.title,
+          description: row.description,
+          type: row.type,
+          imageUrls: derivedImageUrls,
+          price: row.price,
+          isActive: row.is_active ?? true,
+          startDate: row.start_date || null,
+          endDate: row.end_date || null,
+          viewCount: row.view_count ?? 0,
+          clickCount: row.click_count ?? 0,
+        });
+      } catch (err) {
+        console.error("Campaign row mapping error:", err, row);
+      }
+    }
+    return campaigns;
+  } catch (err) {
+    console.warn("getCampaigns failed, using local fallback data (empty):", err);
+    return [];
+  }
 }
 
 export async function updateCampaign(id: string, updates: Partial<{
   title: string; description: string | null; type: string;
-  image_urls: string[] | null; price: number | null;
+  image_urls: string[] | null; image_url: string | null;
+  price: number | null;
   is_active: boolean; end_date: string | null;
+  start_date: string | null;
 }>) {
   const { error } = await supabase.from("campaigns").update(updates).eq("id", id);
   if (error) throw error;
@@ -294,9 +330,155 @@ export async function insertCampaign(c: Omit<Campaign, "id"> & { id?: string }) 
     image_urls: c.imageUrls || [],
     price: c.price,
     is_active: c.isActive,
-    end_date: c.endDate,
+    start_date: c.startDate || null,
+    end_date: c.endDate || null,
   });
   if (error) throw error;
+}
+
+export async function trackCampaignEvent(campaignId: string, eventType: "view" | "click") {
+  try {
+    const column = eventType === "view" ? "view_count" : "click_count";
+    const { error } = await supabase.rpc("increment_campaign_counter", {
+      campaign_id: campaignId,
+      counter_column: column,
+    });
+    if (error) {
+      // Fallback: direct update if RPC not available
+      const { data: current } = await supabase
+        .from("campaigns")
+        .select(eventType === "view" ? "view_count" : "click_count")
+        .eq("id", campaignId)
+        .single();
+      const currentVal = (current as Record<string, number> | null)?.[eventType === "view" ? "view_count" : "click_count"] ?? 0;
+      await supabase
+        .from("campaigns")
+        .update({ [column]: currentVal + 1 })
+        .eq("id", campaignId);
+    }
+  } catch {
+    // Silent fail for tracking
+  }
+}
+
+// ---- ACTIVITY LOG ----
+export async function logActivity(entry: {
+  user_email?: string | null;
+  action: string;
+  entity_type: string;
+  entity_id?: string | null;
+  entity_name?: string | null;
+  details?: Record<string, unknown>;
+}) {
+  try {
+    await supabase.from("activity_log").insert({
+      user_email: entry.user_email,
+      action: entry.action,
+      entity_type: entry.entity_type,
+      entity_id: entry.entity_id,
+      entity_name: entry.entity_name,
+      details: entry.details || {},
+    });
+  } catch (err) {
+    console.warn("Activity log error:", err);
+  }
+}
+
+export async function getActivityLog(limit = 50) {
+  const { data, error } = await supabase
+    .from("activity_log")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) throw error;
+  return (data || []).map(row => ({
+    id: row.id,
+    userEmail: row.user_email,
+    action: row.action,
+    entityType: row.entity_type,
+    entityId: row.entity_id,
+    entityName: row.entity_name,
+    details: row.details,
+    createdAt: row.created_at,
+  }));
+}
+
+// ---- EXPORT / BACKUP ----
+export function exportProductsToCSV(items: MenuItem[], categories: { id: string; name: string }[]) {
+  const header = "﻿ID, Kategori, Ad, Fiyat, Fiyat2, Etiket1, Etiket2, Icerik, Alerjenler, Tat, Servis, Kalori, Vegan, Vejetaryen, Favori, Aktif, Onerilen";
+  const rows = items.map(item => {
+    const cat = categories.find(c => c.id === item.categoryId);
+    return [
+      item.id, cat?.name || "", item.name, item.price ?? "", item.priceSecondary ?? "",
+      item.priceLabel ?? "", item.priceSecondaryLabel ?? "", item.ingredients ?? "",
+      item.allergens ?? "", item.tasteIntensity ?? "", item.serviceStyle ?? "",
+      item.calories ?? "", item.isVegan ? "Evet" : "Hayir", item.isVegetarian ? "Evet" : "Hayir",
+      item.isFavorite ? "Evet" : "Hayir", item.isAvailable ? "Aktif" : "Pasif",
+      item.isRecommended ? "Evet" : "Hayir",
+    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(",");
+  });
+  const csv = [header, ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `urunler_${new Date().toISOString().split("T")[0]}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+export async function createBackup() {
+  const [items, categories, announcements, campaigns, settings] = await Promise.all([
+    getItems(), getCategories(), getAnnouncements(), getCampaigns(), getSiteSettings(),
+  ]);
+  return { items, categories, announcements, campaigns, settings, version: 1, exportedAt: new Date().toISOString() };
+}
+
+export async function restoreBackup(file: File): Promise<void> {
+  const text = await file.text();
+  const backup = JSON.parse(text);
+  if (!backup.version) throw new Error("Gecersiz yedek dosyasi");
+
+  // Restore categories
+  if (backup.categories?.length) {
+    for (const cat of backup.categories) {
+      await supabase.from("categories").upsert({
+        id: cat.id, name: cat.name, order: cat.order, is_active: cat.isActive,
+      });
+    }
+  }
+  // Restore items
+  if (backup.items?.length) {
+    for (const item of backup.items) {
+      await supabase.from("items").upsert({
+        id: item.id, category_id: item.categoryId, name: item.name,
+        price: item.price, price_secondary: item.priceSecondary,
+        price_label: item.priceLabel, price_secondary_label: item.priceSecondaryLabel,
+        description: item.description, ingredients: item.ingredients,
+        allergens: item.allergens, is_available: item.isAvailable,
+        is_recommended: item.isRecommended, is_favorite: item.isFavorite,
+        is_special: item.isSpecial, is_signature: item.isSignature,
+        taste_intensity: item.tasteIntensity, service_style: item.serviceStyle,
+        calories: item.calories, is_vegan: item.isVegan, is_vegetarian: item.isVegetarian,
+        allergen_details: item.allergenDetails, image_url: item.image,
+        sort_order: item.sortOrder, tags: item.tags, volume: item.volume, abv: item.abv,
+      });
+    }
+  }
+  // Restore campaigns
+  if (backup.campaigns?.length) {
+    for (const camp of backup.campaigns) {
+      await supabase.from("campaigns").upsert({
+        id: camp.id, title: camp.title, description: camp.description,
+        type: camp.type, image_urls: camp.imageUrls, price: camp.price,
+        is_active: camp.isActive, start_date: camp.startDate, end_date: camp.endDate,
+      });
+    }
+  }
+  // Restore settings
+  if (backup.settings) {
+    await supabase.from("site_settings").upsert({ id: 1, ...backup.settings });
+  }
 }
 
 export async function deleteCampaign(id: string) {
@@ -366,6 +548,36 @@ export async function updateSortOrders(updates: { id: string; sort_order: number
   const results = await Promise.all(promises);
   const firstError = results.find(r => r.error);
   if (firstError?.error) throw firstError.error;
+}
+
+// ---- BULK OPERATIONS ----
+export async function bulkDeleteItems(ids: string[]) {
+  const promises = ids.map(id =>
+    supabase.from("items").delete().eq("id", id)
+  );
+  const results = await Promise.all(promises);
+  const firstError = results.find(r => r.error);
+  if (firstError?.error) throw firstError.error;
+}
+
+export async function bulkUpdateCategory(ids: string[], categoryId: string) {
+  const promises = ids.map(id =>
+    supabase.from("items").update({ category_id: categoryId }).eq("id", id)
+  );
+  const results = await Promise.all(promises);
+  const firstError = results.find(r => r.error);
+  if (firstError?.error) throw firstError.error;
+}
+
+export async function duplicateItem(item: MenuItem) {
+  const newId = `item-${Date.now()}`;
+  await insertItem({
+    ...item,
+    id: newId,
+    name: `${item.name} (Kopya)`,
+    image: undefined,
+    sortOrder: undefined,
+  });
 }
 
 // ---- ANALYTICS ----
