@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import * as api from "@/lib/api";
 import { MenuItem } from "@/lib/types";
 import { publishChanges } from "@/app/actions";
+import { processImage, isAcceptedImageType, formatBytes } from "@/lib/image-processor";
 
 export interface ProductActions {
   // Edit state
@@ -272,12 +273,37 @@ export function useProductActions(
   const handleImageUpload = async (id: string, file: File) => {
     setUploadingImage(id);
     try {
-      const url = await api.uploadProductImage(file, id);
+      // Validate file type
+      if (!isAcceptedImageType(file)) {
+        showNotification("Desteklenmeyen dosya formati. Lutfen PNG, JPG veya WebP secin.", "error");
+        return;
+      }
+
+      // Optimize image before upload (resize + WebP conversion)
+      let uploadFile = file;
+      try {
+        const optimized = await processImage(file, { maxWidth: 1200, quality: 0.8, format: "image/webp" });
+        uploadFile = optimized.file;
+        const reduction = optimized.originalSize - optimized.processedSize;
+        if (reduction > 10240) { // Only log if saved > 10KB
+          console.log(
+            `📸 Gorsel optimize edildi: ${formatBytes(optimized.originalSize)} → ${formatBytes(optimized.processedSize)} ` +
+            `(${optimized.originalDimensions.width}x${optimized.originalDimensions.height} → ${optimized.processedDimensions.width}x${optimized.processedDimensions.height})`
+          );
+        }
+      } catch (optErr) {
+        console.warn("Gorsel optimizasyonu atlandi, orijinal dosya kullaniliyor:", optErr);
+        // Continue with original file if optimization fails
+      }
+
+      const url = await api.uploadProductImage(uploadFile, id);
       await api.updateItem(id, { image_url: url });
       setItems((prev) => prev.map((item) => (item.id === id ? { ...item, image: url } : item)));
+      showNotification("Gorsel basariyla yuklendi.");
     } catch (err) {
       console.error("Image upload error:", err);
-      showNotification("Gorsel yuklenemedi.", "error");
+      const msg = err instanceof Error ? err.message : "Gorsel yuklenemedi.";
+      showNotification(msg, "error");
     } finally {
       setUploadingImage(null);
       setEditingImageId(null);
@@ -287,8 +313,19 @@ export function useProductActions(
   const removeImage = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
+      const item = items.find(i => i.id === id);
+      const imageUrl = item?.image;
+
+      // Clear DB reference
       await api.updateItem(id, { image_url: null });
+
+      // Attempt storage cleanup (best-effort, won't throw)
+      if (imageUrl) {
+        await api.removeProductImage(id, imageUrl);
+      }
+
       setItems((prev) => prev.map((item) => (item.id === id ? { ...item, image: undefined } : item)));
+      showNotification("Gorsel kaldirildi.");
     } catch (err) {
       console.error("Gorsel silinemedi:", err);
       showNotification("Gorsel silinemedi.", "error");
@@ -301,7 +338,15 @@ export function useProductActions(
       const id = `item-${Date.now()}`;
       let imageUrl: string | undefined;
       if (newImageFile) {
-        imageUrl = await api.uploadProductImage(newImageFile, id);
+        // Optimize before upload
+        let uploadFile = newImageFile;
+        try {
+          const optimized = await processImage(newImageFile, { maxWidth: 1200, quality: 0.8, format: "image/webp" });
+          uploadFile = optimized.file;
+        } catch (optErr) {
+          console.warn("Gorsel optimizasyonu atlandi:", optErr);
+        }
+        imageUrl = await api.uploadProductImage(uploadFile, id);
       }
       await api.insertItem({
         id,

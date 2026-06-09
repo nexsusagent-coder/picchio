@@ -1,0 +1,2438 @@
+{
+  "generatedAt": "2026-06-09T16:09:30.254Z",
+  "summary": {
+    "totalStorageFiles": 141,
+    "totalStorageSizeBytes": 137272257,
+    "totalStorageSizeHuman": "130.9 MB",
+    "totalDbRefs": 141,
+    "orphanFiles": 0,
+    "orphanSizeBytes": 0,
+    "orphanSizeHuman": "0 B",
+    "brokenRefs": 0,
+    "duplicateRefs": 0
+  },
+  "buckets": [
+    {
+      "name": "product-images",
+      "fileCount": 130,
+      "totalSize": 115131974,
+      "totalSizeHuman": "109.8 MB"
+    },
+    {
+      "name": "campaign-images",
+      "fileCount": 10,
+      "totalSize": 21877036,
+      "totalSizeHuman": "20.9 MB"
+    },
+    {
+      "name": "site-assets",
+      "fileCount": 1,
+      "totalSize": 263247,
+      "totalSizeHuman": "257.1 KB"
+    }
+  ],
+  "orphanFiles": [],
+  "brokenReferences": [],
+  "duplicateReferences": [],
+  "allStorageFiles": [
+    {
+      "bucket": "product-images",
+      "path": "products/i-asc-2-1776722351889.jpeg",
+      "fullPath": "products/i-asc-2-1776722351889.jpeg",
+      "size": 1891064,
+      "createdAt": "2026-04-20T21:59:13.147Z",
+      "updatedAt": "2026-04-20T21:59:13.147Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-asc-2-1776722351889.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-asc-3-1774982711995.png",
+      "fullPath": "products/i-asc-3-1774982711995.png",
+      "size": 3098134,
+      "createdAt": "2026-03-31T18:45:16.904Z",
+      "updatedAt": "2026-03-31T18:45:16.904Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-asc-3-1774982711995.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-kah-3-1774179096397.png",
+      "fullPath": "products/i-kah-3-1774179096397.png",
+      "size": 10442510,
+      "createdAt": "2026-03-22T11:32:22.982Z",
+      "updatedAt": "2026-03-22T11:32:22.982Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-kah-3-1774179096397.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-kah-6-1776962655344.jpg",
+      "fullPath": "products/i-kah-6-1776962655344.jpg",
+      "size": 687450,
+      "createdAt": "2026-04-23T16:44:15.738Z",
+      "updatedAt": "2026-04-23T16:44:15.738Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-kah-6-1776962655344.jpg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-10-1776716890194.jpeg",
+      "fullPath": "products/i-sic-10-1776716890194.jpeg",
+      "size": 141752,
+      "createdAt": "2026-04-20T20:28:11.334Z",
+      "updatedAt": "2026-04-20T20:28:11.334Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-10-1776716890194.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-11-1776717353879.jpeg",
+      "fullPath": "products/i-sic-11-1776717353879.jpeg",
+      "size": 1119510,
+      "createdAt": "2026-04-20T20:35:55.133Z",
+      "updatedAt": "2026-04-20T20:35:55.133Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-11-1776717353879.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-3-1774171607317.webp",
+      "fullPath": "products/i-sic-3-1774171607317.webp",
+      "size": 15894,
+      "createdAt": "2026-03-22T09:26:47.205Z",
+      "updatedAt": "2026-03-22T09:26:47.205Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-3-1774171607317.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-6-1776715724244.jpeg",
+      "fullPath": "products/i-sic-6-1776715724244.jpeg",
+      "size": 138521,
+      "createdAt": "2026-04-20T20:08:45.594Z",
+      "updatedAt": "2026-04-20T20:08:45.594Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-6-1776715724244.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-7-1776715775827.jpeg",
+      "fullPath": "products/i-sic-7-1776715775827.jpeg",
+      "size": 46498,
+      "createdAt": "2026-04-20T20:09:36.405Z",
+      "updatedAt": "2026-04-20T20:09:36.405Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-7-1776715775827.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-8-1776716446699.jpeg",
+      "fullPath": "products/i-sic-8-1776716446699.jpeg",
+      "size": 16265,
+      "createdAt": "2026-04-20T20:20:47.364Z",
+      "updatedAt": "2026-04-20T20:20:47.364Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-8-1776716446699.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-sic-9-1776716345062.jpeg",
+      "fullPath": "products/i-sic-9-1776716345062.jpeg",
+      "size": 24567,
+      "createdAt": "2026-04-20T20:19:05.987Z",
+      "updatedAt": "2026-04-20T20:19:05.987Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-9-1776716345062.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-10-1776961861392.jpeg",
+      "fullPath": "products/i-yem-10-1776961861392.jpeg",
+      "size": 110603,
+      "createdAt": "2026-04-23T16:31:02.016Z",
+      "updatedAt": "2026-04-23T16:31:02.016Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-10-1776961861392.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-11-1774170230790.jpg",
+      "fullPath": "products/i-yem-11-1774170230790.jpg",
+      "size": 107665,
+      "createdAt": "2026-03-22T09:03:50.629Z",
+      "updatedAt": "2026-03-22T09:03:50.629Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-11-1774170230790.jpg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-12-1776961894882.jpeg",
+      "fullPath": "products/i-yem-12-1776961894882.jpeg",
+      "size": 127044,
+      "createdAt": "2026-04-23T16:31:35.595Z",
+      "updatedAt": "2026-04-23T16:31:35.595Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-12-1776961894882.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-13-1776967027914.jpeg",
+      "fullPath": "products/i-yem-13-1776967027914.jpeg",
+      "size": 2169217,
+      "createdAt": "2026-04-23T17:57:09.177Z",
+      "updatedAt": "2026-04-23T17:57:09.177Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-13-1776967027914.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-15-1774171507416.jpg",
+      "fullPath": "products/i-yem-15-1774171507416.jpg",
+      "size": 118815,
+      "createdAt": "2026-03-22T09:25:07.886Z",
+      "updatedAt": "2026-03-22T09:25:07.886Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-15-1774171507416.jpg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-16-1776967018122.jpeg",
+      "fullPath": "products/i-yem-16-1776967018122.jpeg",
+      "size": 1914106,
+      "createdAt": "2026-04-23T17:57:00.261Z",
+      "updatedAt": "2026-04-23T17:57:00.261Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-16-1776967018122.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-8-1774171684944.jpg",
+      "fullPath": "products/i-yem-8-1774171684944.jpg",
+      "size": 15907,
+      "createdAt": "2026-03-22T09:28:04.959Z",
+      "updatedAt": "2026-03-22T09:28:04.959Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-8-1774171684944.jpg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1774170887493-1774171465279.jpg",
+      "fullPath": "products/item-1774170887493-1774171465279.jpg",
+      "size": 119052,
+      "createdAt": "2026-03-22T09:24:25.533Z",
+      "updatedAt": "2026-03-22T09:24:25.533Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1774170887493-1774171465279.jpg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1774987857855-1776962645803.png",
+      "fullPath": "products/item-1774987857855-1776962645803.png",
+      "size": 5291673,
+      "createdAt": "2026-04-23T16:44:07.685Z",
+      "updatedAt": "2026-04-23T16:44:07.685Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1774987857855-1776962645803.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776715873128-1776715873129.png",
+      "fullPath": "products/item-1776715873128-1776715873129.png",
+      "size": 508035,
+      "createdAt": "2026-04-20T20:11:14.425Z",
+      "updatedAt": "2026-04-20T20:11:14.425Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776715873128-1776715873129.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776715926973-1776715926973.jpeg",
+      "fullPath": "products/item-1776715926973-1776715926973.jpeg",
+      "size": 131368,
+      "createdAt": "2026-04-20T20:12:07.513Z",
+      "updatedAt": "2026-04-20T20:12:07.513Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776715926973-1776715926973.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776716051304-1776716051304.webp",
+      "fullPath": "products/item-1776716051304-1776716051304.webp",
+      "size": 13404,
+      "createdAt": "2026-04-20T20:14:12.055Z",
+      "updatedAt": "2026-04-20T20:14:12.055Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716051304-1776716051304.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776716098530-1776716098530.webp",
+      "fullPath": "products/item-1776716098530-1776716098530.webp",
+      "size": 11952,
+      "createdAt": "2026-04-20T20:14:58.870Z",
+      "updatedAt": "2026-04-20T20:14:58.870Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716098530-1776716098530.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776716132320-1776716132320.webp",
+      "fullPath": "products/item-1776716132320-1776716132320.webp",
+      "size": 8330,
+      "createdAt": "2026-04-20T20:15:32.682Z",
+      "updatedAt": "2026-04-20T20:15:32.682Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716132320-1776716132320.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776717946494-1776717946494.png",
+      "fullPath": "products/item-1776717946494-1776717946494.png",
+      "size": 3301990,
+      "createdAt": "2026-04-20T20:45:48.200Z",
+      "updatedAt": "2026-04-20T20:45:48.200Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776717946494-1776717946494.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776718004797-1776718004797.webp",
+      "fullPath": "products/item-1776718004797-1776718004797.webp",
+      "size": 89824,
+      "createdAt": "2026-04-20T20:46:45.469Z",
+      "updatedAt": "2026-04-20T20:46:45.469Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776718004797-1776718004797.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776718047850-1776718205901.png",
+      "fullPath": "products/item-1776718047850-1776718205901.png",
+      "size": 2049745,
+      "createdAt": "2026-04-20T20:50:07.385Z",
+      "updatedAt": "2026-04-20T20:50:07.385Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776718047850-1776718205901.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776721404423-1779270696130.png",
+      "fullPath": "products/item-1776721404423-1779270696130.png",
+      "size": 3797047,
+      "createdAt": "2026-05-20T09:51:37.729Z",
+      "updatedAt": "2026-05-20T09:51:37.729Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776721404423-1779270696130.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776721520273-1777394620508.png",
+      "fullPath": "products/item-1776721520273-1777394620508.png",
+      "size": 2216126,
+      "createdAt": "2026-04-28T16:43:41.896Z",
+      "updatedAt": "2026-04-28T16:43:41.896Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776721520273-1777394620508.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776962109413-1776962109414.jpeg",
+      "fullPath": "products/item-1776962109413-1776962109414.jpeg",
+      "size": 140404,
+      "createdAt": "2026-04-23T16:35:10.247Z",
+      "updatedAt": "2026-04-23T16:35:10.247Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776962109413-1776962109414.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776967275940-1776967275940.jpeg",
+      "fullPath": "products/item-1776967275940-1776967275940.jpeg",
+      "size": 383033,
+      "createdAt": "2026-04-23T18:01:17.193Z",
+      "updatedAt": "2026-04-23T18:01:17.193Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776967275940-1776967275940.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1777472213241-1777472213242.jpeg",
+      "fullPath": "products/item-1777472213241-1777472213242.jpeg",
+      "size": 581756,
+      "createdAt": "2026-04-29T14:16:55.080Z",
+      "updatedAt": "2026-04-29T14:16:55.080Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1777472213241-1777472213242.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1778099809698-1778099809698.png",
+      "fullPath": "products/item-1778099809698-1778099809698.png",
+      "size": 1088088,
+      "createdAt": "2026-05-06T20:36:50.835Z",
+      "updatedAt": "2026-05-06T20:36:50.835Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1778099809698-1778099809698.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779269986918-1779269986918.png",
+      "fullPath": "products/item-1779269986918-1779269986918.png",
+      "size": 2139716,
+      "createdAt": "2026-05-20T09:39:51.460Z",
+      "updatedAt": "2026-05-20T09:39:51.460Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779269986918-1779269986918.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270032546-1779270186840.jpeg",
+      "fullPath": "products/item-1779270032546-1779270186840.jpeg",
+      "size": 627330,
+      "createdAt": "2026-05-20T09:43:07.544Z",
+      "updatedAt": "2026-05-20T09:43:07.544Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270032546-1779270186840.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270055849-1779270055849.png",
+      "fullPath": "products/item-1779270055849-1779270055849.png",
+      "size": 2270022,
+      "createdAt": "2026-05-20T09:40:59.401Z",
+      "updatedAt": "2026-05-20T09:40:59.401Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270055849-1779270055849.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270134112-1779270134112.png",
+      "fullPath": "products/item-1779270134112-1779270134112.png",
+      "size": 2196800,
+      "createdAt": "2026-05-20T09:42:15.202Z",
+      "updatedAt": "2026-05-20T09:42:15.202Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270134112-1779270134112.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270230043-1779270544471.jpeg",
+      "fullPath": "products/item-1779270230043-1779270544471.jpeg",
+      "size": 692286,
+      "createdAt": "2026-05-20T09:49:05.628Z",
+      "updatedAt": "2026-05-20T09:49:05.628Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270230043-1779270544471.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-aperol-1777836620801.png",
+      "fullPath": "products/item-aper-aperol-1777836620801.png",
+      "size": 2195832,
+      "createdAt": "2026-05-03T19:30:30.389Z",
+      "updatedAt": "2026-05-03T19:30:30.389Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-aperol-1777836620801.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-campari-1777836776059.png",
+      "fullPath": "products/item-aper-campari-1777836776059.png",
+      "size": 2095054,
+      "createdAt": "2026-05-03T19:33:05.432Z",
+      "updatedAt": "2026-05-03T19:33:05.432Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-campari-1777836776059.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-hugo-1777836666361.png",
+      "fullPath": "products/item-aper-hugo-1777836666361.png",
+      "size": 2304370,
+      "createdAt": "2026-05-03T19:31:16.412Z",
+      "updatedAt": "2026-05-03T19:31:16.412Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-hugo-1777836666361.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917278402.jpeg",
+      "fullPath": "products/item-aper-limoncello-1777917278402.jpeg",
+      "size": 402986,
+      "createdAt": "2026-05-04T17:54:51.305Z",
+      "updatedAt": "2026-05-04T17:54:51.305Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-limoncello-1777917278402.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-blanc-1775398567869.jpeg",
+      "fullPath": "products/item-beer-blanc-1775398567869.jpeg",
+      "size": 15235,
+      "createdAt": "2026-04-05T14:16:08.319Z",
+      "updatedAt": "2026-04-05T14:16:08.319Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-blanc-1775398567869.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-carlsberg-1775396000816.png",
+      "fullPath": "products/item-beer-carlsberg-1775396000816.png",
+      "size": 147947,
+      "createdAt": "2026-04-05T13:33:21.232Z",
+      "updatedAt": "2026-04-05T13:33:21.232Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-carlsberg-1775396000816.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-carlsberg-luna-1775396038981.jpeg",
+      "fullPath": "products/item-beer-carlsberg-luna-1775396038981.jpeg",
+      "size": 139835,
+      "createdAt": "2026-04-05T13:34:00.158Z",
+      "updatedAt": "2026-04-05T13:34:00.158Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-carlsberg-luna-1775396038981.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-desperados-1775396046061.jpeg",
+      "fullPath": "products/item-beer-desperados-1775396046061.jpeg",
+      "size": 23651,
+      "createdAt": "2026-04-05T13:34:06.444Z",
+      "updatedAt": "2026-04-05T13:34:06.444Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-desperados-1775396046061.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-brown-1775397222909.jpeg",
+      "fullPath": "products/item-beer-frederik-brown-1775397222909.jpeg",
+      "size": 190681,
+      "createdAt": "2026-04-05T13:53:43.477Z",
+      "updatedAt": "2026-04-05T13:53:43.477Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-brown-1775397222909.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-ipa-1775397210775.jpeg",
+      "fullPath": "products/item-beer-frederik-ipa-1775397210775.jpeg",
+      "size": 202023,
+      "createdAt": "2026-04-05T13:53:32.358Z",
+      "updatedAt": "2026-04-05T13:53:32.358Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-ipa-1775397210775.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-local-1775396077435.webp",
+      "fullPath": "products/item-beer-frederik-local-1775396077435.webp",
+      "size": 18966,
+      "createdAt": "2026-04-05T13:34:37.995Z",
+      "updatedAt": "2026-04-05T13:34:37.995Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-local-1775396077435.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-marzen-1775396683222.webp",
+      "fullPath": "products/item-beer-frederik-marzen-1775396683222.webp",
+      "size": 20554,
+      "createdAt": "2026-04-05T13:44:43.532Z",
+      "updatedAt": "2026-04-05T13:44:43.532Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-marzen-1775396683222.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-neipa-1775398473124.jpeg",
+      "fullPath": "products/item-beer-frederik-neipa-1775398473124.jpeg",
+      "size": 233345,
+      "createdAt": "2026-04-05T14:14:33.858Z",
+      "updatedAt": "2026-04-05T14:14:33.858Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-neipa-1775398473124.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-tropic-1775397359751.jpeg",
+      "fullPath": "products/item-beer-frederik-tropic-1775397359751.jpeg",
+      "size": 174783,
+      "createdAt": "2026-04-05T13:56:01.096Z",
+      "updatedAt": "2026-04-05T13:56:01.096Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-tropic-1775397359751.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-wheat-1775396102820.webp",
+      "fullPath": "products/item-beer-frederik-wheat-1775396102820.webp",
+      "size": 32526,
+      "createdAt": "2026-04-05T13:35:03.426Z",
+      "updatedAt": "2026-04-05T13:35:03.426Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-wheat-1775396102820.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-yakima-1775396976184.jpeg",
+      "fullPath": "products/item-beer-frederik-yakima-1775396976184.jpeg",
+      "size": 910664,
+      "createdAt": "2026-04-05T13:49:37.058Z",
+      "updatedAt": "2026-04-05T13:49:37.058Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-yakima-1775396976184.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-grimbergen-blonde-1775398427967.webp",
+      "fullPath": "products/item-beer-grimbergen-blonde-1775398427967.webp",
+      "size": 31578,
+      "createdAt": "2026-04-05T14:13:49.008Z",
+      "updatedAt": "2026-04-05T14:13:49.008Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-grimbergen-blonde-1775398427967.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-grimbergen-double-1775398527197.webp",
+      "fullPath": "products/item-beer-grimbergen-double-1775398527197.webp",
+      "size": 32334,
+      "createdAt": "2026-04-05T14:15:27.906Z",
+      "updatedAt": "2026-04-05T14:15:27.906Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-grimbergen-double-1775398527197.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-guinness-1775396260058.jpeg",
+      "fullPath": "products/item-beer-guinness-1775396260058.jpeg",
+      "size": 20982,
+      "createdAt": "2026-04-05T13:37:40.701Z",
+      "updatedAt": "2026-04-05T13:37:40.701Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-guinness-1775396260058.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-sol-1775396300283.jpeg",
+      "fullPath": "products/item-beer-sol-1775396300283.jpeg",
+      "size": 2089911,
+      "createdAt": "2026-04-05T13:38:21.625Z",
+      "updatedAt": "2026-04-05T13:38:21.625Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-sol-1775396300283.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-amber-1775396116263.webp",
+      "fullPath": "products/item-beer-tuborg-amber-1775396116263.webp",
+      "size": 41872,
+      "createdAt": "2026-04-05T13:35:16.595Z",
+      "updatedAt": "2026-04-05T13:35:16.595Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-amber-1775396116263.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-filtresiz-1775396121716.webp",
+      "fullPath": "products/item-beer-tuborg-filtresiz-1775396121716.webp",
+      "size": 39216,
+      "createdAt": "2026-04-05T13:35:22.045Z",
+      "updatedAt": "2026-04-05T13:35:22.045Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-filtresiz-1775396121716.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-gold-1776973279516.jpeg",
+      "fullPath": "products/item-beer-tuborg-gold-1776973279516.jpeg",
+      "size": 41178,
+      "createdAt": "2026-04-23T19:41:20.751Z",
+      "updatedAt": "2026-04-23T19:41:20.751Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-gold-1776973279516.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-ice-1775396184350.jpeg",
+      "fullPath": "products/item-beer-tuborg-ice-1775396184350.jpeg",
+      "size": 1429512,
+      "createdAt": "2026-04-05T13:36:26.097Z",
+      "updatedAt": "2026-04-05T13:36:26.097Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-ice-1775396184350.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-weihenstephan-hefe-1775396657547.jpeg",
+      "fullPath": "products/item-beer-weihenstephan-hefe-1775396657547.jpeg",
+      "size": 17801,
+      "createdAt": "2026-04-05T13:44:18.476Z",
+      "updatedAt": "2026-04-05T13:44:18.476Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-weihenstephan-hefe-1775396657547.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-weihenstephan-vitus-1775396663001.webp",
+      "fullPath": "products/item-beer-weihenstephan-vitus-1775396663001.webp",
+      "size": 27120,
+      "createdAt": "2026-04-05T13:44:23.414Z",
+      "updatedAt": "2026-04-05T13:44:23.414Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-weihenstephan-vitus-1775396663001.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-bluelagoon-1776340300677.jpeg",
+      "fullPath": "products/item-classic-bluelagoon-1776340300677.jpeg",
+      "size": 2525374,
+      "createdAt": "2026-04-16T11:51:41.929Z",
+      "updatedAt": "2026-04-16T11:51:41.929Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-bluelagoon-1776340300677.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-boulevardier-1776340310789.jpeg",
+      "fullPath": "products/item-classic-boulevardier-1776340310789.jpeg",
+      "size": 2489205,
+      "createdAt": "2026-04-16T11:51:52.214Z",
+      "updatedAt": "2026-04-16T11:51:52.214Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-boulevardier-1776340310789.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-cosmo-1776340332472.jpeg",
+      "fullPath": "products/item-classic-cosmo-1776340332472.jpeg",
+      "size": 2561859,
+      "createdAt": "2026-04-16T11:52:13.979Z",
+      "updatedAt": "2026-04-16T11:52:13.979Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-cosmo-1776340332472.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-drymartini-1776340384046.jpeg",
+      "fullPath": "products/item-classic-drymartini-1776340384046.jpeg",
+      "size": 1847866,
+      "createdAt": "2026-04-16T11:53:05.489Z",
+      "updatedAt": "2026-04-16T11:53:05.489Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-drymartini-1776340384046.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-espressomartini-1776340395300.jpeg",
+      "fullPath": "products/item-classic-espressomartini-1776340395300.jpeg",
+      "size": 2295683,
+      "createdAt": "2026-04-16T11:53:16.630Z",
+      "updatedAt": "2026-04-16T11:53:16.630Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-espressomartini-1776340395300.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-ginfizz-1776340403300.jpeg",
+      "fullPath": "products/item-classic-ginfizz-1776340403300.jpeg",
+      "size": 2580473,
+      "createdAt": "2026-04-16T11:53:24.630Z",
+      "updatedAt": "2026-04-16T11:53:24.630Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-ginfizz-1776340403300.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-longisland-1776340413903.jpeg",
+      "fullPath": "products/item-classic-longisland-1776340413903.jpeg",
+      "size": 2885397,
+      "createdAt": "2026-04-16T11:53:35.350Z",
+      "updatedAt": "2026-04-16T11:53:35.350Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-longisland-1776340413903.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-margarita-1776340424139.jpeg",
+      "fullPath": "products/item-classic-margarita-1776340424139.jpeg",
+      "size": 2053880,
+      "createdAt": "2026-04-16T11:53:45.305Z",
+      "updatedAt": "2026-04-16T11:53:45.305Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-margarita-1776340424139.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-mojito-1776340431482.jpeg",
+      "fullPath": "products/item-classic-mojito-1776340431482.jpeg",
+      "size": 2382760,
+      "createdAt": "2026-04-16T11:53:52.750Z",
+      "updatedAt": "2026-04-16T11:53:52.750Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-mojito-1776340431482.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-negroni-1776340318582.jpeg",
+      "fullPath": "products/item-classic-negroni-1776340318582.jpeg",
+      "size": 2268300,
+      "createdAt": "2026-04-16T11:52:00.229Z",
+      "updatedAt": "2026-04-16T11:52:00.229Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-negroni-1776340318582.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-oldfashioned-1776340494106.jpeg",
+      "fullPath": "products/item-classic-oldfashioned-1776340494106.jpeg",
+      "size": 2051817,
+      "createdAt": "2026-04-16T11:54:55.047Z",
+      "updatedAt": "2026-04-16T11:54:55.047Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-oldfashioned-1776340494106.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-sexonthebeach-1776340477250.jpeg",
+      "fullPath": "products/item-classic-sexonthebeach-1776340477250.jpeg",
+      "size": 2305915,
+      "createdAt": "2026-04-16T11:54:38.232Z",
+      "updatedAt": "2026-04-16T11:54:38.232Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-sexonthebeach-1776340477250.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-sunrise-1776340468687.jpeg",
+      "fullPath": "products/item-classic-sunrise-1776340468687.jpeg",
+      "size": 1949848,
+      "createdAt": "2026-04-16T11:54:29.788Z",
+      "updatedAt": "2026-04-16T11:54:29.788Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-sunrise-1776340468687.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-whiskeysour-1776340459796.jpeg",
+      "fullPath": "products/item-classic-whiskeysour-1776340459796.jpeg",
+      "size": 2705748,
+      "createdAt": "2026-04-16T11:54:21.900Z",
+      "updatedAt": "2026-04-16T11:54:21.900Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-whiskeysour-1776340459796.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-cognac-hennessy-1775235427313.jpeg",
+      "fullPath": "products/item-cognac-hennessy-1775235427313.jpeg",
+      "size": 57592,
+      "createdAt": "2026-04-03T16:57:08.028Z",
+      "updatedAt": "2026-04-03T16:57:08.028Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-cognac-hennessy-1775235427313.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-gin-beefeater-1775231617190.jpeg",
+      "fullPath": "products/item-gin-beefeater-1775231617190.jpeg",
+      "size": 49057,
+      "createdAt": "2026-04-03T15:53:38.081Z",
+      "updatedAt": "2026-04-03T15:53:38.081Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-beefeater-1775231617190.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-gin-beefeater-pink-1775233308285.jpeg",
+      "fullPath": "products/item-gin-beefeater-pink-1775233308285.jpeg",
+      "size": 181456,
+      "createdAt": "2026-04-03T16:21:49.512Z",
+      "updatedAt": "2026-04-03T16:21:49.512Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-beefeater-pink-1775233308285.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-gin-bombay-1775233798826.jpeg",
+      "fullPath": "products/item-gin-bombay-1775233798826.jpeg",
+      "size": 64419,
+      "createdAt": "2026-04-03T16:29:59.548Z",
+      "updatedAt": "2026-04-03T16:29:59.548Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-bombay-1775233798826.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-gin-gordons-1775235226472.jpeg",
+      "fullPath": "products/item-gin-gordons-1775235226472.jpeg",
+      "size": 161476,
+      "createdAt": "2026-04-03T16:53:47.574Z",
+      "updatedAt": "2026-04-03T16:53:47.574Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-gordons-1775235226472.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-baileys-1775231583559.jpeg",
+      "fullPath": "products/item-liq-baileys-1775231583559.jpeg",
+      "size": 44292,
+      "createdAt": "2026-04-03T15:53:04.082Z",
+      "updatedAt": "2026-04-03T15:53:04.082Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-baileys-1775231583559.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-bols-peach-1776960645025.png",
+      "fullPath": "products/item-liq-bols-peach-1776960645025.png",
+      "size": 779856,
+      "createdAt": "2026-04-23T16:10:46.125Z",
+      "updatedAt": "2026-04-23T16:10:46.125Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-bols-peach-1776960645025.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-disaronno-1775398759078.webp",
+      "fullPath": "products/item-liq-disaronno-1775398759078.webp",
+      "size": 23524,
+      "createdAt": "2026-04-05T14:19:20.140Z",
+      "updatedAt": "2026-04-05T14:19:20.140Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-disaronno-1775398759078.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-bianco-1775398779499.png",
+      "fullPath": "products/item-liq-garrone-bianco-1775398779499.png",
+      "size": 213490,
+      "createdAt": "2026-04-05T14:19:40.122Z",
+      "updatedAt": "2026-04-05T14:19:40.122Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-bianco-1775398779499.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-dry-1775398790204.png",
+      "fullPath": "products/item-liq-garrone-dry-1775398790204.png",
+      "size": 224600,
+      "createdAt": "2026-04-05T14:19:50.860Z",
+      "updatedAt": "2026-04-05T14:19:50.860Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-dry-1775398790204.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-rosso-1775398799271.png",
+      "fullPath": "products/item-liq-garrone-rosso-1775398799271.png",
+      "size": 237185,
+      "createdAt": "2026-04-05T14:19:59.866Z",
+      "updatedAt": "2026-04-05T14:19:59.866Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-rosso-1775398799271.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-triple-1775398807659.jpeg",
+      "fullPath": "products/item-liq-garrone-triple-1775398807659.jpeg",
+      "size": 65393,
+      "createdAt": "2026-04-05T14:20:08.050Z",
+      "updatedAt": "2026-04-05T14:20:08.050Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-triple-1775398807659.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-kahlua-1775398851388.jpeg",
+      "fullPath": "products/item-liq-kahlua-1775398851388.jpeg",
+      "size": 67033,
+      "createdAt": "2026-04-05T14:20:52.009Z",
+      "updatedAt": "2026-04-05T14:20:52.009Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-kahlua-1775398851388.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-limoncello-1775398969812.jpeg",
+      "fullPath": "products/item-liq-limoncello-1775398969812.jpeg",
+      "size": 37909,
+      "createdAt": "2026-04-05T14:22:50.686Z",
+      "updatedAt": "2026-04-05T14:22:50.686Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-limoncello-1775398969812.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-malibu-1775399029894.webp",
+      "fullPath": "products/item-liq-malibu-1775399029894.webp",
+      "size": 15096,
+      "createdAt": "2026-04-05T14:23:50.579Z",
+      "updatedAt": "2026-04-05T14:23:50.579Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-malibu-1775399029894.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-nazen-nane-1775399037142.jpeg",
+      "fullPath": "products/item-liq-nazen-nane-1775399037142.jpeg",
+      "size": 286828,
+      "createdAt": "2026-04-05T14:23:57.747Z",
+      "updatedAt": "2026-04-05T14:23:57.747Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-nazen-nane-1775399037142.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-rum-bacardi-1775235406968.jpeg",
+      "fullPath": "products/item-rum-bacardi-1775235406968.jpeg",
+      "size": 26844,
+      "createdAt": "2026-04-03T16:56:47.911Z",
+      "updatedAt": "2026-04-03T16:56:47.911Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-bacardi-1775235406968.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-rum-havana-1775235419606.jpeg",
+      "fullPath": "products/item-rum-havana-1775235419606.jpeg",
+      "size": 52340,
+      "createdAt": "2026-04-03T16:57:00.298Z",
+      "updatedAt": "2026-04-03T16:57:00.298Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-havana-1775235419606.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-rum-morgan-1775233511344.webp",
+      "fullPath": "products/item-rum-morgan-1775233511344.webp",
+      "size": 26090,
+      "createdAt": "2026-04-03T16:25:12.348Z",
+      "updatedAt": "2026-04-03T16:25:12.348Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-morgan-1775233511344.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-don-julio-blanco-1775231673546.jpeg",
+      "fullPath": "products/item-shot-don-julio-blanco-1775231673546.jpeg",
+      "size": 29690,
+      "createdAt": "2026-04-03T15:54:34.271Z",
+      "updatedAt": "2026-04-03T15:54:34.271Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-don-julio-blanco-1775231673546.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-don-julio-reposado-1775233710510.webp",
+      "fullPath": "products/item-shot-don-julio-reposado-1775233710510.webp",
+      "size": 48562,
+      "createdAt": "2026-04-03T16:28:31.533Z",
+      "updatedAt": "2026-04-03T16:28:31.533Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-don-julio-reposado-1775233710510.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-f16-1775399718810.jpeg",
+      "fullPath": "products/item-shot-f16-1775399718810.jpeg",
+      "size": 9595,
+      "createdAt": "2026-04-05T14:35:19.487Z",
+      "updatedAt": "2026-04-05T14:35:19.487Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-f16-1775399718810.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-jack-fire-1775399085056.jpeg",
+      "fullPath": "products/item-shot-jack-fire-1775399085056.jpeg",
+      "size": 128660,
+      "createdAt": "2026-04-05T14:24:46.130Z",
+      "updatedAt": "2026-04-05T14:24:46.130Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jack-fire-1775399085056.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-jack-honey-1775399096430.webp",
+      "fullPath": "products/item-shot-jack-honey-1775399096430.webp",
+      "size": 96806,
+      "createdAt": "2026-04-05T14:24:57.053Z",
+      "updatedAt": "2026-04-05T14:24:57.053Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jack-honey-1775399096430.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-jager-manifest-1775399344547.png",
+      "fullPath": "products/item-shot-jager-manifest-1775399344547.png",
+      "size": 986396,
+      "createdAt": "2026-04-05T14:29:05.515Z",
+      "updatedAt": "2026-04-05T14:29:05.515Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jager-manifest-1775399344547.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-jagermeister-1775399166211.webp",
+      "fullPath": "products/item-shot-jagermeister-1775399166211.webp",
+      "size": 70788,
+      "createdAt": "2026-04-05T14:26:07.187Z",
+      "updatedAt": "2026-04-05T14:26:07.187Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jagermeister-1775399166211.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-sambuka-1775399582595.webp",
+      "fullPath": "products/item-shot-sambuka-1775399582595.webp",
+      "size": 10680,
+      "createdAt": "2026-04-05T14:33:03.097Z",
+      "updatedAt": "2026-04-05T14:33:03.097Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-sambuka-1775399582595.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-shot-tequila-olmeca-1775399429294.jpeg",
+      "fullPath": "products/item-shot-tequila-olmeca-1775399429294.jpeg",
+      "size": 19675,
+      "createdAt": "2026-04-05T14:30:30.055Z",
+      "updatedAt": "2026-04-05T14:30:30.055Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-tequila-olmeca-1775399429294.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1777836515695.png",
+      "fullPath": "products/item-spec-casper-1777836515695.png",
+      "size": 2127057,
+      "createdAt": "2026-05-03T19:28:45.004Z",
+      "updatedAt": "2026-05-03T19:28:45.004Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-casper-1777836515695.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-coffeina-1774981389987.png",
+      "fullPath": "products/item-spec-coffeina-1774981389987.png",
+      "size": 2601206,
+      "createdAt": "2026-03-31T18:23:14.088Z",
+      "updatedAt": "2026-03-31T18:23:14.088Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-coffeina-1774981389987.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777836434672.png",
+      "fullPath": "products/item-spec-fuego-1777836434672.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T19:27:24.361Z",
+      "updatedAt": "2026-05-03T19:27:24.361Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-fuego-1777836434672.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-grinch-1777836810341.png",
+      "fullPath": "products/item-spec-grinch-1777836810341.png",
+      "size": 2195416,
+      "createdAt": "2026-05-03T19:33:40.003Z",
+      "updatedAt": "2026-05-03T19:33:40.003Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-grinch-1777836810341.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-hellios-1777836538033.png",
+      "fullPath": "products/item-spec-hellios-1777836538033.png",
+      "size": 2224562,
+      "createdAt": "2026-05-03T19:29:07.556Z",
+      "updatedAt": "2026-05-03T19:29:07.556Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-hellios-1777836538033.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-star-1777836567667.png",
+      "fullPath": "products/item-spec-star-1777836567667.png",
+      "size": 2156773,
+      "createdAt": "2026-05-03T19:29:36.812Z",
+      "updatedAt": "2026-05-03T19:29:36.812Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-star-1777836567667.png"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-surprise-1776788335520.jpeg",
+      "fullPath": "products/item-spec-surprise-1776788335520.jpeg",
+      "size": 627330,
+      "createdAt": "2026-04-21T16:18:56.437Z",
+      "updatedAt": "2026-04-21T16:18:56.437Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-surprise-1776788335520.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-1775234354947.jpeg",
+      "fullPath": "products/item-vodka-absolut-1775234354947.jpeg",
+      "size": 52809,
+      "createdAt": "2026-04-03T16:39:15.843Z",
+      "updatedAt": "2026-04-03T16:39:15.843Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-1775234354947.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-citron-1775231782672.webp",
+      "fullPath": "products/item-vodka-absolut-citron-1775231782672.webp",
+      "size": 76898,
+      "createdAt": "2026-04-03T15:56:24.046Z",
+      "updatedAt": "2026-04-03T15:56:24.046Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-citron-1775231782672.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-raspberry-1775233771897.jpeg",
+      "fullPath": "products/item-vodka-absolut-raspberry-1775233771897.jpeg",
+      "size": 197953,
+      "createdAt": "2026-04-03T16:29:33.131Z",
+      "updatedAt": "2026-04-03T16:29:33.131Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-raspberry-1775233771897.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-vanilia-1775234527718.webp",
+      "fullPath": "products/item-vodka-absolut-vanilia-1775234527718.webp",
+      "size": 69986,
+      "createdAt": "2026-04-03T16:42:08.420Z",
+      "updatedAt": "2026-04-03T16:42:08.420Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-vanilia-1775234527718.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-belvedere-1775234412082.jpeg",
+      "fullPath": "products/item-vodka-belvedere-1775234412082.jpeg",
+      "size": 15171,
+      "createdAt": "2026-04-03T16:40:12.616Z",
+      "updatedAt": "2026-04-03T16:40:12.616Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-belvedere-1775234412082.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-smirnoff-1775234242480.jpeg",
+      "fullPath": "products/item-vodka-smirnoff-1775234242480.jpeg",
+      "size": 51329,
+      "createdAt": "2026-04-03T16:37:23.581Z",
+      "updatedAt": "2026-04-03T16:37:23.581Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-smirnoff-1775234242480.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-chivas-1775233624004.jpeg",
+      "fullPath": "products/item-whiskey-chivas-1775233624004.jpeg",
+      "size": 71071,
+      "createdAt": "2026-04-03T16:27:04.954Z",
+      "updatedAt": "2026-04-03T16:27:04.954Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-chivas-1775233624004.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-chivas-18-1775234882333.webp",
+      "fullPath": "products/item-whiskey-chivas-18-1775234882333.webp",
+      "size": 72944,
+      "createdAt": "2026-04-03T16:48:03.449Z",
+      "updatedAt": "2026-04-03T16:48:03.449Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-chivas-18-1775234882333.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-gentleman-1775234813772.jpeg",
+      "fullPath": "products/item-whiskey-gentleman-1775234813772.jpeg",
+      "size": 31460,
+      "createdAt": "2026-04-03T16:46:55.016Z",
+      "updatedAt": "2026-04-03T16:46:55.016Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-gentleman-1775234813772.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-1775231725953.jpeg",
+      "fullPath": "products/item-whiskey-jack-1775231725953.jpeg",
+      "size": 92692,
+      "createdAt": "2026-04-03T15:55:26.777Z",
+      "updatedAt": "2026-04-03T15:55:26.777Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-1775231725953.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-fire-1775234839497.jpeg",
+      "fullPath": "products/item-whiskey-jack-fire-1775234839497.jpeg",
+      "size": 128660,
+      "createdAt": "2026-04-03T16:47:20.271Z",
+      "updatedAt": "2026-04-03T16:47:20.271Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-fire-1775234839497.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-honey-1775235036692.webp",
+      "fullPath": "products/item-whiskey-jack-honey-1775235036692.webp",
+      "size": 96806,
+      "createdAt": "2026-04-03T16:50:37.643Z",
+      "updatedAt": "2026-04-03T16:50:37.643Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-honey-1775235036692.webp"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jameson-1775234150800.jpeg",
+      "fullPath": "products/item-whiskey-jameson-1775234150800.jpeg",
+      "size": 47472,
+      "createdAt": "2026-04-03T16:35:51.883Z",
+      "updatedAt": "2026-04-03T16:35:51.883Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jameson-1775234150800.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jim-beam-1775234197317.jpeg",
+      "fullPath": "products/item-whiskey-jim-beam-1775234197317.jpeg",
+      "size": 57055,
+      "createdAt": "2026-04-03T16:36:38.127Z",
+      "updatedAt": "2026-04-03T16:36:38.127Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jim-beam-1775234197317.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jw-black-1775233864582.jpeg",
+      "fullPath": "products/item-whiskey-jw-black-1775233864582.jpeg",
+      "size": 51994,
+      "createdAt": "2026-04-03T16:31:05.416Z",
+      "updatedAt": "2026-04-03T16:31:05.416Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jw-black-1775233864582.jpeg"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-macallan-12-1775234788198.jpeg",
+      "fullPath": "products/item-whiskey-macallan-12-1775234788198.jpeg",
+      "size": 172392,
+      "createdAt": "2026-04-03T16:46:29.457Z",
+      "updatedAt": "2026-04-03T16:46:29.457Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-macallan-12-1775234788198.jpeg"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779269844651.png",
+      "fullPath": "campaigns/camp-1779194894931-1779269844651.png",
+      "size": 2139716,
+      "createdAt": "2026-05-20T09:37:28.928Z",
+      "updatedAt": "2026-05-20T09:37:28.928Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779194894931-1779269844651.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779195679526-1779196285184.png",
+      "fullPath": "campaigns/camp-1779195679526-1779196285184.png",
+      "size": 2270022,
+      "createdAt": "2026-05-19T13:11:36.595Z",
+      "updatedAt": "2026-05-19T13:11:36.595Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779195679526-1779196285184.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226737432-1779226737432.png",
+      "fullPath": "campaigns/camp-1779226737432-1779226737432.png",
+      "size": 2196800,
+      "createdAt": "2026-05-19T21:38:59.131Z",
+      "updatedAt": "2026-05-19T21:38:59.131Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226737432-1779226737432.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226761937-1779227154799.jpeg",
+      "fullPath": "campaigns/camp-1779226761937-1779227154799.jpeg",
+      "size": 627330,
+      "createdAt": "2026-05-19T21:45:56.033Z",
+      "updatedAt": "2026-05-19T21:45:56.033Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226761937-1779227154799.jpeg"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227089950.png",
+      "fullPath": "campaigns/camp-1779226781500-1779227089950.png",
+      "size": 2195832,
+      "createdAt": "2026-05-19T21:45:03.794Z",
+      "updatedAt": "2026-05-19T21:45:03.794Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227089950.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227103848.png",
+      "fullPath": "campaigns/camp-1779226781500-1779227103848.png",
+      "size": 2034739,
+      "createdAt": "2026-05-19T21:45:04.866Z",
+      "updatedAt": "2026-05-19T21:45:04.866Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227103848.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227104896.png",
+      "fullPath": "campaigns/camp-1779226781500-1779227104896.png",
+      "size": 2304370,
+      "createdAt": "2026-05-19T21:45:06.177Z",
+      "updatedAt": "2026-05-19T21:45:06.177Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227104896.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779269610730.png",
+      "fullPath": "campaigns/camp-1779226781500-1779269610730.png",
+      "size": 2095054,
+      "createdAt": "2026-05-20T09:33:34.001Z",
+      "updatedAt": "2026-05-20T09:33:34.001Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779269610730.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226813447-1779226943489.png",
+      "fullPath": "campaigns/camp-1779226813447-1779226943489.png",
+      "size": 2216126,
+      "createdAt": "2026-05-19T21:42:24.822Z",
+      "updatedAt": "2026-05-19T21:42:24.822Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226813447-1779226943489.png"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226887988-1779226887988.png",
+      "fullPath": "campaigns/camp-1779226887988-1779226887988.png",
+      "size": 3797047,
+      "createdAt": "2026-05-19T21:41:43.866Z",
+      "updatedAt": "2026-05-19T21:41:43.866Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226887988-1779226887988.png"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1779271053107.png",
+      "fullPath": "hero_logo-1779271053107.png",
+      "size": 263247,
+      "createdAt": "2026-05-20T09:57:34.169Z",
+      "updatedAt": "2026-05-20T09:57:34.169Z",
+      "publicUrl": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/site-assets/hero_logo-1779271053107.png"
+    }
+  ],
+  "allDbReferences": [
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-marzen-1775396683222.webp",
+      "source": "items",
+      "entityId": "item-beer-frederik-marzen",
+      "entityName": "Frederik Marzen Lager (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-marzen-1775396683222.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-dry-1775398790204.png",
+      "source": "items",
+      "entityId": "item-liq-garrone-dry",
+      "entityName": "Garrone Extra Dry",
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-dry-1775398790204.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-guinness-1775396260058.jpeg",
+      "source": "items",
+      "entityId": "item-beer-guinness",
+      "entityName": "Guinness Kutu (44cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-guinness-1775396260058.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-yakima-1775396976184.jpeg",
+      "source": "items",
+      "entityId": "item-beer-frederik-yakima",
+      "entityName": "Frederik Yakima IPA (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-yakima-1775396976184.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-wheat-1775396102820.webp",
+      "source": "items",
+      "entityId": "item-beer-frederik-wheat",
+      "entityName": "Frederik Wheat IPA (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-wheat-1775396102820.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-desperados-1775396046061.jpeg",
+      "source": "items",
+      "entityId": "item-beer-desperados",
+      "entityName": "Desperados (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-desperados-1775396046061.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-carlsberg-1775396000816.png",
+      "source": "items",
+      "entityId": "item-beer-carlsberg",
+      "entityName": "Carlsberg (50cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-carlsberg-1775396000816.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-star-1777836567667.png",
+      "source": "items",
+      "entityId": "item-spec-star",
+      "entityName": "Picchio Star",
+      "bucket": "product-images",
+      "path": "products/item-spec-star-1777836567667.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-grinch-1777836810341.png",
+      "source": "items",
+      "entityId": "item-spec-grinch",
+      "entityName": "Grinch",
+      "bucket": "product-images",
+      "path": "products/item-spec-grinch-1777836810341.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-amber-1775396116263.webp",
+      "source": "items",
+      "entityId": "item-beer-tuborg-amber",
+      "entityName": "Tuborg Amber (50cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-amber-1775396116263.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-filtresiz-1775396121716.webp",
+      "source": "items",
+      "entityId": "item-beer-tuborg-filtresiz",
+      "entityName": "Tuborg Filtresiz (50cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-filtresiz-1775396121716.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-cosmo-1776340332472.jpeg",
+      "source": "items",
+      "entityId": "item-classic-cosmo",
+      "entityName": "Cosmopolitan",
+      "bucket": "product-images",
+      "path": "products/item-classic-cosmo-1776340332472.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-mojito-1776340431482.jpeg",
+      "source": "items",
+      "entityId": "item-classic-mojito",
+      "entityName": "Mojito",
+      "bucket": "product-images",
+      "path": "products/item-classic-mojito-1776340431482.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-sexonthebeach-1776340477250.jpeg",
+      "source": "items",
+      "entityId": "item-classic-sexonthebeach",
+      "entityName": "Sex on the Beach",
+      "bucket": "product-images",
+      "path": "products/item-classic-sexonthebeach-1776340477250.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-ginfizz-1776340403300.jpeg",
+      "source": "items",
+      "entityId": "item-classic-ginfizz",
+      "entityName": "Gin Fizz",
+      "bucket": "product-images",
+      "path": "products/item-classic-ginfizz-1776340403300.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-longisland-1776340413903.jpeg",
+      "source": "items",
+      "entityId": "item-classic-longisland",
+      "entityName": "Long Island Ice Tea",
+      "bucket": "product-images",
+      "path": "products/item-classic-longisland-1776340413903.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-tropic-1775397359751.jpeg",
+      "source": "items",
+      "entityId": "item-beer-frederik-tropic",
+      "entityName": "Frederik Tropic IPA (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-tropic-1775397359751.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-11-1776717353879.jpeg",
+      "source": "items",
+      "entityId": "i-sic-11",
+      "entityName": "Churchill",
+      "bucket": "product-images",
+      "path": "products/i-sic-11-1776717353879.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-16-1776967018122.jpeg",
+      "source": "items",
+      "entityId": "i-yem-16",
+      "entityName": "Turşu",
+      "bucket": "product-images",
+      "path": "products/i-yem-16-1776967018122.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-15-1774171507416.jpg",
+      "source": "items",
+      "entityId": "i-yem-15",
+      "entityName": "TUZLU FISTIK",
+      "bucket": "product-images",
+      "path": "products/i-yem-15-1774171507416.jpg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-grimbergen-double-1775398527197.webp",
+      "source": "items",
+      "entityId": "item-beer-grimbergen-double",
+      "entityName": "Grimbergen Double Ambree (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-grimbergen-double-1775398527197.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-local-1775396077435.webp",
+      "source": "items",
+      "entityId": "item-beer-frederik-local",
+      "entityName": "Frederik Local (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-local-1775396077435.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-chivas-18-1775234882333.webp",
+      "source": "items",
+      "entityId": "item-whiskey-chivas-18",
+      "entityName": "Chivas 18",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-chivas-18-1775234882333.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-havana-1775235419606.jpeg",
+      "source": "items",
+      "entityId": "item-rum-havana",
+      "entityName": "Havana (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-rum-havana-1775235419606.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-weihenstephan-vitus-1775396663001.webp",
+      "source": "items",
+      "entityId": "item-beer-weihenstephan-vitus",
+      "entityName": "Weihenstephan Vitus (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-weihenstephan-vitus-1775396663001.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-cognac-hennessy-1775235427313.jpeg",
+      "source": "items",
+      "entityId": "item-cognac-hennessy",
+      "entityName": "Hennessy",
+      "bucket": "product-images",
+      "path": "products/item-cognac-hennessy-1775235427313.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-don-julio-blanco-1775231673546.jpeg",
+      "source": "items",
+      "entityId": "item-shot-don-julio-blanco",
+      "entityName": "Don Julio Blanco",
+      "bucket": "product-images",
+      "path": "products/item-shot-don-julio-blanco-1775231673546.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-kahlua-1775398851388.jpeg",
+      "source": "items",
+      "entityId": "item-liq-kahlua",
+      "entityName": "Kahlua",
+      "bucket": "product-images",
+      "path": "products/item-liq-kahlua-1775398851388.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-don-julio-reposado-1775233710510.webp",
+      "source": "items",
+      "entityId": "item-shot-don-julio-reposado",
+      "entityName": "Don Julio Reposado",
+      "bucket": "product-images",
+      "path": "products/item-shot-don-julio-reposado-1775233710510.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-morgan-1775233511344.webp",
+      "source": "items",
+      "entityId": "item-rum-morgan",
+      "entityName": "Captain Morgan (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-rum-morgan-1775233511344.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-chivas-1775233624004.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-chivas",
+      "entityName": "Chivas",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-chivas-1775233624004.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-9-1776716345062.jpeg",
+      "source": "items",
+      "entityId": "i-sic-9",
+      "entityName": "Soda",
+      "bucket": "product-images",
+      "path": "products/i-sic-9-1776716345062.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-8-1776716446699.jpeg",
+      "source": "items",
+      "entityId": "i-sic-8",
+      "entityName": "Su",
+      "bucket": "product-images",
+      "path": "products/i-sic-8-1776716446699.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-bianco-1775398779499.png",
+      "source": "items",
+      "entityId": "item-liq-garrone-bianco",
+      "entityName": "Garrone Bianco",
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-bianco-1775398779499.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-13-1776967027914.jpeg",
+      "source": "items",
+      "entityId": "i-yem-13",
+      "entityName": "Çikolata",
+      "bucket": "product-images",
+      "path": "products/i-yem-13-1776967027914.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-11-1774170230790.jpg",
+      "source": "items",
+      "entityId": "i-yem-11",
+      "entityName": "BADEM",
+      "bucket": "product-images",
+      "path": "products/i-yem-11-1774170230790.jpg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jw-black-1775233864582.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-jw-black",
+      "entityName": "J. Walker Black Label",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jw-black-1775233864582.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-disaronno-1775398759078.webp",
+      "source": "items",
+      "entityId": "item-liq-disaronno",
+      "entityName": "Disaronno",
+      "bucket": "product-images",
+      "path": "products/item-liq-disaronno-1775398759078.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-weihenstephan-hefe-1775396657547.jpeg",
+      "source": "items",
+      "entityId": "item-beer-weihenstephan-hefe",
+      "entityName": "Weihenstephan Hefeweissbier (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-weihenstephan-hefe-1775396657547.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-ice-1775396184350.jpeg",
+      "source": "items",
+      "entityId": "item-beer-tuborg-ice",
+      "entityName": "Tuborg Ice (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-ice-1775396184350.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-tuborg-gold-1776973279516.jpeg",
+      "source": "items",
+      "entityId": "item-beer-tuborg-gold",
+      "entityName": "Tuborg Gold (50cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-gold-1776973279516.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-gentleman-1775234813772.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-gentleman",
+      "entityName": "Gentleman Jack",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-gentleman-1775234813772.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-12-1776961894882.jpeg",
+      "source": "items",
+      "entityId": "i-yem-12",
+      "entityName": "KARIŞIK LUX",
+      "bucket": "product-images",
+      "path": "products/i-yem-12-1776961894882.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-limoncello-1777917278402.jpeg",
+      "source": "items",
+      "entityId": "item-aper-limoncello",
+      "entityName": "Limoncello Spritz",
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917278402.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270032546-1779270186840.jpeg",
+      "source": "items",
+      "entityId": "item-1779270032546",
+      "entityName": "PERŞEMBE 1+1 THE SECRET",
+      "bucket": "product-images",
+      "path": "products/item-1779270032546-1779270186840.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-rosso-1775398799271.png",
+      "source": "items",
+      "entityId": "item-liq-garrone-rosso",
+      "entityName": "Garrone Rosso",
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-rosso-1775398799271.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-grimbergen-blonde-1775398427967.webp",
+      "source": "items",
+      "entityId": "item-beer-grimbergen-blonde",
+      "entityName": "Grimbergen Blonde (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-grimbergen-blonde-1775398427967.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-garrone-triple-1775398807659.jpeg",
+      "source": "items",
+      "entityId": "item-liq-garrone-triple",
+      "entityName": "Garrone Triple Sec",
+      "bucket": "product-images",
+      "path": "products/item-liq-garrone-triple-1775398807659.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-sol-1775396300283.jpeg",
+      "source": "items",
+      "entityId": "item-beer-sol",
+      "entityName": "Sol (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-sol-1775396300283.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-negroni-1776340318582.jpeg",
+      "source": "items",
+      "entityId": "item-classic-negroni",
+      "entityName": "Campari Negroni",
+      "bucket": "product-images",
+      "path": "products/item-classic-negroni-1776340318582.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-drymartini-1776340384046.jpeg",
+      "source": "items",
+      "entityId": "item-classic-drymartini",
+      "entityName": "Dry Martini",
+      "bucket": "product-images",
+      "path": "products/item-classic-drymartini-1776340384046.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-oldfashioned-1776340494106.jpeg",
+      "source": "items",
+      "entityId": "item-classic-oldfashioned",
+      "entityName": "Old Fashioned",
+      "bucket": "product-images",
+      "path": "products/item-classic-oldfashioned-1776340494106.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-fuego-1777836434672.png",
+      "source": "items",
+      "entityId": "item-spec-fuego",
+      "entityName": "Fuego",
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777836434672.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-coffeina-1774981389987.png",
+      "source": "items",
+      "entityId": "item-spec-coffeina",
+      "entityName": "Coffeina",
+      "bucket": "product-images",
+      "path": "products/item-spec-coffeina-1774981389987.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-aperol-1777836620801.png",
+      "source": "items",
+      "entityId": "item-aper-aperol",
+      "entityName": "Aperol Spritz",
+      "bucket": "product-images",
+      "path": "products/item-aper-aperol-1777836620801.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-casper-1777836515695.png",
+      "source": "items",
+      "entityId": "item-spec-casper",
+      "entityName": "Casper",
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1777836515695.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776718004797-1776718004797.webp",
+      "source": "items",
+      "entityId": "item-1776718004797",
+      "entityName": "FANTA",
+      "bucket": "product-images",
+      "path": "products/item-1776718004797-1776718004797.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716132320-1776716132320.webp",
+      "source": "items",
+      "entityId": "item-1776716132320",
+      "entityName": "SCHWEPPES ZERO TONIC",
+      "bucket": "product-images",
+      "path": "products/item-1776716132320-1776716132320.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776715926973-1776715926973.jpeg",
+      "source": "items",
+      "entityId": "item-1776715926973",
+      "entityName": "REDBULL SUGARFREE",
+      "bucket": "product-images",
+      "path": "products/item-1776715926973-1776715926973.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-surprise-1776788335520.jpeg",
+      "source": "items",
+      "entityId": "item-spec-surprise",
+      "entityName": "PICCHIO THE SECRET",
+      "bucket": "product-images",
+      "path": "products/item-spec-surprise-1776788335520.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-hugo-1777836666361.png",
+      "source": "items",
+      "entityId": "item-aper-hugo",
+      "entityName": "Hugo Spritz",
+      "bucket": "product-images",
+      "path": "products/item-aper-hugo-1777836666361.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-carlsberg-luna-1775396038981.jpeg",
+      "source": "items",
+      "entityId": "item-beer-carlsberg-luna",
+      "entityName": "Carlsberg Luna (50cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-carlsberg-luna-1775396038981.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-spec-hellios-1777836538033.png",
+      "source": "items",
+      "entityId": "item-spec-hellios",
+      "entityName": "Hellios",
+      "bucket": "product-images",
+      "path": "products/item-spec-hellios-1777836538033.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1774170887493-1774171465279.jpg",
+      "source": "items",
+      "entityId": "item-1774170887493",
+      "entityName": "Çıtır Tavuk",
+      "bucket": "product-images",
+      "path": "products/item-1774170887493-1774171465279.jpg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-aper-campari-1777836776059.png",
+      "source": "items",
+      "entityId": "item-aper-campari",
+      "entityName": "Campari Spritz",
+      "bucket": "product-images",
+      "path": "products/item-aper-campari-1777836776059.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270230043-1779270544471.jpeg",
+      "source": "items",
+      "entityId": "item-1779270230043",
+      "entityName": "CUMA 1+1 TÜM SPRTIZ ÇEŞİTLERİ",
+      "bucket": "product-images",
+      "path": "products/item-1779270230043-1779270544471.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-10-1776716890194.jpeg",
+      "source": "items",
+      "entityId": "i-sic-10",
+      "entityName": "Meyveli Soda",
+      "bucket": "product-images",
+      "path": "products/i-sic-10-1776716890194.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-boulevardier-1776340310789.jpeg",
+      "source": "items",
+      "entityId": "item-classic-boulevardier",
+      "entityName": "Boulevardier",
+      "bucket": "product-images",
+      "path": "products/item-classic-boulevardier-1776340310789.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1774987857855-1776962645803.png",
+      "source": "items",
+      "entityId": "item-1774987857855",
+      "entityName": "BERRY HIBISCUS",
+      "bucket": "product-images",
+      "path": "products/item-1774987857855-1776962645803.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-limoncello-1775398969812.jpeg",
+      "source": "items",
+      "entityId": "item-liq-limoncello",
+      "entityName": "Limoncello",
+      "bucket": "product-images",
+      "path": "products/item-liq-limoncello-1775398969812.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-margarita-1776340424139.jpeg",
+      "source": "items",
+      "entityId": "item-classic-margarita",
+      "entityName": "Margarita",
+      "bucket": "product-images",
+      "path": "products/item-classic-margarita-1776340424139.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-fire-1775234839497.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-jack-fire",
+      "entityName": "Jack Daniel's Fire",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-fire-1775234839497.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-honey-1775235036692.webp",
+      "source": "items",
+      "entityId": "item-whiskey-jack-honey",
+      "entityName": "Jack Daniel's Honey",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-honey-1775235036692.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-gordons-1775235226472.jpeg",
+      "source": "items",
+      "entityId": "item-gin-gordons",
+      "entityName": "Gordon's (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-gin-gordons-1775235226472.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-rum-bacardi-1775235406968.jpeg",
+      "source": "items",
+      "entityId": "item-rum-bacardi",
+      "entityName": "Bacardi (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-rum-bacardi-1775235406968.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-kah-3-1774179096397.png",
+      "source": "items",
+      "entityId": "i-kah-3",
+      "entityName": "LATTE",
+      "bucket": "product-images",
+      "path": "products/i-kah-3-1774179096397.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-beefeater-1775231617190.jpeg",
+      "source": "items",
+      "entityId": "item-gin-beefeater",
+      "entityName": "Beefeater (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-gin-beefeater-1775231617190.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jack-1775231725953.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-jack",
+      "entityName": "Jack Daniel's",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-1775231725953.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-citron-1775231782672.webp",
+      "source": "items",
+      "entityId": "item-vodka-absolut-citron",
+      "entityName": "Absolut Citron (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-citron-1775231782672.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-beefeater-pink-1775233308285.jpeg",
+      "source": "items",
+      "entityId": "item-gin-beefeater-pink",
+      "entityName": "Beefeater Pink (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-gin-beefeater-pink-1775233308285.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-raspberry-1775233771897.jpeg",
+      "source": "items",
+      "entityId": "item-vodka-absolut-raspberry",
+      "entityName": "Absolut Raspberry (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-raspberry-1775233771897.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-gin-bombay-1775233798826.jpeg",
+      "source": "items",
+      "entityId": "item-gin-bombay",
+      "entityName": "Bombay Sapphire (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-gin-bombay-1775233798826.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jameson-1775234150800.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-jameson",
+      "entityName": "Jameson",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jameson-1775234150800.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-jim-beam-1775234197317.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-jim-beam",
+      "entityName": "Jim Beam",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jim-beam-1775234197317.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-smirnoff-1775234242480.jpeg",
+      "source": "items",
+      "entityId": "item-vodka-smirnoff",
+      "entityName": "Smirnoff (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-smirnoff-1775234242480.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-1775234354947.jpeg",
+      "source": "items",
+      "entityId": "item-vodka-absolut",
+      "entityName": "Absolut (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-1775234354947.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-belvedere-1775234412082.jpeg",
+      "source": "items",
+      "entityId": "item-vodka-belvedere",
+      "entityName": "Belvedere (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-belvedere-1775234412082.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-vodka-absolut-vanilia-1775234527718.webp",
+      "source": "items",
+      "entityId": "item-vodka-absolut-vanilia",
+      "entityName": "Absolut Vanilia (5cl)",
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-vanilia-1775234527718.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-whiskey-macallan-12-1775234788198.jpeg",
+      "source": "items",
+      "entityId": "item-whiskey-macallan-12",
+      "entityName": "Macallan 12",
+      "bucket": "product-images",
+      "path": "products/item-whiskey-macallan-12-1775234788198.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776718047850-1776718205901.png",
+      "source": "items",
+      "entityId": "item-1776718047850",
+      "entityName": "SPRITE",
+      "bucket": "product-images",
+      "path": "products/item-1776718047850-1776718205901.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-8-1774171684944.jpg",
+      "source": "items",
+      "entityId": "i-yem-8",
+      "entityName": "Penne Bolonez",
+      "bucket": "product-images",
+      "path": "products/i-yem-8-1774171684944.jpg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-ipa-1775397210775.jpeg",
+      "source": "items",
+      "entityId": "item-beer-frederik-ipa",
+      "entityName": "Frederik India Pale Ale (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-ipa-1775397210775.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-yem-10-1776961861392.jpeg",
+      "source": "items",
+      "entityId": "i-yem-10",
+      "entityName": "ANTEP FISTIĞI",
+      "bucket": "product-images",
+      "path": "products/i-yem-10-1776961861392.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776962109413-1776962109414.jpeg",
+      "source": "items",
+      "entityId": "item-1776962109413",
+      "entityName": "SOSLU MISIR",
+      "bucket": "product-images",
+      "path": "products/item-1776962109413-1776962109414.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-baileys-1775231583559.jpeg",
+      "source": "items",
+      "entityId": "item-liq-baileys",
+      "entityName": "Baileys",
+      "bucket": "product-images",
+      "path": "products/item-liq-baileys-1775231583559.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-bols-peach-1776960645025.png",
+      "source": "items",
+      "entityId": "item-liq-bols-peach",
+      "entityName": "Bols Şeftali Likörü",
+      "bucket": "product-images",
+      "path": "products/item-liq-bols-peach-1776960645025.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-nazen-nane-1775399037142.jpeg",
+      "source": "items",
+      "entityId": "item-liq-nazen-nane",
+      "entityName": "Nazen Nane Likörü",
+      "bucket": "product-images",
+      "path": "products/item-liq-nazen-nane-1775399037142.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-asc-2-1776722351889.jpeg",
+      "source": "items",
+      "entityId": "i-asc-2",
+      "entityName": "BAILEYS COFFEE",
+      "bucket": "product-images",
+      "path": "products/i-asc-2-1776722351889.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-f16-1775399718810.jpeg",
+      "source": "items",
+      "entityId": "item-shot-f16",
+      "entityName": "F-16 (Karamelli)",
+      "bucket": "product-images",
+      "path": "products/item-shot-f16-1775399718810.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-neipa-1775398473124.jpeg",
+      "source": "items",
+      "entityId": "item-beer-frederik-neipa",
+      "entityName": "Frederik NEIPA (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-neipa-1775398473124.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-6-1776715724244.jpeg",
+      "source": "items",
+      "entityId": "i-sic-6",
+      "entityName": "COCACOLA",
+      "bucket": "product-images",
+      "path": "products/i-sic-6-1776715724244.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jack-honey-1775399096430.webp",
+      "source": "items",
+      "entityId": "item-shot-jack-honey",
+      "entityName": "Jack Daniel's Honey",
+      "bucket": "product-images",
+      "path": "products/item-shot-jack-honey-1775399096430.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-asc-3-1774982711995.png",
+      "source": "items",
+      "entityId": "i-asc-3",
+      "entityName": "PICCHIO COFFEE",
+      "bucket": "product-images",
+      "path": "products/i-asc-3-1774982711995.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jagermeister-1775399166211.webp",
+      "source": "items",
+      "entityId": "item-shot-jagermeister",
+      "entityName": "Jägermeister",
+      "bucket": "product-images",
+      "path": "products/item-shot-jagermeister-1775399166211.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-frederik-brown-1775397222909.jpeg",
+      "source": "items",
+      "entityId": "item-beer-frederik-brown",
+      "entityName": "Frederik Brown Ale (35cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-brown-1775397222909.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jack-fire-1775399085056.jpeg",
+      "source": "items",
+      "entityId": "item-shot-jack-fire",
+      "entityName": "Jack Daniel's Fire",
+      "bucket": "product-images",
+      "path": "products/item-shot-jack-fire-1775399085056.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1778099809698-1778099809698.png",
+      "source": "items",
+      "entityId": "item-1778099809698",
+      "entityName": "TUBORG SMOOTH",
+      "bucket": "product-images",
+      "path": "products/item-1778099809698-1778099809698.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270055849-1779270055849.png",
+      "source": "items",
+      "entityId": "item-1779270055849",
+      "entityName": "SALI 1+1 FUEGO",
+      "bucket": "product-images",
+      "path": "products/item-1779270055849-1779270055849.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-espressomartini-1776340395300.jpeg",
+      "source": "items",
+      "entityId": "item-classic-espressomartini",
+      "entityName": "Espresso Martini",
+      "bucket": "product-images",
+      "path": "products/item-classic-espressomartini-1776340395300.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-sunrise-1776340468687.jpeg",
+      "source": "items",
+      "entityId": "item-classic-sunrise",
+      "entityName": "Tequila Sunrise",
+      "bucket": "product-images",
+      "path": "products/item-classic-sunrise-1776340468687.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776717946494-1776717946494.png",
+      "source": "items",
+      "entityId": "item-1776717946494",
+      "entityName": "FUSE TEA ÇEŞİTLERİ",
+      "bucket": "product-images",
+      "path": "products/item-1776717946494-1776717946494.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716051304-1776716051304.webp",
+      "source": "items",
+      "entityId": "item-1776716051304",
+      "entityName": "SCHWEPPES BITTER LEMON",
+      "bucket": "product-images",
+      "path": "products/item-1776716051304-1776716051304.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-tequila-olmeca-1775399429294.jpeg",
+      "source": "items",
+      "entityId": "item-shot-tequila-olmeca",
+      "entityName": "Olmeca Silver Tequila",
+      "bucket": "product-images",
+      "path": "products/item-shot-tequila-olmeca-1775399429294.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-jager-manifest-1775399344547.png",
+      "source": "items",
+      "entityId": "item-shot-jager-manifest",
+      "entityName": "Jägermeister Manifest",
+      "bucket": "product-images",
+      "path": "products/item-shot-jager-manifest-1775399344547.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-shot-sambuka-1775399582595.webp",
+      "source": "items",
+      "entityId": "item-shot-sambuka",
+      "entityName": "Sambuca",
+      "bucket": "product-images",
+      "path": "products/item-shot-sambuka-1775399582595.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776721404423-1779270696130.png",
+      "source": "items",
+      "entityId": "item-1776721404423",
+      "entityName": "YERLİ BİRALAR",
+      "bucket": "product-images",
+      "path": "products/item-1776721404423-1779270696130.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-beer-blanc-1775398567869.jpeg",
+      "source": "items",
+      "entityId": "item-beer-blanc",
+      "entityName": "1664 Blanc (33cl)",
+      "bucket": "product-images",
+      "path": "products/item-beer-blanc-1775398567869.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776716098530-1776716098530.webp",
+      "source": "items",
+      "entityId": "item-1776716098530",
+      "entityName": "SCHWEPPES INDIAN TONIC",
+      "bucket": "product-images",
+      "path": "products/item-1776716098530-1776716098530.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-7-1776715775827.jpeg",
+      "source": "items",
+      "entityId": "i-sic-7",
+      "entityName": "REDBULL Classic",
+      "bucket": "product-images",
+      "path": "products/i-sic-7-1776715775827.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1777472213241-1777472213242.jpeg",
+      "source": "items",
+      "entityId": "item-1777472213241",
+      "entityName": "CARLSBERG ELEPHANT",
+      "bucket": "product-images",
+      "path": "products/item-1777472213241-1777472213242.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776715873128-1776715873129.png",
+      "source": "items",
+      "entityId": "item-1776715873128",
+      "entityName": "REDBULL White",
+      "bucket": "product-images",
+      "path": "products/item-1776715873128-1776715873129.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-kah-6-1776962655344.jpg",
+      "source": "items",
+      "entityId": "i-kah-6",
+      "entityName": "COOL LIME",
+      "bucket": "product-images",
+      "path": "products/i-kah-6-1776962655344.jpg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776967275940-1776967275940.jpeg",
+      "source": "items",
+      "entityId": "item-1776967275940",
+      "entityName": "KAJU",
+      "bucket": "product-images",
+      "path": "products/item-1776967275940-1776967275940.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-liq-malibu-1775399029894.webp",
+      "source": "items",
+      "entityId": "item-liq-malibu",
+      "entityName": "Malibu",
+      "bucket": "product-images",
+      "path": "products/item-liq-malibu-1775399029894.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-bluelagoon-1776340300677.jpeg",
+      "source": "items",
+      "entityId": "item-classic-bluelagoon",
+      "entityName": "Blue Lagoon",
+      "bucket": "product-images",
+      "path": "products/item-classic-bluelagoon-1776340300677.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-classic-whiskeysour-1776340459796.jpeg",
+      "source": "items",
+      "entityId": "item-classic-whiskeysour",
+      "entityName": "Whiskey Sour",
+      "bucket": "product-images",
+      "path": "products/item-classic-whiskeysour-1776340459796.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/i-sic-3-1774171607317.webp",
+      "source": "items",
+      "entityId": "i-sic-3",
+      "entityName": "Türk Kahvesi",
+      "bucket": "product-images",
+      "path": "products/i-sic-3-1774171607317.webp"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1776721520273-1777394620508.png",
+      "source": "items",
+      "entityId": "item-1776721520273",
+      "entityName": "TÜM HAFTA 1+1 GRINCH ( Kuzu Kulağı )",
+      "bucket": "product-images",
+      "path": "products/item-1776721520273-1777394620508.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779269986918-1779269986918.png",
+      "source": "items",
+      "entityId": "item-1779269986918",
+      "entityName": "PAZARTESİ 1+1 TEQUILA SUNRISE",
+      "bucket": "product-images",
+      "path": "products/item-1779269986918-1779269986918.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/product-images/products/item-1779270134112-1779270134112.png",
+      "source": "items",
+      "entityId": "item-1779270134112",
+      "entityName": "ÇARŞAMBA 1+1 WHISKEY SOUR",
+      "bucket": "product-images",
+      "path": "products/item-1779270134112-1779270134112.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779194894931-1779269844651.png",
+      "source": "campaigns",
+      "entityId": "camp-1779194894931",
+      "entityName": "PAZARTESİ 1+1 TEQUILA SUNRISE",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779269844651.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226813447-1779226943489.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226813447",
+      "entityName": "TÜM HAFTA 1+1 GRINCH ( Kuzu Kulağı )",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226813447-1779226943489.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779195679526-1779196285184.png",
+      "source": "campaigns",
+      "entityId": "camp-1779195679526",
+      "entityName": "Salı 1+1 FUEGO",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779195679526-1779196285184.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226761937-1779227154799.jpeg",
+      "source": "campaigns",
+      "entityId": "camp-1779226761937",
+      "entityName": "PERŞEMBE 1+1 THE SECRET",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226761937-1779227154799.jpeg"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226887988-1779226887988.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226887988",
+      "entityName": "HAFTAIÇI YERLİ ŞİŞE BİRALAR",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226887988-1779226887988.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226737432-1779226737432.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226737432",
+      "entityName": "ÇARŞAMBA 1+1 WHISKEY SOUR",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226737432-1779226737432.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227089950.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226781500",
+      "entityName": "CUMA 1+1 TÜM SPRITZ ÇEŞİTLERİ",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227089950.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227103848.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226781500",
+      "entityName": "CUMA 1+1 TÜM SPRITZ ÇEŞİTLERİ",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227103848.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779227104896.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226781500",
+      "entityName": "CUMA 1+1 TÜM SPRITZ ÇEŞİTLERİ",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779227104896.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/campaign-images/campaigns/camp-1779226781500-1779269610730.png",
+      "source": "campaigns",
+      "entityId": "camp-1779226781500",
+      "entityName": "CUMA 1+1 TÜM SPRITZ ÇEŞİTLERİ",
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779226781500-1779269610730.png"
+    },
+    {
+      "url": "https://bvpruuyztvkroovcoebe.supabase.co/storage/v1/object/public/site-assets/hero_logo-1779271053107.png",
+      "source": "site_settings",
+      "entityId": "site-logo",
+      "entityName": "Hero Logo",
+      "bucket": "site-assets",
+      "path": "hero_logo-1779271053107.png"
+    }
+  ]
+}

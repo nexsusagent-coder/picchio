@@ -49,12 +49,15 @@ export function ProductCard({ item }: { item: MenuItem }) {
         {/* Image Section */}
         {item.image && !imgError && (
           <div className="relative w-full aspect-[21/9] sm:aspect-[3/1] bg-black/20 border-b border-white/[0.05] overflow-hidden">
-            <img 
-              src={getImageSrc(item.image)} 
-              alt={formatBrandText(item.name)} 
+            <img
+              src={getImageSrc(item.image)}
+              alt={formatBrandText(item.name)}
+              width={672}
+              height={224}
               className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
               onError={handleImageError}
               loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </div>

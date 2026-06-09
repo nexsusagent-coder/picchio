@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { MenuItem, Category } from "@/lib/types";
-import { Package, Eye, Tag, TrendingUp, Plus, Megaphone, Martini } from "lucide-react";
+import { Package, Eye, Tag, TrendingUp, Plus, Megaphone, Martini, Trash2, Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SkeletonCard } from "@/components/ui/Skeleton";
 
@@ -22,6 +23,10 @@ interface DashboardTabProps {
 export default function DashboardTab({
   items, categories, analyticsSummary, activeCampaigns, loading, onNavigate, onOpenAddProduct,
 }: DashboardTabProps) {
+  const [cleanupState, setCleanupState] = useState<"idle" | "checking" | "confirm" | "deleting" | "done">("idle");
+  const [cleanupResult, setCleanupResult] = useState<{ orphanFiles: number; orphanSize: string } | null>(null);
+  const [cleanupError, setCleanupError] = useState("");
+
   const weeklyViews = analyticsSummary?.dailyStats?.reduce((acc, d) => acc + d.views, 0) || 0;
   const weeklyClicks = analyticsSummary?.dailyStats?.reduce((acc, d) => acc + d.clicks, 0) || 0;
   const activeProducts = items.filter(i => i.isAvailable).length;
@@ -131,6 +136,96 @@ export default function DashboardTab({
                   <p className="text-[10px] text-neutral-500">Yeni bir duyuru banneri ekle</p>
                 </div>
               </button>
+
+              {/* Otomatik Temizlik Butonu */}
+              {cleanupResult ? (
+                <div className={cn(
+                  "p-4 rounded-xl border text-left",
+                  cleanupResult.orphanFiles > 0
+                    ? "bg-orange-500/5 border-orange-500/20"
+                    : "bg-green-500/5 border-green-500/20"
+                )}>
+                  <div className="flex items-center gap-2 mb-2">
+                    {cleanupResult.orphanFiles > 0
+                      ? <AlertTriangle size={16} className="text-orange-400" />
+                      : <CheckCircle2 size={16} className="text-green-400" />
+                    }
+                    <p className="text-xs font-bold text-white uppercase tracking-wider">
+                      {cleanupResult.orphanFiles > 0 ? `${cleanupResult.orphanFiles} yetim dosya` : "Her sey temiz!"}
+                    </p>
+                  </div>
+                  {cleanupResult.orphanFiles > 0 ? (
+                    <>
+                      <p className="text-[10px] text-neutral-400 mb-2">{cleanupResult.orphanSize} temizlenebilir</p>
+                      <button
+                        onClick={async () => {
+                          setCleanupState("deleting");
+                          try {
+                            const res = await fetch("/api/admin/cleanup-images", { method: "POST" });
+                            await res.json();
+                            setCleanupResult({ orphanFiles: 0, orphanSize: "0 B" });
+                            setCleanupError("");
+                          } catch {
+                            setCleanupError("Temizlik basarisiz oldu.");
+                          }
+                          setCleanupState("done");
+                        }}
+                        disabled={cleanupState === "deleting"}
+                        className="w-full flex items-center justify-center gap-1.5 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-red-400 text-xs font-bold py-2 rounded-lg transition-colors"
+                      >
+                        {cleanupState === "deleting" ? <Loader2 size={12} className="animate-spin" /> : <Trash2 size={12} />}
+                        {cleanupState === "deleting" ? "Temizleniyor..." : "Simdi Temizle"}
+                      </button>
+                    </>
+                  ) : (
+                    <p className="text-[10px] text-green-400/70">Storage tamamen optimize. Iyi is!</p>
+                  )}
+                  {cleanupError && <p className="text-[10px] text-red-400 mt-2">{cleanupError}</p>}
+                  <button onClick={() => { setCleanupState("idle"); setCleanupResult(null); }}
+                    className="text-[10px] text-neutral-500 hover:text-white mt-2 transition-colors">
+                    Tekrar kontrol et
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={async () => {
+                    setCleanupState("checking");
+                    setCleanupError("");
+                    try {
+                      const res = await fetch("/api/admin/cleanup-images?mode=dry-run");
+                      const data = await res.json();
+                      if (data.error) {
+                        setCleanupError(data.error);
+                        setCleanupState("idle");
+                      } else {
+                        setCleanupResult({
+                          orphanFiles: data.summary.orphanFiles,
+                          orphanSize: data.summary.orphanSize,
+                        });
+                        setCleanupState("done");
+                      }
+                    } catch {
+                      setCleanupError("Baglanti hatasi. Internet baglantinizi kontrol edin.");
+                      setCleanupState("idle");
+                    }
+                  }}
+                  disabled={cleanupState === "checking"}
+                  className="w-full flex items-center gap-3 p-4 bg-neutral-700/30 border border-neutral-600/30 rounded-xl hover:bg-neutral-700/50 transition-colors text-left group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-neutral-600/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {cleanupState === "checking"
+                      ? <Loader2 size={20} className="text-neutral-400 animate-spin" />
+                      : <Trash2 size={20} className="text-neutral-400" />
+                    }
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      {cleanupState === "checking" ? "Taranıyor..." : "Depolama Temizligi"}
+                    </p>
+                    <p className="text-[10px] text-neutral-500">Kullanilmayan gorselleri temizle</p>
+                  </div>
+                </button>
+              )}
             </div>
           </div>
         </div>

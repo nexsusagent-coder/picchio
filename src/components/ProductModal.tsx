@@ -69,11 +69,14 @@ export function ProductModal({ item, onClose }: { item: MenuItem; onClose: () =>
         <div className="relative w-full h-[60vh] sm:h-[50vh] bg-black/20 shrink-0 border-b border-white/[0.05] overflow-hidden">
           {item.image && !imgError ? (
             <div className="absolute inset-0 flex items-center justify-center p-6">
-              <img 
-                src={getImageSrc(item.image)} 
-                alt={formatBrandText(item.name)} 
+              <img
+                src={getImageSrc(item.image)}
+                alt={formatBrandText(item.name)}
+                width={800}
+                height={600}
                 className="absolute inset-0 w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]"
                 onError={handleImageError}
+                decoding="async"
               />
             </div>
           ) : (

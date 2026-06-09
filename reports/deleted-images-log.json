@@ -1,0 +1,835 @@
+{
+  "runAt": "2026-06-09T16:08:45.819Z",
+  "mode": "delete",
+  "summary": {
+    "candidatesFound": 117,
+    "candidatesSizeBytes": 194333117,
+    "candidatesSizeHuman": "185.3 MB",
+    "actuallyDeleted": 117,
+    "deletedSizeBytes": 194333117,
+    "deletedSizeHuman": "185.3 MB",
+    "skippedTooNew": 0,
+    "skippedError": 0
+  },
+  "files": [
+    {
+      "bucket": "product-images",
+      "path": "products/i-clas-5-1774171760479.jpg",
+      "size": 61355,
+      "createdAt": "2026-03-22T09:29:20.862Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-10-1774170225613.jpg",
+      "size": 222456,
+      "createdAt": "2026-03-22T09:03:45.735Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-10.jpg",
+      "size": 368004,
+      "createdAt": "2026-03-22T09:00:09.711Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-10.png",
+      "size": 26806,
+      "createdAt": "2026-03-22T08:55:58.080Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-11.png",
+      "size": 1321725,
+      "createdAt": "2026-03-22T08:59:08.557Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-13-1776961964005.jpeg",
+      "size": 53951,
+      "createdAt": "2026-04-23T16:32:44.557Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/i-yem-3.jpg",
+      "size": 125269,
+      "createdAt": "2026-03-22T08:57:17.821Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1774170275755-1774170275755.jpg",
+      "size": 125269,
+      "createdAt": "2026-03-22T09:04:35.947Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776717887137-1776717887137.png",
+      "size": 3301990,
+      "createdAt": "2026-04-20T20:44:49.688Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776718047850-1776718047850.png",
+      "size": 883662,
+      "createdAt": "2026-04-20T20:47:28.731Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776721404423-1776721404424.png",
+      "size": 2010145,
+      "createdAt": "2026-04-20T21:43:38.192Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1776721520273-1776721520274.jpeg",
+      "size": 2359564,
+      "createdAt": "2026-04-20T21:45:33.791Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270032546-1779270032546.png",
+      "size": 2270022,
+      "createdAt": "2026-05-20T09:40:34.871Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-1779270230043-1779270230043.png",
+      "size": 2196800,
+      "createdAt": "2026-05-20T09:43:51.196Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-aperol-1775235729439.jpeg",
+      "size": 865177,
+      "createdAt": "2026-04-03T17:02:10.885Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-campari-1775235735701.jpeg",
+      "size": 86513,
+      "createdAt": "2026-04-03T17:02:16.244Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-hugo-1775235746053.jpeg",
+      "size": 77133,
+      "createdAt": "2026-04-03T17:02:26.522Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1775235831478.jpeg",
+      "size": 143970,
+      "createdAt": "2026-04-03T17:03:52.563Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777836601522.png",
+      "size": 2034739,
+      "createdAt": "2026-05-03T19:30:10.319Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777885870993.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T09:11:13.543Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777907200304.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T15:06:42.626Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777907223372.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T15:07:04.365Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777907238018.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T15:07:18.775Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777907265249.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T15:07:46.253Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777916491319.jpg",
+      "size": 687450,
+      "createdAt": "2026-05-04T17:41:32.368Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777916568768.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T17:42:58.688Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777916592507.png",
+      "size": 2034739,
+      "createdAt": "2026-05-04T17:43:23.104Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777916879750.jpeg",
+      "size": 402986,
+      "createdAt": "2026-05-04T17:48:01.669Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917233417.jpeg",
+      "size": 402986,
+      "createdAt": "2026-05-04T17:53:55.172Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917246301.jpeg",
+      "size": 402986,
+      "createdAt": "2026-05-04T17:54:07.805Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917256205.jpeg",
+      "size": 402986,
+      "createdAt": "2026-05-04T17:54:17.892Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-aper-limoncello-1777917262667.jpg",
+      "size": 183806,
+      "createdAt": "2026-05-04T17:54:23.147Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-blanc-1775395995478.jpeg",
+      "size": 36956,
+      "createdAt": "2026-04-05T13:33:16.258Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-brown-1775396063140.jpeg",
+      "size": 320497,
+      "createdAt": "2026-04-05T13:34:23.908Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-ipa-1775396071329.jpeg",
+      "size": 351822,
+      "createdAt": "2026-04-05T13:34:32.034Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-frederik-yakima-1775396107351.webp",
+      "size": 19600,
+      "createdAt": "2026-04-05T13:35:07.639Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-beer-tuborg-gold-1775396136049.jpeg",
+      "size": 148632,
+      "createdAt": "2026-04-05T13:35:36.711Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-bluelagoon-1776293245679.jpeg",
+      "size": 1801793,
+      "createdAt": "2026-04-15T22:47:29.227Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-boulevardier-1776293413802.jpeg",
+      "size": 1366775,
+      "createdAt": "2026-04-15T22:50:28.810Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-cosmo-1776293263116.jpeg",
+      "size": 1347090,
+      "createdAt": "2026-04-15T22:47:45.722Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-drymartini-1776293277153.jpeg",
+      "size": 1360269,
+      "createdAt": "2026-04-15T22:47:58.398Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-espressomartini-1776293286678.jpeg",
+      "size": 1293916,
+      "createdAt": "2026-04-15T22:48:07.767Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-ginfizz-1776293401851.jpeg",
+      "size": 1440884,
+      "createdAt": "2026-04-15T22:50:02.856Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-longisland-1776293298482.jpeg",
+      "size": 1835292,
+      "createdAt": "2026-04-15T22:48:19.576Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-margarita-1776293309267.jpeg",
+      "size": 1263292,
+      "createdAt": "2026-04-15T22:48:31.885Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-mojito-1776293323617.jpeg",
+      "size": 1876624,
+      "createdAt": "2026-04-15T22:48:44.693Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-negroni-1776293370575.jpeg",
+      "size": 1554447,
+      "createdAt": "2026-04-15T22:49:31.916Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-oldfashioned-1776293390303.jpeg",
+      "size": 1389111,
+      "createdAt": "2026-04-15T22:49:51.515Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-sexonthebeach-1776293345915.jpeg",
+      "size": 1346528,
+      "createdAt": "2026-04-15T22:49:06.548Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-sunrise-1776293338286.jpeg",
+      "size": 965123,
+      "createdAt": "2026-04-15T22:48:59.008Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-classic-whiskeysour-1776293354704.jpeg",
+      "size": 1481578,
+      "createdAt": "2026-04-15T22:49:15.689Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-liq-bols-peach-1775233435407.png",
+      "size": 82846,
+      "createdAt": "2026-04-03T16:23:56.248Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1774981377195.png",
+      "size": 2983397,
+      "createdAt": "2026-03-31T18:23:02.073Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1775236064915.jpeg",
+      "size": 547308,
+      "createdAt": "2026-04-03T17:07:46.842Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1776786958968.jpeg",
+      "size": 1640471,
+      "createdAt": "2026-04-21T15:56:06.567Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1776788427972.jpeg",
+      "size": 903387,
+      "createdAt": "2026-04-21T16:20:29.043Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-casper-1776788467123.jpeg",
+      "size": 900594,
+      "createdAt": "2026-04-21T16:21:08.092Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1774982088488.png",
+      "size": 2869759,
+      "createdAt": "2026-03-31T18:34:55.245Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1775151376149.png",
+      "size": 2396315,
+      "createdAt": "2026-04-02T17:36:21.689Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1776549382135.jpeg",
+      "size": 468713,
+      "createdAt": "2026-04-18T21:56:24.912Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1776786981624.jpeg",
+      "size": 1957317,
+      "createdAt": "2026-04-21T15:56:30.090Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823136703.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T15:45:38.583Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823193748.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T15:46:37.715Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823287118.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T15:48:10.355Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823320550.jpeg",
+      "size": 1957317,
+      "createdAt": "2026-05-03T15:48:43.707Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823359463.jpeg",
+      "size": 1957317,
+      "createdAt": "2026-05-03T15:49:21.872Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823402720.jpeg",
+      "size": 1957317,
+      "createdAt": "2026-05-03T15:50:05.414Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823666351.jpeg",
+      "size": 1957317,
+      "createdAt": "2026-05-03T15:54:28.216Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823813396.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T15:57:19.561Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823867008.png",
+      "size": 2270022,
+      "createdAt": "2026-05-03T15:57:52.655Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-fuego-1777823997585.png",
+      "size": 2770555,
+      "createdAt": "2026-05-03T16:00:05.832Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-grinch-1774981998087.png",
+      "size": 2404696,
+      "createdAt": "2026-03-31T18:33:23.464Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-grinch-1776540140220.jpeg",
+      "size": 2359564,
+      "createdAt": "2026-04-18T19:22:21.544Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-grinch-1776787089249.jpeg",
+      "size": 2121877,
+      "createdAt": "2026-04-21T15:58:18.286Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-hellios-1774982140358.png",
+      "size": 2557705,
+      "createdAt": "2026-03-31T18:35:45.301Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-hellios-1776549395949.jpeg",
+      "size": 412228,
+      "createdAt": "2026-04-18T21:56:36.939Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-hellios-1776787038790.jpeg",
+      "size": 1704683,
+      "createdAt": "2026-04-21T15:57:26.070Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-star-1774982275793.png",
+      "size": 2700869,
+      "createdAt": "2026-03-31T18:37:59.104Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-star-1776549417050.png",
+      "size": 12058257,
+      "createdAt": "2026-04-18T21:57:02.135Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-star-1776787067173.jpeg",
+      "size": 1963913,
+      "createdAt": "2026-04-21T15:57:55.669Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-surprise-1774982328714.png",
+      "size": 2943031,
+      "createdAt": "2026-03-31T18:38:55.231Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-spec-surprise-1776788110869.png",
+      "size": 5866649,
+      "createdAt": "2026-04-21T16:15:36.938Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-vodka-absolut-1774551580966.webp",
+      "size": 15894,
+      "createdAt": "2026-03-26T18:59:41.623Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "product-images",
+      "path": "products/item-whiskey-jack-honey-1775234825031.webp",
+      "size": 55762,
+      "createdAt": "2026-04-03T16:47:05.948Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1774671481260-1774671481260.jpg",
+      "size": 57753,
+      "createdAt": "2026-03-28T04:18:02.862Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1774671481260-1774672845060.png",
+      "size": 2319164,
+      "createdAt": "2026-03-28T04:41:01.019Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1774708293537-1774708293537.jpg",
+      "size": 118815,
+      "createdAt": "2026-03-28T14:31:34.017Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1774708293537-1774708294244.jpg",
+      "size": 119052,
+      "createdAt": "2026-03-28T14:31:34.468Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1774836180357-1774836180358.jpg",
+      "size": 3565275,
+      "createdAt": "2026-03-30T02:03:04.919Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1776609705010-1776609705010.png",
+      "size": 2606883,
+      "createdAt": "2026-04-19T14:41:46.654Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1776609705010-1776609850653.png",
+      "size": 9639808,
+      "createdAt": "2026-04-19T14:44:14.889Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1776609705010-1776721011086.png",
+      "size": 2010145,
+      "createdAt": "2026-04-20T21:36:52.409Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1776609705010-1777394723271.png",
+      "size": 3797047,
+      "createdAt": "2026-04-28T16:45:24.680Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1777471775809-1777471775810.jpeg",
+      "size": 32273,
+      "createdAt": "2026-04-29T14:09:36.474Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1778102248274-1778102248275.png",
+      "size": 1088088,
+      "createdAt": "2026-05-06T21:17:30.121Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779194894932.png",
+      "size": 2139716,
+      "createdAt": "2026-05-19T12:48:16.985Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779194944594.png",
+      "size": 2270022,
+      "createdAt": "2026-05-19T12:49:05.818Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779194992523.png",
+      "size": 2196800,
+      "createdAt": "2026-05-19T12:49:54.209Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195046614.jpeg",
+      "size": 627330,
+      "createdAt": "2026-05-19T12:50:47.384Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195135658.png",
+      "size": 2139716,
+      "createdAt": "2026-05-19T12:52:17.902Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195238605.png",
+      "size": 2270022,
+      "createdAt": "2026-05-19T12:54:00.602Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195748212.png",
+      "size": 2196800,
+      "createdAt": "2026-05-19T13:02:31.478Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195792307.jpeg",
+      "size": 627330,
+      "createdAt": "2026-05-19T13:03:13.055Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195901073.png",
+      "size": 2095054,
+      "createdAt": "2026-05-19T13:05:02.984Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195904444.png",
+      "size": 2034739,
+      "createdAt": "2026-05-19T13:05:05.970Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779195906075.png",
+      "size": 2195832,
+      "createdAt": "2026-05-19T13:05:07.554Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779194894931-1779196228273.png",
+      "size": 2216126,
+      "createdAt": "2026-05-19T13:10:30.801Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-1779195679526-1779195679526.png",
+      "size": 4567177,
+      "createdAt": "2026-05-19T13:01:22.424Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-shot-1plus1-1774708695132.gif",
+      "size": 20436,
+      "createdAt": "2026-03-28T14:38:15.560Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-shot-1plus1-1774774630605.jpg",
+      "size": 61581,
+      "createdAt": "2026-03-29T08:57:11.471Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-shot-1plus1-1776719655083.jpeg",
+      "size": 2359564,
+      "createdAt": "2026-04-20T21:14:16.607Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "campaign-images",
+      "path": "campaigns/camp-shot-1plus1-1777394678554.png",
+      "size": 2216126,
+      "createdAt": "2026-04-28T16:44:39.715Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1775109837708.png",
+      "size": 1390181,
+      "createdAt": "2026-04-02T06:04:00.607Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1775109964094.png",
+      "size": 3007437,
+      "createdAt": "2026-04-02T06:06:09.485Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1775112087676.png",
+      "size": 1390181,
+      "createdAt": "2026-04-02T06:41:31.345Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1775112658947.png",
+      "size": 306494,
+      "createdAt": "2026-04-02T06:51:00.903Z",
+      "status": "deleted"
+    },
+    {
+      "bucket": "site-assets",
+      "path": "hero_logo-1779270941928.png",
+      "size": 323830,
+      "createdAt": "2026-05-20T09:55:42.849Z",
+      "status": "deleted"
+    }
+  ]
+}

@@ -97,6 +97,10 @@ function CampaignImageCycler({ images, alt, sizes }: { images: string[]; alt: st
         <img
           src={images[index]}
           alt={alt}
+          width={760}
+          height={320}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </motion.div>

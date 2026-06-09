@@ -290,14 +290,17 @@ export default function MenuPage() {
                  }}
                  className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 flex items-center justify-center p-4"
                >
-                  <img 
-                     src={siteSettings?.hero_logo_url || "/logo.png"} 
-                     alt="Picchio Logo" 
-                     style={{ 
+                  <img
+                     src={siteSettings?.hero_logo_url || "/logo.png"}
+                     alt="Picchio Logo"
+                     width={384}
+                     height={384}
+                     fetchPriority="high"
+                     style={{
                        filter: "drop-shadow(0 0 15px rgba(212, 175, 55, 0.5))",
                        mixBlendMode: "screen"
                      }}
-                     className="absolute inset-0 w-full h-full object-contain" 
+                     className="absolute inset-0 w-full h-full object-contain"
                    />
                </motion.div>
 
@@ -371,11 +374,14 @@ export default function MenuPage() {
                   <div className="rounded-[2rem] overflow-hidden group hover:shadow-amber-900/40 transition-shadow glass-card" style={{ animation: 'gold-glow-pulse-soft 3s infinite ease-in-out' }}>
                     {item.image && (
                       <div className="aspect-[4/3] relative overflow-hidden">
-                        <img 
-                           src={item.image} 
-                           alt={formatBrandText(item.name)} 
+                        <img
+                           src={item.image}
+                           alt={formatBrandText(item.name)}
+                           width={400}
+                           height={300}
                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                            loading="lazy"
+                           decoding="async"
                          />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0202] via-transparent to-transparent opacity-80" />
                         <div className="absolute top-2.5 left-2.5">
