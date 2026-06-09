@@ -1,0 +1,169 @@
+[     534ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/admin/login:0
+[     589ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[     622ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[     713ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:3000/admin/login:0
+[     823ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    1629ms] [LOG] [Fast Refresh] done in 910ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   70757ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://bvpruuyztvkroovcoebe.supabase.co/auth/v1/token?grant_type=password:0
+[   82449ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   82579ms] [LOG] [Fast Refresh] done in 240ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   83553ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   90449ms] [ERROR] ./node_modules/cloudinary/lib/uploader.js:1:12
+Module not found: Can't resolve 'fs'
+> 1 | const fs = require('fs');
+    |            ^^^^^^^^^^^^^
+  2 | const {
+  3 |   extname,
+  4 |   basename
+
+Import traces:
+  Server Component:
+    ./node_modules/cloudinary/lib/uploader.js
+    ./node_modules/cloudinary/lib/cloudinary.js
+    ./node_modules/cloudinary/cloudinary.js
+    ./src/lib/cloudinary.ts
+    ./src/lib/api.ts
+    ./src/app/layout.tsx
+
+  Client Component Browser:
+    ./node_modules/cloudinary/lib/uploader.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component Browser]
+    ./node_modules/cloudinary/cloudinary.js [Client Component Browser]
+    ./src/lib/cloudinary.ts [Client Component Browser]
+    ./src/lib/api.ts [Client Component Browser]
+    ./src/app/admin/tabs/ActivityLogTab.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/cloudinary/lib/uploader.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component SSR]
+    ./node_modules/cloudinary/cloudinary.js [Client Component SSR]
+    ./src/lib/cloudinary.ts [Client Component SSR]
+    ./src/lib/api.ts [Client Component SSR]
+    ./src/app/admin/tabs/ActivityLogTab.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[   90450ms] [ERROR] ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js:1:12
+Module not found: Can't resolve 'fs'
+> 1 | const fs = require('fs');
+    |            ^^^^^^^^^^^^^
+  2 | const path = require('path');
+  3 | const sdkCode = 'M'; // Constant per SDK
+  4 |
+
+Import traces:
+  Server Component:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js
+    ./node_modules/cloudinary/lib/utils/index.js
+    ./node_modules/cloudinary/lib/cloudinary.js
+    ./node_modules/cloudinary/cloudinary.js
+    ./src/lib/cloudinary.ts
+    ./src/lib/api.ts
+    ./src/app/layout.tsx
+
+  Client Component Browser:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/utils/index.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component Browser]
+    ./node_modules/cloudinary/cloudinary.js [Client Component Browser]
+    ./src/lib/cloudinary.ts [Client Component Browser]
+    ./src/lib/api.ts [Client Component Browser]
+    ./src/app/admin/hooks/useSettingsActions.ts [Client Component Browser]
+    ./src/app/admin/page.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/utils/index.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component SSR]
+    ./node_modules/cloudinary/cloudinary.js [Client Component SSR]
+    ./src/lib/cloudinary.ts [Client Component SSR]
+    ./src/lib/api.ts [Client Component SSR]
+    ./src/app/admin/hooks/useSettingsActions.ts [Client Component SSR]
+    ./src/app/admin/page.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[   90570ms] [ERROR] ./node_modules/cloudinary/lib/uploader.js:1:12
+Module not found: Can't resolve 'fs'
+> 1 | const fs = require('fs');
+    |            ^^^^^^^^^^^^^
+  2 | const {
+  3 |   extname,
+  4 |   basename
+
+Import traces:
+  Server Component:
+    ./node_modules/cloudinary/lib/uploader.js
+    ./node_modules/cloudinary/lib/cloudinary.js
+    ./node_modules/cloudinary/cloudinary.js
+    ./src/lib/cloudinary.ts
+    ./src/lib/api.ts
+    ./src/app/layout.tsx
+
+  Client Component Browser:
+    ./node_modules/cloudinary/lib/uploader.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component Browser]
+    ./node_modules/cloudinary/cloudinary.js [Client Component Browser]
+    ./src/lib/cloudinary.ts [Client Component Browser]
+    ./src/lib/api.ts [Client Component Browser]
+    ./src/app/admin/tabs/ActivityLogTab.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/cloudinary/lib/uploader.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component SSR]
+    ./node_modules/cloudinary/cloudinary.js [Client Component SSR]
+    ./src/lib/cloudinary.ts [Client Component SSR]
+    ./src/lib/api.ts [Client Component SSR]
+    ./src/app/admin/tabs/ActivityLogTab.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[   90570ms] [ERROR] ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js:1:12
+Module not found: Can't resolve 'fs'
+> 1 | const fs = require('fs');
+    |            ^^^^^^^^^^^^^
+  2 | const path = require('path');
+  3 | const sdkCode = 'M'; // Constant per SDK
+  4 |
+
+Import traces:
+  Server Component:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js
+    ./node_modules/cloudinary/lib/utils/index.js
+    ./node_modules/cloudinary/lib/cloudinary.js
+    ./node_modules/cloudinary/cloudinary.js
+    ./src/lib/cloudinary.ts
+    ./src/lib/api.ts
+    ./src/app/layout.tsx
+
+  Client Component Browser:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/utils/index.js [Client Component Browser]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component Browser]
+    ./node_modules/cloudinary/cloudinary.js [Client Component Browser]
+    ./src/lib/cloudinary.ts [Client Component Browser]
+    ./src/lib/api.ts [Client Component Browser]
+    ./src/app/admin/hooks/useSettingsActions.ts [Client Component Browser]
+    ./src/app/admin/page.tsx [Client Component Browser]
+    ./src/app/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/cloudinary/lib/utils/analytics/getSDKVersions.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/utils/index.js [Client Component SSR]
+    ./node_modules/cloudinary/lib/cloudinary.js [Client Component SSR]
+    ./node_modules/cloudinary/cloudinary.js [Client Component SSR]
+    ./src/lib/cloudinary.ts [Client Component SSR]
+    ./src/lib/api.ts [Client Component SSR]
+    ./src/app/admin/hooks/useSettingsActions.ts [Client Component SSR]
+    ./src/app/admin/page.tsx [Client Component SSR]
+    ./src/app/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[   90682ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431

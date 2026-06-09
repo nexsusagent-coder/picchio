@@ -1,0 +1,3 @@
+[    1800ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://picchiococktail.com/admin/login:0
+[   12434ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://picchiococktail.com/admin/login:0
+[   27086ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://picchiococktail.com/admin:0

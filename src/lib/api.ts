@@ -2,7 +2,37 @@ import { supabase } from "./supabase";
 import { MenuItem, Category, AnnouncementBanner, Campaign } from "./types";
 import { initialData } from "../data/db";
 import { query, isNeonAvailable } from "./neon";
-import { uploadToCloudinary, isCloudinaryAvailable } from "./cloudinary";
+
+// Cloudinary is server-only (needs Node.js fs module).
+// We guard with typeof window so webpack can tree-shake it on client builds.
+let _cloudinaryModule: {
+  uploadToCloudinary: (f: File, folder: "products" | "campaigns" | "site-assets", id: string) => Promise<string>;
+  isCloudinaryAvailable: () => boolean;
+} | null = null;
+
+async function loadCloudinary() {
+  // Never attempt to load cloudinary in browser — it requires Node.js fs
+  if (typeof window !== "undefined") return null;
+  if (_cloudinaryModule) return _cloudinaryModule;
+  try {
+    const mod = await import("./cloudinary");
+    _cloudinaryModule = mod;
+    return mod;
+  } catch {
+    return null;
+  }
+}
+
+async function cloudinaryUpload(file: File, folder: string, id: string) {
+  const cloudinary = await loadCloudinary();
+  if (!cloudinary) throw new Error("Cloudinary yuklenemedi");
+  return cloudinary.uploadToCloudinary(file, folder as "products" | "campaigns" | "site-assets", id);
+}
+
+async function isCloudinaryAvail() {
+  const cloudinary = await loadCloudinary();
+  return cloudinary ? cloudinary.isCloudinaryAvailable() : false;
+}
 
 // Helper: Try Neon first, fall back to existing function
 async function tryNeonFirst<T>(neonFn: () => Promise<T>, fallbackFn: () => Promise<T>): Promise<T> {
@@ -308,9 +338,9 @@ export function cacheBustUrl(url: string): string {
  */
 export async function uploadProductImage(file: File, itemId: string): Promise<string> {
   // Try Cloudinary first
-  if (isCloudinaryAvailable()) {
+  if (await isCloudinaryAvail()) {
     try {
-      return await uploadToCloudinary(file, "products", itemId);
+      return await cloudinaryUpload(file, "products", itemId);
     } catch (e) { console.warn("Cloudinary uploadProductImage failed:", e); }
   }
   // Supabase Storage — fixed path, overwrite (upsert) mode
@@ -331,10 +361,10 @@ export async function uploadProductImage(file: File, itemId: string): Promise<st
  * Old campaign images are cleaned up by the audit/cleanup scripts.
  */
 export async function uploadCampaignImage(file: File, campaignId: string): Promise<string> {
-  if (isCloudinaryAvailable()) {
+  if (await isCloudinaryAvail()) {
     try {
       const timestamp = new Date().getTime();
-      return await uploadToCloudinary(file, "campaigns", `${campaignId}-${timestamp}`);
+      return await cloudinaryUpload(file, "campaigns", `${campaignId}-${timestamp}`);
     } catch (e) { console.warn("Cloudinary uploadCampaignImage failed:", e); }
   }
   let ext = file.name.split(".").pop()?.toLowerCase();
@@ -354,9 +384,9 @@ export async function uploadCampaignImage(file: File, campaignId: string): Promi
  * Path: hero_logo.{ext} — fixed path, overwrite mode.
  */
 export async function uploadSiteAsset(file: File, type: "hero_logo"): Promise<string> {
-  if (isCloudinaryAvailable()) {
+  if (await isCloudinaryAvail()) {
     try {
-      return await uploadToCloudinary(file, "site-assets", type);
+      return await cloudinaryUpload(file, "site-assets", type);
     } catch (e) { console.warn("Cloudinary uploadSiteAsset failed:", e); }
   }
   let ext = file.name.split(".").pop()?.toLowerCase();
