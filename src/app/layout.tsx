@@ -63,7 +63,27 @@ export default async function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
         <style dangerouslySetInnerHTML={{ __html: dynamicStyles }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for (let registration of registrations) {
+                    registration.unregister().then(function(success) {
+                      if (success) {
+                        console.log('Old Service Worker unregistered successfully.');
+                      }
+                    });
+                  }
+                });
+              }
+            `
+          }}
+        />
       </head>
       <body className="flex flex-col min-h-[100dvh] red-inferno-bg text-white w-full overflow-x-hidden text-sm md:text-base font-sans antialiased" suppressHydrationWarning>
         <div className="noise-texture" />

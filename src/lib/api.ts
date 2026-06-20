@@ -34,12 +34,79 @@ async function isCloudinaryAvail() {
   return cloudinary ? cloudinary.isCloudinaryAvailable() : false;
 }
 
-// Helper: Try Neon first, fall back to existing function
-async function tryNeonFirst<T>(neonFn: () => Promise<T>, fallbackFn: () => Promise<T>): Promise<T> {
+// ---- Supabase Health Check (cached) ----
+// When Supabase is restricted/unavailable, every query takes 2-7s to time out.
+// We cache the availability result so subsequent calls skip directly to local fallback data.
+let _supabaseAvailable: boolean | null = null;
+let _supabaseCheckPromise: Promise<boolean> | null = null;
+
+async function checkSupabaseAvailability(): Promise<boolean> {
+  // Return cached result if available
+  if (_supabaseAvailable !== null) return _supabaseAvailable;
+
+  // Avoid concurrent checks
+  if (_supabaseCheckPromise) return _supabaseCheckPromise;
+
+  _supabaseCheckPromise = (async () => {
+    try {
+      // Use Promise.race for reliable timeout (AbortController may not work with all Supabase transports)
+      const result = await Promise.race([
+        supabase.from("categories").select("id").limit(1),
+        new Promise<{ error: { message?: string } }>((_, reject) =>
+          setTimeout(() => reject(new Error('HEALTH_CHECK_TIMEOUT')), 2000)
+        ),
+      ]);
+
+      const error = (result as { error?: { message?: string } }).error;
+      if (error) {
+        const msg = error.message || '';
+        if (msg.includes('restricted') || msg.includes('quota') || msg.includes('egress') || msg.includes('spend caps')) {
+          console.warn('Supabase projesi kisitlanmis. Yerel veriler kullanilacak.');
+          _supabaseAvailable = false;
+        } else {
+          _supabaseAvailable = true; // Other errors might be transient
+        }
+      } else {
+        _supabaseAvailable = true;
+      }
+    } catch {
+      _supabaseAvailable = false;
+    }
+    return _supabaseAvailable;
+  })();
+
+  return _supabaseCheckPromise;
+}
+
+/** Skip Supabase calls if it's known to be unavailable */
+async function isSupabaseAvailable(): Promise<boolean> {
+  return checkSupabaseAvailability();
+}
+
+/** Reset the cache — call after Supabase is restored */
+export function resetSupabaseAvailabilityCache(): void {
+  _supabaseAvailable = null;
+  _supabaseCheckPromise = null;
+}
+
+// Helper: Try Neon first, then Supabase (if available), then local fallback
+async function tryNeonFirst<T>(
+  neonFn: () => Promise<T>,
+  supabaseFn: () => Promise<T>,
+  localFallback: () => T
+): Promise<T> {
+  // Try Neon direct connection first (fast when available)
   if (isNeonAvailable()) {
-    try { return await neonFn(); } catch (e) { console.warn("Neon failed, using fallback:", e); }
+    try { return await neonFn(); } catch (e) { console.warn("Neon failed:", e); }
   }
-  return fallbackFn();
+
+  // Skip Supabase entirely if we know it's restricted — saves 2-7s per call
+  if (await isSupabaseAvailable()) {
+    try { return await supabaseFn(); } catch (e) { console.warn("Supabase failed:", e); }
+  }
+
+  // Local fallback data — always works
+  return localFallback();
 }
 
 // ---- CATEGORIES ----
@@ -50,19 +117,15 @@ export async function getCategories(): Promise<Category[]> {
       return rows.map((row: Record<string, unknown>) => ({ id: row.id as string, name: row.name as string, order: row.order as number, isActive: row.is_active as boolean }));
     },
     async () => {
-      try {
-        const { data, error } = await supabase
-          .from("categories")
-          .select("*")
-          .eq("is_active", true)
-          .order("order");
-        if (error) throw error;
-        return (data || []).map(row => ({ id: row.id, name: row.name, order: row.order, isActive: row.is_active }));
-      } catch (err) {
-        console.warn("getCategories failed, using local fallback data:", err);
-        return initialData.categories.filter(c => c.isActive).sort((a, b) => a.order - b.order);
-      }
-    }
+      const { data, error } = await supabase
+        .from("categories")
+        .select("*")
+        .eq("is_active", true)
+        .order("order");
+      if (error) throw error;
+      return (data || []).map(row => ({ id: row.id, name: row.name, order: row.order, isActive: row.is_active }));
+    },
+    () => initialData.categories.filter(c => c.isActive).sort((a, b) => a.order - b.order)
   );
 }
 
@@ -117,19 +180,15 @@ export async function getItems(): Promise<MenuItem[]> {
       return rows.map((row: Record<string, unknown>) => mapItem(row));
     },
     async () => {
-      try {
-        const { data: items, error } = await supabase
-          .from("items")
-          .select("*, item_variants(label, price)")
-          .order("sort_order", { ascending: true })
-          .order("name");
-        if (error) throw error;
-        return (items || []).map(mapItem);
-      } catch (err) {
-        console.warn("getItems failed, using local fallback data:", err);
-        return initialData.items;
-      }
-    }
+      const { data: items, error } = await supabase
+        .from("items")
+        .select("*, item_variants(label, price)")
+        .order("sort_order", { ascending: true })
+        .order("name");
+      if (error) throw error;
+      return (items || []).map(mapItem);
+    },
+    () => initialData.items
   );
 }
 
@@ -144,19 +203,15 @@ export async function getRecommended(): Promise<MenuItem[]> {
       return rows.map((row: Record<string, unknown>) => mapItem(row));
     },
     async () => {
-      try {
-        const { data, error } = await supabase
-          .from("items")
-          .select("*, item_variants(label, price)")
-          .eq("is_recommended", true)
-          .eq("is_available", true);
-        if (error) throw error;
-        return (data || []).map(mapItem);
-      } catch (err) {
-        console.warn("getRecommended failed, using local fallback data:", err);
-        return initialData.items.filter(i => i.isRecommended && i.isAvailable);
-      }
-    }
+      const { data, error } = await supabase
+        .from("items")
+        .select("*, item_variants(label, price)")
+        .eq("is_recommended", true)
+        .eq("is_available", true);
+      if (error) throw error;
+      return (data || []).map(mapItem);
+    },
+    () => initialData.items.filter(i => i.isRecommended && i.isAvailable)
   );
 }
 
@@ -268,18 +323,14 @@ export async function getAnnouncements(): Promise<AnnouncementBanner[]> {
       return rows.map((row: Record<string, unknown>) => ({ id: row.id as string, text: row.text as string, isActive: row.is_active as boolean, type: row.type as "info" | "warning" | "promo" }));
     },
     async () => {
-      try {
-        const { data, error } = await supabase
-          .from("announcements")
-          .select("*")
-          .order("created_at");
-        if (error) throw error;
-        return (data || []).map(row => ({ id: row.id, text: row.text, isActive: row.is_active, type: row.type }));
-      } catch (err) {
-        console.warn("getAnnouncements failed, using local fallback data:", err);
-        return initialData.announcements;
-      }
-    }
+      const { data, error } = await supabase
+        .from("announcements")
+        .select("*")
+        .order("created_at");
+      if (error) throw error;
+      return (data || []).map(row => ({ id: row.id, text: row.text, isActive: row.is_active, type: row.type }));
+    },
+    () => initialData.announcements
   );
 }
 
@@ -513,23 +564,19 @@ export async function getCampaigns(): Promise<Campaign[]> {
       return rows.map((row: Record<string, unknown>) => mapCampaignRow(row));
     },
     async () => {
-      try {
-        const { data, error } = await supabase
-          .from("campaigns")
-          .select("*")
-          .order("created_at", { ascending: false });
-        if (error) throw error;
-        const campaigns: Campaign[] = [];
-        for (const row of (data || [])) {
-          try { campaigns.push(mapCampaignRow(row)); }
-          catch (err) { console.error("Campaign row mapping error:", err, row); }
-        }
-        return campaigns;
-      } catch (err) {
-        console.warn("getCampaigns failed, using local fallback data (empty):", err);
-        return [];
+      const { data, error } = await supabase
+        .from("campaigns")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      const campaigns: Campaign[] = [];
+      for (const row of (data || [])) {
+        try { campaigns.push(mapCampaignRow(row)); }
+        catch (err) { console.error("Campaign row mapping error:", err, row); }
       }
-    }
+      return campaigns;
+    },
+    () => []
   );
 }
 
@@ -620,6 +667,7 @@ export async function getActivityLog(limit = 50) {
       return rows.map((row: Record<string, unknown>) => ({ id: row.id as number, userEmail: row.user_email as string | null, action: row.action as string, entityType: row.entity_type as string, entityId: row.entity_id as string | null, entityName: row.entity_name as string | null, details: row.details as Record<string, unknown>, createdAt: row.created_at as string }));
     } catch (e) { console.warn("Neon getActivityLog failed:", e); }
   }
+  if (!(await isSupabaseAvailable())) return [];
   const { data, error } = await supabase
     .from("activity_log")
     .select("*")
@@ -760,22 +808,15 @@ export async function getSiteSettings() {
       return (rows && rows.length > 0) ? rows[0] : getFallbackSettings();
     },
     async () => {
-      try {
-        const { data, error } = await supabase
-          .from("site_settings")
-          .select("*")
-          .eq("id", 1)
-          .single();
-        if (error && error.code !== 'PGRST116') {
-          console.warn("getSiteSettings error:", error);
-          return getFallbackSettings();
-        }
-        return data || getFallbackSettings();
-      } catch (err) {
-        console.warn("getSiteSettings fatal error:", err);
-        return getFallbackSettings();
-      }
-    }
+      const { data, error } = await supabase
+        .from("site_settings")
+        .select("*")
+        .eq("id", 1)
+        .single();
+      if (error && error.code !== 'PGRST116') throw error;
+      return data || getFallbackSettings();
+    },
+    () => getFallbackSettings()
   );
 }
 
@@ -939,7 +980,7 @@ export async function getAnalyticsSummary() {
     } catch (e) { console.warn("Neon getAnalyticsSummary failed:", e); }
   }
 
-  if (events.length === 0 && !isNeonAvailable()) {
+  if (events.length === 0 && !isNeonAvailable() && (await isSupabaseAvailable())) {
     const { data, error } = await supabase
       .from("analytics")
       .select("*")

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle, AlertTriangle, Info, X } from "lucide-react";
@@ -39,6 +39,10 @@ const colorMap: Record<ToastType, string> = {
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  // Document is only available after hydration
+  useEffect(() => { setMounted(true); }, []);
 
   const addToast = useCallback((message: string, type: ToastType) => {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -62,7 +66,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      {createPortal(
+      {mounted && createPortal(
         <div className="fixed top-4 right-4 z-[9999] flex flex-col gap-2 pointer-events-none">
           <AnimatePresence mode="popLayout">
             {toasts.map((toast) => (
