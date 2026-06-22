@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { connection } from "next/server";
 import "./globals.css";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// NOTE: In Next.js 16, `export const dynamic` and `export const revalidate`
+// route segment configs were REMOVED and have NO effect.
+// We use `connection()` inside the component to force dynamic rendering.
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,6 +42,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Force dynamic rendering — ensures settings are fetched fresh on every request
+  await connection();
   const settings = await getSiteSettings();
 
   // Create a dynamic style block to override CSS variables
