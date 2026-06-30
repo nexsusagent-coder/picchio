@@ -100,12 +100,19 @@ async function tryNeonFirst<T>(
     try { return await neonFn(); } catch (e) { console.warn("Neon failed:", e); }
   }
 
-  // Skip Supabase entirely if we know it's restricted — saves 2-7s per call
-  if (await isSupabaseAvailable()) {
-    try { return await supabaseFn(); } catch (e) { console.warn("Supabase failed:", e); }
+  // When Neon is unavailable, always try Supabase as primary source
+  // Only skip if we KNOW Supabase is restricted (quota/egress errors)
+  const sbAvailable = await isSupabaseAvailable();
+  if (sbAvailable) {
+    try { return await supabaseFn(); } catch (e) { console.warn("Supabase query failed:", e); }
+  } else {
+    // Even if health check failed, try Supabase one more time for critical data
+    // This handles edge cases where health check timed out but Supabase actually works
+    try { return await supabaseFn(); } catch (e) { console.warn("Supabase retry also failed:", e); }
   }
 
-  // Local fallback data — always works
+  // Local fallback data — should rarely reach here
+  console.warn("⚠️ Using LOCAL FALLBACK data — both Neon and Supabase failed!");
   return localFallback();
 }
 
