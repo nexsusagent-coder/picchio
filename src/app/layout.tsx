@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { connection } from "next/server";
 import "./globals.css";
 import { MaintenanceScreen } from "@/components/MaintenanceScreen";
-import { IS_MAINTENANCE_MODE } from "@/lib/config";
-import { getSiteSettings } from "@/lib/api";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,9 +17,6 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
   },
-  formatDetection: {
-    telephone: false,
-  },
 };
 
 export const viewport = {
@@ -31,14 +25,16 @@ export const viewport = {
   maximumScale: 1,
   userScalable: false,
   themeColor: '#4E0000',
-}
+};
 
-export default async function RootLayout({
+// DIRECT MAINTENANCE LOCK
+const IS_MAINTENANCE_MODE = true;
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // If maintenance mode is active, directly return MaintenanceScreen
   if (IS_MAINTENANCE_MODE) {
     return (
       <html lang="tr" className={`${inter.variable} dark`} suppressHydrationWarning>
@@ -56,49 +52,9 @@ export default async function RootLayout({
     );
   }
 
-  await connection();
-  const settings = await getSiteSettings();
-
-  const dynamicStyles = `
-    :root {
-      ${settings.primary_color ? `--color-primary: ${settings.primary_color};` : ''}
-      ${settings.secondary_color ? `--color-secondary: ${settings.secondary_color};` : ''}
-      ${settings.accent_gold ? `--color-accent: ${settings.accent_gold};` : ''}
-      ${settings.bg_gradient_start ? `--bg-gradient-start: ${settings.bg_gradient_start};` : ''}
-      ${settings.bg_gradient_end ? `--bg-gradient-end: ${settings.bg_gradient_end};` : ''}
-      ${settings.button_color ? `--btn-color: ${settings.button_color};` : ''}
-      ${settings.border_radius !== undefined ? `--base-radius: ${settings.border_radius}px;` : ''}
-      ${settings.glass_blur !== undefined ? `--glass-blur: ${settings.glass_blur}px;` : ''}
-      ${settings.noise_opacity !== undefined ? `--noise-opacity: ${settings.noise_opacity};` : ''}
-      ${settings.font_family ? `--font-main: ${settings.font_family === 'Serif' ? 'Georgia, serif' : settings.font_family === 'Classic' ? 'Times New Roman, serif' : 'var(--font-inter)'};` : ''}
-    }
-  `;
-
   return (
     <html lang="tr" className={`${inter.variable} dark`} suppressHydrationWarning>
-      <head>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta httpEquiv="Pragma" content="no-cache" />
-        <meta httpEquiv="Expires" content="0" />
-        <style dangerouslySetInnerHTML={{ __html: dynamicStyles }} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-                navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                  for (let registration of registrations) {
-                    registration.unregister();
-                  }
-                });
-              }
-            `
-          }}
-        />
-      </head>
       <body className="flex flex-col min-h-[100dvh] red-inferno-bg text-white w-full overflow-x-hidden text-sm md:text-base font-sans antialiased" suppressHydrationWarning>
-        <div className="noise-texture" />
         <main className="flex-1 w-full relative z-10">
           {children}
         </main>
