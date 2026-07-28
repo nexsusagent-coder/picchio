@@ -49,23 +49,17 @@ async function checkSupabaseAvailability(): Promise<boolean> {
 
   _supabaseCheckPromise = (async () => {
     try {
-      // Use Promise.race for reliable timeout (AbortController may not work with all Supabase transports)
       const result = await Promise.race([
         supabase.from("categories").select("id").limit(1),
         new Promise<{ error: { message?: string } }>((_, reject) =>
-          setTimeout(() => reject(new Error('HEALTH_CHECK_TIMEOUT')), 2000)
+          setTimeout(() => reject(new Error('HEALTH_CHECK_TIMEOUT')), 600)
         ),
       ]);
 
       const error = (result as { error?: { message?: string } }).error;
       if (error) {
-        const msg = error.message || '';
-        if (msg.includes('restricted') || msg.includes('quota') || msg.includes('egress') || msg.includes('spend caps')) {
-          console.warn('Supabase projesi kisitlanmis. Yerel veriler kullanilacak.');
-          _supabaseAvailable = false;
-        } else {
-          _supabaseAvailable = true; // Other errors might be transient
-        }
+        console.warn('Supabase erişim hatası, yerel veriler kullanılıyor:', error.message);
+        _supabaseAvailable = false;
       } else {
         _supabaseAvailable = true;
       }
@@ -100,19 +94,13 @@ async function tryNeonFirst<T>(
     try { return await neonFn(); } catch (e) { console.warn("Neon failed:", e); }
   }
 
-  // When Neon is unavailable, always try Supabase as primary source
-  // Only skip if we KNOW Supabase is restricted (quota/egress errors)
+  // Check Supabase availability
   const sbAvailable = await isSupabaseAvailable();
   if (sbAvailable) {
     try { return await supabaseFn(); } catch (e) { console.warn("Supabase query failed:", e); }
-  } else {
-    // Even if health check failed, try Supabase one more time for critical data
-    // This handles edge cases where health check timed out but Supabase actually works
-    try { return await supabaseFn(); } catch (e) { console.warn("Supabase retry also failed:", e); }
   }
 
-  // Local fallback data — should rarely reach here
-  console.warn("⚠️ Using LOCAL FALLBACK data — both Neon and Supabase failed!");
+  // Fast local fallback data
   return localFallback();
 }
 
