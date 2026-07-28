@@ -1,11 +1,10 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { connection } from "next/server";
 import "./globals.css";
-
-// NOTE: In Next.js 16, `export const dynamic` and `export const revalidate`
-// route segment configs were REMOVED and have NO effect.
-// We use `connection()` inside the component to force dynamic rendering.
+import { MaintenanceScreen } from "@/components/MaintenanceScreen";
+import { IS_MAINTENANCE_MODE } from "@/lib/config";
+import { getSiteSettings } from "@/lib/api";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PICCHIO COCKTAIL",
-  description: "Özel Kokteyller ve Seçkin Menü",
+  title: "PICCHIO COCKTAIL - Bakım Çalışması",
+  description: "Menümüz sizler için yenileniyor",
   appleWebApp: {
     title: "Picchio Menu",
     capable: true,
@@ -34,19 +33,32 @@ export const viewport = {
   themeColor: '#4E0000',
 }
 
-import { getSiteSettings } from "@/lib/api";
-import { Footer } from "@/components/Footer";
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Force dynamic rendering — ensures settings are fetched fresh on every request
+  // If maintenance mode is active, directly return MaintenanceScreen
+  if (IS_MAINTENANCE_MODE) {
+    return (
+      <html lang="tr" className={`${inter.variable} dark`} suppressHydrationWarning>
+        <head>
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+          <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+          <meta httpEquiv="Pragma" content="no-cache" />
+          <meta httpEquiv="Expires" content="0" />
+        </head>
+        <body className="flex flex-col min-h-[100dvh] bg-black text-white w-full overflow-x-hidden font-sans antialiased" suppressHydrationWarning>
+          <MaintenanceScreen />
+        </body>
+      </html>
+    );
+  }
+
   await connection();
   const settings = await getSiteSettings();
 
-  // Create a dynamic style block to override CSS variables
   const dynamicStyles = `
     :root {
       ${settings.primary_color ? `--color-primary: ${settings.primary_color};` : ''}
@@ -67,9 +79,9 @@ export default async function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <style dangerouslySetInnerHTML={{ __html: dynamicStyles }} />
         <script
           dangerouslySetInnerHTML={{
@@ -77,11 +89,7 @@ export default async function RootLayout({
               if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistrations().then(function(registrations) {
                   for (let registration of registrations) {
-                    registration.unregister().then(function(success) {
-                      if (success) {
-                        console.log('Old Service Worker unregistered successfully.');
-                      }
-                    });
+                    registration.unregister();
                   }
                 });
               }
